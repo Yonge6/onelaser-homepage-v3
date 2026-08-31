@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] || "xrf-gen2-listing";
+const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] || "onelaser-homepage-v3";
 
 export default defineConfig({
   base: `/${repositoryName}/`,

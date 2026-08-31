@@ -1,6 +1,6 @@
 # OneLaser Homepage + XRF Gen2 Current State
 
-Updated: 2026-08-24 (Asia/Shanghai)
+Updated: 2026-08-31 (Asia/Shanghai)
 
 ## Start here
 
@@ -8,29 +8,29 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 
 ## Routes
 
-- Repository: `Yonge6/xrf-gen2-listing`, branch `main`.
-- OneLaser homepage: `https://yonge6.github.io/xrf-gen2-listing/`.
-- XRF Gen2 commercial detail: `https://yonge6.github.io/xrf-gen2-listing/?page=xrf`.
+- V3 repository: `Yonge6/onelaser-homepage-v3`, branch `main`.
+- OneLaser Homepage V3: `https://yonge6.github.io/onelaser-homepage-v3/`.
+- Retained XRF Gen2 detail: `https://yonge6.github.io/onelaser-homepage-v3/?page=xrf`.
+- Protected V2: `https://yonge6.github.io/onelaser-homepage/` at baseline `1b6ac43`; do not overwrite or redeploy it from V3 work.
 
 ## Current homepage state
 
-- Global header, 600 px desktop hero carousel and three supplied 3840 × 1200 campaign banners.
-- Four product families directly below the banner: XRF, VertiGo, Hydra Gen2 and Cobra, using the supplied transparent machine renders.
-- Brand manifesto, workflow tabs, finished-product inspiration, ownership assurance, engineer consultation and footer.
-- Desktop uses four product columns; 390 px mobile uses two columns and a mobile-specific hero crop/copy treatment.
-- Carousel, mobile menu, workflow tabs and homepage-to-XRF route are functional and keyboard labeled.
+- Narrative order is Hero Campaigns → machine lineup → Made with OneLaser → performance → audience fit → real-world proof → OneLaser Standard → Explore / Community / Final CTA.
+- The four-machine lineup explains project fit before specifications and preserves the Cobra, XRF, Hydra Gen2 and VertiGo capability boundaries.
+- Finished work is a reduced material-filtered rail; performance is three large editorial stories; Makers, Business and Education share one tab-controlled stage.
+- Existing global navigation, Mega Menu, image placeholder system, project modal, lazy video modal, accessibility and XRF detail route remain intact.
+- Desktop uses a four-column lineup. Mobile uses horizontal scroll-snap rails and a 390 px-specific campaign treatment.
 
 ## Validation state
 
 - `npm run verify` passes.
-- Desktop hero is exactly 600 px high.
-- 390 × 844 has zero document overflow, 12 px minimum visible text and loaded product images with real natural dimensions.
-- Browser console warnings/errors are empty.
-- `design-qa.md` records a passed visual comparison and responsive QA.
+- Desktop and 390 × 844 have zero document overflow, a 12 px minimum visible text floor and 34/34 loaded homepage images with real natural dimensions.
+- Browser console errors, page errors and failed responses are empty.
+- Hero, Mega Menu and Escape close, material filter, project modal navigation, ambition tabs, lazy video iframe removal and mobile menu are interaction-verified.
 
 ## Working-tree contract
 
 - Existing `qa/*.png` files are user-owned evidence. Never stage, rename, overwrite or delete them.
 - Temporary visual evidence stays in ignored `references/incoming/`; production assets live in `public/assets/`.
 - Run `./scripts/compact-status.sh`, then `npm run verify` after scoped changes.
-- For publication, commit only target files, push `main`, wait for GitHub Pages and validate a cache-busted homepage plus `?page=xrf`.
+- For publication, commit only V3 target files and push `main` only to the independent `Yonge6/onelaser-homepage-v3` remote. Validate the cache-busted V3 homepage without touching the protected V2 remote.

@@ -1,10 +1,10 @@
-# XRF Gen2 Product Listing
+# OneLaser Homepage V3
 
-Premium product-listing prototype for OneLaser XRF Gen2, built from the approved selling-point and specification workbook.
+Independent product-led OneLaser homepage with campaign, machine lineup, finished-work, performance, audience, real-world proof, support, and community journeys. The existing XRF Gen2 detail route is retained.
 
 ## Live page
 
-[View the XRF Gen2 listing](https://yonge6.github.io/xrf-gen2-listing/)
+[View OneLaser Homepage V3](https://yonge6.github.io/onelaser-homepage-v3/)
 
 ## Local development
 
