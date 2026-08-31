@@ -260,8 +260,8 @@ const ambitions = [
     copy: "Move from one-off experiments to polished gifts, home décor, signs, and personal work with a machine matched to the projects you actually want to make.",
     image: "home-industry-makers-v2.jpg",
     alt: "Maker presenting a collection of finished engraved creations",
-    href: "https://www.1laser.com/pages/laser-engraving-community",
-    action: "Meet the community",
+    href: "https://www.1laser.com/products/sales-consultation-call",
+    action: "Let's Talk with Our Experts",
   },
   {
     id: "business",
@@ -271,7 +271,7 @@ const ambitions = [
     image: "home-industry-business-v2.jpg",
     alt: "Small business owner preparing personalized products for customers",
     href: "https://www.1laser.com/products/sales-consultation-call",
-    action: "Talk to a laser expert",
+    action: "Let's Talk with Our Experts",
   },
   {
     id: "education",
@@ -280,8 +280,8 @@ const ambitions = [
     copy: "Bring prototyping, design, and hands-on STEM work into classrooms, labs, and maker spaces with training and support close at hand.",
     image: "home-industry-education-v2.jpg",
     alt: "Students collaborating on hands-on STEM projects in a classroom",
-    href: "https://www.1laser.com/pages/contact-us",
-    action: "Explore education fit",
+    href: "https://www.1laser.com/products/sales-consultation-call",
+    action: "Let's Talk with Our Experts",
   },
 ];
 
