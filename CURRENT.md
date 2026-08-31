@@ -19,7 +19,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 - The four-machine lineup explains project fit before specifications and preserves the Cobra, XRF, Hydra Gen2 and VertiGo capability boundaries.
 - Finished work is a reduced material-filtered rail; performance is three large editorial stories; Makers, Business and Education share one tab-controlled stage.
 - Existing global navigation, Mega Menu, image placeholder system, project modal, lazy video modal, accessibility and XRF detail route remain intact.
-- Desktop uses a four-column lineup. Mobile uses horizontal scroll-snap rails and a 390 px-specific campaign treatment.
+- Desktop uses a 2 × 2 lineup with a single-line lineup description at wide breakpoints. Mobile uses horizontal scroll-snap rails and a 390 px-specific campaign treatment.
 
 ## Validation state
 
