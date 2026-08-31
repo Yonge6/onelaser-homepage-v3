@@ -17,14 +17,15 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 
 - Narrative order is Hero Campaigns → machine lineup → Made with OneLaser → performance → audience fit → real-world proof → OneLaser Standard → Explore / Community / Final CTA.
 - The four-machine lineup explains project fit before specifications and preserves the Cobra, XRF, Hydra Gen2 and VertiGo capability boundaries.
-- Finished work is a reduced material-filtered rail; performance is three large editorial stories; Makers, Business and Education share one tab-controlled stage.
+- Finished work is a reduced material-filtered rail. Performance uses one unified RF Precision / Speed & Motion / Vision Workflow selector, one shared media-and-copy stage and one compact proof ledger. Makers, Business and Education share one tab-controlled stage with the same expert-consultation CTA.
+- The real-world video module keeps the protected V2 heading, story link, card sizing and rail rhythm.
 - Existing global navigation, Mega Menu, image placeholder system, project modal, lazy video modal, accessibility and XRF detail route remain intact.
 - Desktop uses a 2 × 2 lineup with a single-line lineup description at wide breakpoints. Mobile uses horizontal scroll-snap rails and a 390 px-specific campaign treatment.
 
 ## Validation state
 
 - `npm run verify` passes.
-- Desktop and 390 × 844 have zero document overflow, a 12 px minimum visible text floor and 34/34 loaded homepage images with real natural dimensions.
+- Desktop and 390 × 844 have zero document overflow, a 12 px minimum visible text floor and 32/32 loaded homepage images with real natural dimensions.
 - Browser console errors, page errors and failed responses are empty.
 - Hero, Mega Menu and Escape close, material filter, project modal navigation, ambition tabs, lazy video iframe removal and mobile menu are interaction-verified.
 

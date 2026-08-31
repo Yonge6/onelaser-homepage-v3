@@ -81,3 +81,58 @@ The implementation uses the official OneLaser product card order, images, labels
 - P3: re-evaluate line breaks at intermediate tablet widths after future localization or copy changes.
 
 final result: passed
+---
+
+# OneLaser V3 Performance Section Design QA
+
+## Comparison target
+
+- Source visual truth: `references/incoming/selected-performance-option.png`
+- Implementation screenshot: `references/incoming/v3-performance-desktop-final-1614x1179.png`
+- Responsive screenshot: `references/incoming/v3-performance-mobile-final-390x844.png`
+- Full-view comparison: `references/incoming/v3-performance-design-qa-comparison.png`
+- Focused comparison: `references/incoming/v3-performance-design-qa-focused.png`
+- Desktop viewport: 1614 × 1179 CSS px, device scale factor 1
+- Mobile viewport: 390 × 844 CSS px, device scale factor 1
+- Source pixels: 1467 × 1072
+- Desktop implementation pixels: 1614 × 1179
+- Full comparison normalization: both sides resized to 807 × 590
+- Focused comparison normalization: selected control, stage, and proof strip cropped from each source and resized to 807 × 520
+- State: RF Precision selected; fixed site header visible
+
+## Findings
+
+- No actionable P0, P1, or P2 differences remain.
+- Typography: Certia display typography, headline weight, body hierarchy, proof metrics, and 12 px minimum text floor match the selected direction and the existing OneLaser system.
+- Spacing and layout rhythm: the centered heading, unified selector, 60/40 stage, rounded proof ledger, and one-link close reproduce the selected hierarchy without restoring the former stacked-card length.
+- Colors and tokens: white and `#F5F5F7` surfaces, black media field, muted gray copy, OneLaser red proof accents, and restrained borders remain within the approved site tokens.
+- Image quality: the RF visual uses the supplied real RF assembly. Its separate production crop removes the unrelated comparison sample while preserving the physical assembly and sharp native pixels.
+- Copy and content: all three tab labels, headlines, descriptions, and proof values come from the existing approved V3 data. No new commercial or performance claim was introduced.
+- Interaction and accessibility: all three tabs work by click and Left/Right Arrow keys, expose tab and tabpanel semantics, retain visible focus, and disable transition motion under reduced motion.
+- Responsive behavior: at 390 px the selector fits without internal or document overflow, the stage becomes image-first vertical content, the page width equals the viewport, and the selected image loads at a non-zero natural size.
+
+## Comparison history
+
+1. First implementation comparison: the shared RF source still exposed part of its unrelated lion comparison sample and required an aggressive crop. Severity P2 because it weakened product-image clarity.
+2. Fix: created `public/assets/why-onelaser-rf-system.webp` from the supplied RF source, removed only the sample area over the pure-black background, and retained the complete RF assembly.
+3. Post-fix comparison: the focused selector, stage, copy panel, proof ledger, radii, and content hierarchy align with the selected visual. The user-requested unified gray pill intentionally replaces the mock's red underline and decorative tab icons.
+
+## Open questions
+
+- None.
+
+## Implementation checklist
+
+- [x] Unified three-tab performance selector
+- [x] Functional click and keyboard switching
+- [x] One shared media-and-copy stage
+- [x] Compact three-part proof ledger
+- [x] Real RF asset retained and cleaned for this slot
+- [x] Desktop and 390 px responsive verification
+- [x] Console errors checked
+
+## Follow-up polish
+
+- None required for handoff. The unified selector treatment is an intentional user-directed difference from the generated option.
+
+final result: passed

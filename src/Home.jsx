@@ -226,15 +226,17 @@ const performanceStories = [
   {
     index: "01",
     eyebrow: "RF PRECISION",
+    tabLabel: "RF Precision",
     title: "Details stay sharp when the work gets fast.",
     copy: "Fast RF response helps preserve small type, clean edges, and consistent contrast across repeat engraving work.",
     proof: "0.07 mm spot · Up to 2,000 DPI",
-    image: "why-onelaser-rf-precision.jpg",
+    image: "why-onelaser-rf-system.webp",
     alt: "Close-up OneLaser RF engraving detail and laser head",
   },
   {
     index: "02",
-    eyebrow: "SPEED WITH CONTROL",
+    eyebrow: "SPEED & MOTION",
+    tabLabel: "Speed & Motion",
     title: "Motion designed to hold the toolpath.",
     copy: "Closed-loop motion, a lighter head, and Hydra-derived all-steel axes keep fast production controlled instead of simply chasing a headline number.",
     proof: "1,200 mm/s · True 3.5G",
@@ -244,6 +246,7 @@ const performanceStories = [
   {
     index: "03",
     eyebrow: "VISION WORKFLOW",
+    tabLabel: "Vision Workflow",
     title: "See the job before the first cut.",
     copy: "Camera-guided positioning brings artwork, material, and the working area into one direct workflow for more confident setup.",
     proof: "Full-bed view · Guided alignment",
@@ -579,6 +582,7 @@ export function HomePage() {
   const [activeVideo, setActiveVideo] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
   const [projectFilter, setProjectFilter] = useState("All");
+  const [activePerformance, setActivePerformance] = useState(0);
   const [activeAmbition, setActiveAmbition] = useState("makers");
   const [topButtonState, setTopButtonState] = useState("hidden");
   const touchStart = useRef(null);
@@ -586,7 +590,9 @@ export function HomePage() {
   const projectPanelRef = useRef(null);
   const showcaseRailRef = useRef(null);
   const videoRailRef = useRef(null);
+  const performanceTabRefs = useRef([]);
   const lastScrollYRef = useRef(0);
+  const activePerformanceStory = performanceStories[activePerformance];
 
   useEffect(() => {
     document.title = "OneLaser — Make More";
@@ -914,23 +920,52 @@ export function HomePage() {
             <h2 id="home-performance-title">Performance is a system, not a single number.</h2>
             <p>RF response, controlled motion, vision-assisted setup, rigid structure, and U.S. engineering work together from first alignment to finished output.</p>
           </header>
-          <div className="home-performance__stories">
-            {performanceStories.map((story) => (
-              <article className="home-performance-story" key={story.title}>
-                <figure><img src={asset(story.image)} alt={story.alt} loading="lazy" /></figure>
-                <div>
-                  <span>{story.index} / {story.eyebrow}</span>
-                  <h3>{story.title}</h3>
-                  <p>{story.copy}</p>
-                  <strong>{story.proof}</strong>
-                </div>
-              </article>
+          <div className="home-performance__tabs" role="tablist" aria-label="OneLaser performance systems">
+            {performanceStories.map((story, index) => (
+              <button
+                type="button"
+                role="tab"
+                id={`home-performance-tab-${index}`}
+                aria-selected={activePerformance === index}
+                aria-controls="home-performance-panel"
+                className={activePerformance === index ? "is-active" : ""}
+                tabIndex={activePerformance === index ? 0 : -1}
+                ref={(element) => { performanceTabRefs.current[index] = element; }}
+                onClick={() => setActivePerformance(index)}
+                onKeyDown={(event) => {
+                  const direction = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+                  if (!direction) return;
+                  event.preventDefault();
+                  const nextIndex = (index + direction + performanceStories.length) % performanceStories.length;
+                  setActivePerformance(nextIndex);
+                  performanceTabRefs.current[nextIndex]?.focus();
+                }}
+                key={story.tabLabel}
+              >
+                {story.tabLabel}
+              </button>
             ))}
           </div>
+          <article
+            className={`home-performance-stage home-performance-stage--${activePerformanceStory.index}`}
+            id="home-performance-panel"
+            role="tabpanel"
+            aria-labelledby={`home-performance-tab-${activePerformance}`}
+          >
+            <figure key={activePerformanceStory.image}>
+              <img src={asset(activePerformanceStory.image)} alt={activePerformanceStory.alt} loading="lazy" />
+            </figure>
+            <div className="home-performance-stage__copy" key={activePerformanceStory.title}>
+              <span>{activePerformanceStory.index} / {activePerformanceStory.eyebrow}</span>
+              <h3>{activePerformanceStory.title}</h3>
+              <p>{activePerformanceStory.copy}</p>
+              <strong>{activePerformanceStory.proof}</strong>
+            </div>
+          </article>
           <div className="home-performance__proof" aria-label="OneLaser platform proof">
-            <span><strong>20% lighter head</strong>For faster controlled movement</span>
-            <span><strong>All-steel axes</strong>Hydra-derived motion structure</span>
-            <span><strong>U.S. engineering</strong>Product guidance and technical support</span>
+            <span><strong>20%</strong><span>lighter head</span></span>
+            <span><strong>Hydra-derived</strong><span>all-steel axes</span></span>
+            <span><strong>U.S.</strong><span>engineering</span></span>
           </div>
           <a className="home-text-link" href="https://www.1laser.com/collections/laser-engraving-cutting-marking-machines" target="_blank" rel="noreferrer">
             Compare OneLaser machines <ArrowUpRight size={17} weight="bold" />
@@ -971,10 +1006,9 @@ export function HomePage() {
         <section className="home-videos" id="videos" data-v3-section="real-world">
           <header className="home-videos__header">
             <div className="home-section-heading">
-              <span>ONELASER IN THE REAL WORLD</span>
-              <h2>See the machines, people, and work in motion.</h2>
-              <p>Go beyond product renders with engineering, production, overview, and maker stories—loaded only when you choose to watch.</p>
-              <a href="https://www.1laser.com/pages/testimonials" target="_blank" rel="noreferrer">Explore customer stories <ArrowUpRight size={17} weight="bold" /></a>
+              <h2>At OneLaser, Performance Drives Innovation</h2>
+              <p>Our promise is clear: deliver innovative products built with integrity, empower users with lasting support, and strengthen our community through shared growth. These values guide everything we do and define the future we are creating together.</p>
+              <a href="https://www.1laser.com/pages/about-us" target="_blank" rel="noreferrer">Read Our Story <ArrowUpRight size={17} weight="bold" /></a>
             </div>
             <div className="home-videos__controls" aria-label="Browse OneLaser videos">
               <button type="button" onClick={() => scrollVideos(-1)} aria-label="Show previous OneLaser video"><CaretLeft size={22} /></button>
