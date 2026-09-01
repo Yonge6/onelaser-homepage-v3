@@ -225,33 +225,51 @@ const communityMenu = {
 const performanceStories = [
   {
     index: "01",
-    eyebrow: "RF PRECISION",
+    eyebrow: "LONG-LIFE RF PRECISION",
     tabLabel: "RF Precision",
-    title: "Details stay sharp when the work gets fast.",
-    copy: "Fast RF response helps preserve small type, clean edges, and consistent contrast across repeat engraving work.",
-    proof: "0.07 mm spot · Up to 2,000 DPI",
+    title: "Long-Life RF Precision",
+    copy: "Sealed Metal RF Tube. Stable Beam & 20,000–50,000-Hour Lifespan",
+    proof: "Sharper Details, Less Downtime, Better Long-Term ROI",
     image: "why-onelaser-rf-system.webp",
-    alt: "Close-up OneLaser RF engraving detail and laser head",
+    alt: "OneLaser sealed metal RF system engineered for long-life precision",
   },
   {
-    index: "02",
-    eyebrow: "SPEED & MOTION",
+    index: "04",
+    eyebrow: "UNMATCHED SPEED",
     tabLabel: "Speed & Motion",
-    title: "Motion designed to hold the toolpath.",
-    copy: "Closed-loop motion, a lighter head, and Hydra-derived all-steel axes keep fast production controlled instead of simply chasing a headline number.",
-    proof: "1,200 mm/s · True 3.5G",
+    title: "Unmatched Speed",
+    copy: "Up to 2,000 mm/s with True 4G Acceleration",
+    proof: "Finish 3× More Orders Per Day",
     image: "why-onelaser-unmatched-speed.jpg",
     alt: "OneLaser motion system shown during high-speed engraving",
   },
   {
     index: "03",
-    eyebrow: "VISION WORKFLOW",
+    eyebrow: "FULL VISION INTELLIGENCE",
     tabLabel: "Vision Workflow",
-    title: "See the job before the first cut.",
-    copy: "Camera-guided positioning brings artwork, material, and the working area into one direct workflow for more confident setup.",
-    proof: "Full-bed view · Guided alignment",
+    title: "Print & Cut with Full Vision Intelligence",
+    copy: "Camera-Guided Alignment, Auto Edge & Mark Detection",
+    proof: "Every Cut Lands Exactly Where It Should",
     image: "why-onelaser-vision-intelligence.jpg",
     alt: "OneLaser vision system aligning artwork to material",
+  },
+];
+
+const performanceProofs = [
+  {
+    index: "02",
+    title: "The RF Laser Leader",
+    lines: ["Industrial #1 RF Brand for Desktop", "Industrial First Auto-Switch RF Hybrid System"],
+  },
+  {
+    index: "05",
+    title: "Engineered & Supported in the USA",
+    lines: ["US-Based Engineering, Service & Parts", "Real Answers from Real Technicians, Fast"],
+  },
+  {
+    index: "06",
+    title: "Rock-Solid Build",
+    lines: ["Aircraft-Grade Aluminum Frame, Reinforced Industrial Construction", "Built for Long-Term Rigidity, Precision & Stability"],
   },
 ];
 
@@ -261,7 +279,7 @@ const ambitions = [
     label: "Makers",
     title: "Turn ideas into finished objects.",
     copy: "Move from one-off experiments to polished gifts, home décor, signs, and personal work with a machine matched to the projects you actually want to make.",
-    image: "home-industry-makers-v2.jpg",
+    image: "home-industry-makers-v3.webp",
     alt: "Maker presenting a collection of finished engraved creations",
     href: "https://www.1laser.com/products/sales-consultation-call",
     action: "Let's Talk with Our Experts",
@@ -271,7 +289,7 @@ const ambitions = [
     label: "Business",
     title: "Build a workflow you can repeat.",
     copy: "Choose the right platform for personalization, broader catalogs, repeat orders, and dependable daily production—without pretending every shop needs the same machine.",
-    image: "home-industry-business-v2.jpg",
+    image: "home-industry-business-v3.webp",
     alt: "Small business owner preparing personalized products for customers",
     href: "https://www.1laser.com/products/sales-consultation-call",
     action: "Let's Talk with Our Experts",
@@ -281,7 +299,7 @@ const ambitions = [
     label: "Education",
     title: "Make learning tangible.",
     copy: "Bring prototyping, design, and hands-on STEM work into classrooms, labs, and maker spaces with training and support close at hand.",
-    image: "home-industry-education-v2.jpg",
+    image: "home-industry-education-v3.webp",
     alt: "Students collaborating on hands-on STEM projects in a classroom",
     href: "https://www.1laser.com/products/sales-consultation-call",
     action: "Let's Talk with Our Experts",
@@ -603,6 +621,14 @@ export function HomePage() {
   }, []);
 
   useEffect(() => {
+    ambitions.forEach(({ image }) => {
+      const preload = new Image();
+      preload.decoding = "async";
+      preload.src = asset(image);
+    });
+  }, []);
+
+  useEffect(() => {
     const palettes = [
       ["#e7ded5", "#d8c9bc", "#f3ece5"],
       ["#dfe5df", "#cbd8cf", "#edf2ed"],
@@ -770,9 +796,7 @@ export function HomePage() {
     showcaseRailRef.current?.scrollTo({ left: 0, behavior: "smooth" });
   }
 
-  const filteredProjects = projectShowcase
-    .filter((project) => projectMatchesFilter(project, projectFilter))
-    .slice(0, projectFilter === "All" ? 12 : 8);
+  const filteredProjects = projectShowcase.filter((project) => projectMatchesFilter(project, projectFilter));
   const selectedAmbition = ambitions.find((ambition) => ambition.id === activeAmbition) || ambitions[0];
 
   function moveProject(direction) {
@@ -916,9 +940,9 @@ export function HomePage() {
 
         <section className="home-performance" id="why-onelaser" aria-labelledby="home-performance-title" data-v3-section="performance">
           <header className="home-performance__header">
-            <span>WHY ONELASER PERFORMS BETTER</span>
-            <h2 id="home-performance-title">Performance is a system, not a single number.</h2>
-            <p>RF response, controlled motion, vision-assisted setup, rigid structure, and U.S. engineering work together from first alignment to finished output.</p>
+            <span>WHY ONELASER</span>
+            <h2 id="home-performance-title">OneLaser means high performance, reinvented.</h2>
+            <p>Buy Once. Run Longer. Make More.</p>
           </header>
           <div className="home-performance__tabs" role="tablist" aria-label="OneLaser performance systems">
             {performanceStories.map((story, index) => (
@@ -962,10 +986,24 @@ export function HomePage() {
               <strong>{activePerformanceStory.proof}</strong>
             </div>
           </article>
+          <div className="home-performance__evidence" aria-label="OneLaser RF precision and lifespan evidence">
+            <figure>
+              <img src={asset("why-onelaser-detail-proof.webp")} alt="Fine OneLaser engraving detail on a wooden applicator" loading="lazy" />
+              <figcaption className="sr-only">Fine engraving detail proof</figcaption>
+            </figure>
+            <figure>
+              <img src={asset("why-onelaser-rf-lifespan.webp")} alt="Glass tube and RF tube lifespan, cooling, and stability comparison" loading="lazy" />
+              <figcaption className="sr-only">RF tube longevity and stability comparison</figcaption>
+            </figure>
+          </div>
           <div className="home-performance__proof" aria-label="OneLaser platform proof">
-            <span><strong>20%</strong><span>lighter head</span></span>
-            <span><strong>Hydra-derived</strong><span>all-steel axes</span></span>
-            <span><strong>U.S.</strong><span>engineering</span></span>
+            {performanceProofs.map((proof) => (
+              <article key={proof.index}>
+                <span>{proof.index}</span>
+                <strong>{proof.title}</strong>
+                <p>{proof.lines.map((line) => <span key={line}>{line}</span>)}</p>
+              </article>
+            ))}
           </div>
           <a className="home-text-link" href="https://www.1laser.com/collections/laser-engraving-cutting-marking-machines" target="_blank" rel="noreferrer">
             Compare OneLaser machines <ArrowUpRight size={17} weight="bold" />
@@ -1032,7 +1070,7 @@ export function HomePage() {
         <section className="home-standard" id="support" aria-labelledby="home-standard-title" data-v3-section="standard">
           <header className="home-standard__header">
             <span>THE ONELASER STANDARD</span>
-            <h2 id="home-standard-title">The machine is only the beginning.</h2>
+            <h2 id="home-standard-title">Make better with one.</h2>
             <p>Ownership is backed by a U.S. company, local guidance, training, official policy coverage, and technical support after delivery.</p>
           </header>
           <div className="home-standard__grid">
