@@ -45,27 +45,31 @@ const recommendedMachines = {
   xrf: {
     name: "XRF",
     href: "https://www.1laser.com/products/onelaser-xrf-desktop-laser-machine",
-    copy: "Precision RF desktop laser for detailed flat engraving and repeatable personalization.",
+    copy: "The King of RF Desktop Lasers.",
+    specs: ["38W RF Power", "1,200 mm/s", "True 3.5G"],
     image: "home-product-xrf.png",
   },
   cobra: {
     name: "Cobra Series",
     href: "https://www.1laser.com/products/cobra-10-100w-co2-laser-engraver-cutter",
-    copy: "Dual-laser cutting and engraving for acrylic, wood, signage, and mixed-material production.",
+    copy: "Peak Glass Laser Within Reach.",
+    specs: ["Up to 130W Glass", "3/5W IR", "1,200 mm/s"],
     image: "home-product-cobra.png",
     modalImage: "home-product-cobra-modal.webp",
   },
   hydra: {
     name: "Hydra Gen2",
     href: "https://www.1laser.com/products/hydra-9-gen-2-70w-rf-co2-dual-laser-machine",
-    copy: "High-throughput RF production for large-format detail, repeat orders, and demanding batch work.",
+    copy: "The Endgame of Industrial CO₂ Lasers.",
+    specs: ["Up to 150W Glass", "Up to 70W RF", "2,000 mm/s"],
     image: "home-product-hydra-gen2.png",
     modalImage: "home-product-hydra-gen2-modal.webp",
   },
   vertigo: {
     name: "VertiGo",
     href: "https://www.1laser.com/products/vertigo-vertical-laser-engraver",
-    copy: "Purpose-built vertical rotary laser for tumblers, bottles, glassware, and other cylindrical goods.",
+    copy: "World’s First Rotary Laser for Drinkware.",
+    specs: ["38W RF Power", "PiBurn Grip", "Smart Autofocus"],
     image: "home-product-vertigo.png",
   },
 };
@@ -99,9 +103,9 @@ const productCards = [
   {
     id: "cobra",
     name: "Cobra™ Series",
-    label: "Flexible Workshop Cutting",
-    copy: "For signs, displays, décor, and mixed-material work that needs room to grow.",
-    features: ["Large-format project fit", "CO₂ + IR options"],
+    label: "Workshop Essential",
+    copy: "Performance CO₂+IR Dual-Laser System",
+    features: ["Up to 130W Glass+3/5W IR", "Master 300+ Materials", "1,200 mm/s Speed", "1,000 DPI Max Resolution"],
     image: "home-product-cobra.png",
     scene: "home-product-cobra-scene.webp",
     href: "https://www.1laser.com/products/cobra-10-100w-co2-laser-engraver-cutter",
@@ -109,9 +113,9 @@ const productCards = [
   {
     id: "xrf",
     name: "XRF™",
-    label: "Precision Desktop Production",
-    copy: "For detailed flat engraving, fast personalization, and repeatable small-batch production.",
-    features: ["Fine-detail RF platform", "1,200 mm/s · True 3.5G"],
+    label: "Performance Desktop Laser",
+    copy: "World’s Best-Performing RF Desktop Laser",
+    features: ["38W RF Power", "1,200 mm/s Speed", "True 3.5G Acceleration", "Conveyor Feeder Available"],
     image: "home-product-xrf.png",
     scene: "home-product-xrf-scene.webp",
     href: "https://www.1laser.com/products/onelaser-xrf-desktop-laser-machine",
@@ -119,9 +123,9 @@ const productCards = [
   {
     id: "hydra",
     name: "Hydra™ Gen2",
-    label: "High-Throughput Production",
-    copy: "For larger formats, repeat orders, and production teams that need dependable output.",
-    features: ["Industrial production fit", "RF and hybrid options"],
+    label: "Industrial Laser System",
+    copy: "RF Laser Beast: Brutal Speed Meets Insane Detail.",
+    features: ["Ultra-Fast 2,000 mm/s", "4G Acceleration", "Up to 150W Glass/70W RF Power", "Smart Dual Air-Assist"],
     image: "home-product-hydra-gen2.png",
     scene: "home-product-hydra-gen2-scene.webp",
     href: "https://www.1laser.com/products/hydra-9-gen-2-70w-rf-co2-dual-laser-machine",
@@ -129,9 +133,9 @@ const productCards = [
   {
     id: "vertigo",
     name: "VertiGo™",
-    label: "Dedicated Cylindrical Engraving",
-    copy: "For tumblers, bottles, glassware, and other cylindrical goods—without a flat-bed compromise.",
-    features: ["Cylindrical projects only", "Integrated rotary workflow"],
+    label: "Performance Rotary Laser",
+    copy: "World’s First Vertical Laser — Tumblers & Cups Engraved Like Never Before",
+    features: ["Cylindrical Engraving", "38W RF Power", "Built with an Integrated PiBurn Grip", "Smart Autofocus"],
     image: "home-product-vertigo.png",
     scene: "home-product-vertigo-scene.webp",
     href: "https://www.1laser.com/products/vertigo-vertical-laser-engraver",
@@ -276,13 +280,7 @@ function getFinderMatches(selections) {
     .slice(0, 2)
     .map(([id], index) => {
       const machine = recommendedMachines[id];
-      let reason = machine.copy;
-      if (id === "vertigo") reason = "The dedicated vertical rotary workflow is the clearest fit for repeatable tumblers, cups, bottles, and glassware.";
-      if (id === "xrf" && selections.material === "metal") reason = "Fine-detail RF engraving fits flat, anodized, powder-coated, or painted metal projects; bare-metal deep engraving is not implied.";
-      if (id === "xrf" && selections.material === "tumbler") reason = "A precise flat-work companion for detailed personalization; cylindrical work requires the appropriate rotary setup.";
-      if (id === "cobra" && selections.application !== "engraving") reason = "A flexible workshop choice when cutting and engraving across wood, acrylic, leather, and signage matter together.";
-      if (id === "hydra") reason = "Industrial RF and hybrid options fit larger formats, demanding batches, and production-focused throughput.";
-      return { ...machine, id, rank: index + 1, reason };
+      return { ...machine, id, rank: index + 1 };
     });
 }
 
@@ -329,7 +327,7 @@ const standardPillars = [
 const exploreCards = [
   { eyebrow: "LEARN", title: "Ideas, settings, and practical guides", action: "Visit the blog", href: "https://www.1laser.com/blogs/topic" },
   { eyebrow: "CONNECT", title: "Projects and people in the OneLaser community", action: "Join the community", href: "https://www.1laser.com/pages/laser-engraving-community" },
-  { eyebrow: "SEE IT WORK", title: "Find a demo and experience the workflow", action: "Explore the Demo Room", href: "https://www.1laser.com/pages/demoroom" },
+  { eyebrow: "CUSTOMER STORIES", title: "See what OneLaser owners are making", action: "Read customer testimonials", href: "https://www.1laser.com/pages/testimonials" },
 ];
 
 const projectShowcase = [
@@ -897,7 +895,6 @@ export function HomePage() {
 
         <section className="home-products" id="machines" aria-labelledby="home-products-title" data-v3-section="lineup">
           <header className="home-products__header">
-            <span>MEET THE ONELASER LINEUP</span>
             <h2 id="home-products-title">Engrave the Future</h2>
             <p>Browse our high-performance machines engineered for elite creators</p>
           </header>
@@ -961,7 +958,10 @@ export function HomePage() {
                     <div>
                       <span>{machine.rank === 1 ? "BEST MATCH" : "ALSO CONSIDER"}</span>
                       <h3>{machine.name}</h3>
-                      <p>{machine.reason}</p>
+                      <p>{machine.copy}</p>
+                      <ul className="home-finder__specs" aria-label={`${machine.name} key specifications`}>
+                        {machine.specs.map((spec) => <li key={spec}>{spec}</li>)}
+                      </ul>
                       <strong>Explore {machine.name} <ArrowUpRight size={16} weight="bold" /></strong>
                     </div>
                     <img src={asset(machine.image)} alt={`${machine.name} laser machine`} loading="lazy" />

@@ -81,6 +81,28 @@ The implementation uses the official OneLaser product card order, images, labels
 - P3: re-evaluate line breaks at intermediate tablet widths after future localization or copy changes.
 
 final result: passed
+
+---
+
+# OneLaser V3 Lineup and Density Polish QA
+
+## Scope
+
+- Restored the machine lineup to the original homepage card anatomy, copy hierarchy, parameter pills, scene hover treatment, and mobile single-column layout.
+- Added exact user-supplied Finder positioning lines plus compact, source-backed specification pills for all four machines.
+- Matched the material filter control to the Ambition tabs, added restrained Ambition hover/focus feedback, rebalanced the project modal columns, aligned the Standard image to the content axis, and reduced Standard vertical whitespace.
+- Replaced the Demo Room Explore card with an official Testimonials path.
+
+## Responsive and interaction checks
+
+- Desktop: 1502 × 1179; machine grid is two equal 632 px columns with four 650 px cards; filter and Ambition controls both measure 52 px outer / 42 px button; Standard image and content axes align at 1280 px.
+- Project modal desktop columns measure approximately 321 / 419 / 354 px for specifications / earnings / machine, with no internal overflow.
+- Mobile: 390 × 844; document width is 390 px with no horizontal page overflow; machine cards are one 354 px column and 500 px high; Finder result cards scroll independently without content overflow.
+- Standard padding is 44 px desktop, 32 px tablet, and 24 px mobile. Ambition hover/focus produces image scale, elevation, and red CTA feedback with a reduced-motion fallback.
+- Changed module images loaded with real natural dimensions, including 1320 × 1356 scene images, 800 × 800 machine renders, 1536 × 1024 Ambition art, and the 1800 × 729 headquarters image.
+- Console: no warnings or errors in the checked desktop and mobile flows.
+
+final result: passed
 ---
 
 # OneLaser V3 Performance Section Design QA
