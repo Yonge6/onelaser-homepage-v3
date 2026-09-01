@@ -222,38 +222,69 @@ const communityMenu = {
   ],
 };
 
-const performancePillars = [
-  {
-    index: "01",
-    title: "Long-Life RF Precision",
-    lines: ["Sealed Metal RF Tube, Stable Beam & 20,000–50,000-Hour Lifespan", "Sharper Details, Less Downtime, Better Long-Term ROI"],
-  },
-  {
-    index: "02",
-    title: "The RF Laser Leader",
-    lines: ["Industrial #1 RF Brand for Desktop", "Industrial First Auto-Switch RF Hybrid System"],
-  },
-  {
-    index: "03",
-    title: "Print & Cut with Full Vision Intelligence",
-    lines: ["Camera-Guided Alignment, Auto Edge & Mark Detection", "Every Cut Lands Exactly Where It Should"],
-  },
-  {
-    index: "04",
-    title: "Unmatched Speed",
-    lines: ["Up to 2,000 mm/s with True 4G Acceleration", "Finish 3× More Orders Per Day"],
-  },
-  {
-    index: "05",
-    title: "Engineered & Supported in the USA",
-    lines: ["US-Based Engineering, Service & Parts", "Real Answers from Real Technicians, Fast"],
-  },
-  {
-    index: "06",
-    title: "Rock-Solid Build",
-    lines: ["Aircraft-Grade Aluminum Frame, Reinforced Industrial Construction", "Built for Long-Term Rigidity, Precision & Stability"],
-  },
-];
+const finderDefaults = {
+  material: "",
+  application: "",
+  volume: "",
+  size: "",
+};
+
+const finderOptions = {
+  material: [
+    ["organic", "Organic — wood, acrylic, leather, paper"],
+    ["metal", "Metal — anodized aluminum, coated steel, coated brass, painted metal"],
+    ["tumbler", "Mostly tumblers, cups, bottles & glassware"],
+  ],
+  application: [
+    ["engraving", "Engraving first"],
+    ["cutting", "Cutting first"],
+    ["both", "Both engraving & cutting"],
+  ],
+  volume: [
+    ["hobbyist", "Hobbyist"],
+    ["small", "Small projects"],
+    ["production", "Production"],
+  ],
+  size: [
+    ["compact", "Compact — up to 12 in"],
+    ["standard", "Standard — 12–24 in"],
+    ["large", "Large — 24–40 in"],
+    ["extra-large", "Extra large — 40 in+"],
+  ],
+};
+
+function getFinderMatches(selections) {
+  const scores = { xrf: 0, cobra: 0, hydra: 0, vertigo: 0 };
+  const addScores = (values) => Object.entries(values).forEach(([id, value]) => { scores[id] += value; });
+
+  if (selections.material === "organic") addScores({ cobra: 3, xrf: 2, hydra: 1 });
+  if (selections.material === "metal") addScores({ xrf: 3, hydra: 2, cobra: 1 });
+  if (selections.material === "tumbler") addScores({ vertigo: 10, xrf: 2, hydra: 1 });
+  if (selections.application === "engraving") addScores({ xrf: 3, vertigo: 2, hydra: 1 });
+  if (selections.application === "cutting") addScores({ cobra: 4, hydra: 3, xrf: 1 });
+  if (selections.application === "both") addScores({ cobra: 3, hydra: 3, xrf: 1 });
+  if (selections.volume === "hobbyist") addScores({ xrf: 3, cobra: 2, vertigo: 2 });
+  if (selections.volume === "small") addScores({ cobra: 2, xrf: 2, vertigo: 2, hydra: 1 });
+  if (selections.volume === "production") addScores({ hydra: 4, cobra: 3, vertigo: 2 });
+  if (selections.size === "compact") addScores({ xrf: 3, vertigo: 2, cobra: 1 });
+  if (selections.size === "standard") addScores({ cobra: 2, xrf: 2, hydra: 1 });
+  if (selections.size === "large") addScores({ hydra: 3, cobra: 3 });
+  if (selections.size === "extra-large") addScores({ hydra: 5, cobra: 3 });
+
+  return Object.entries(scores)
+    .sort((first, second) => second[1] - first[1])
+    .slice(0, 2)
+    .map(([id], index) => {
+      const machine = recommendedMachines[id];
+      let reason = machine.copy;
+      if (id === "vertigo") reason = "The dedicated vertical rotary workflow is the clearest fit for repeatable tumblers, cups, bottles, and glassware.";
+      if (id === "xrf" && selections.material === "metal") reason = "Fine-detail RF engraving fits flat, anodized, powder-coated, or painted metal projects; bare-metal deep engraving is not implied.";
+      if (id === "xrf" && selections.material === "tumbler") reason = "A precise flat-work companion for detailed personalization; cylindrical work requires the appropriate rotary setup.";
+      if (id === "cobra" && selections.application !== "engraving") reason = "A flexible workshop choice when cutting and engraving across wood, acrylic, leather, and signage matter together.";
+      if (id === "hydra") reason = "Industrial RF and hybrid options fit larger formats, demanding batches, and production-focused throughput.";
+      return { ...machine, id, rank: index + 1, reason };
+    });
+}
 
 const ambitions = [
   {
@@ -583,6 +614,8 @@ export function HomePage() {
   const [activeProject, setActiveProject] = useState(null);
   const [projectFilter, setProjectFilter] = useState("All");
   const [activeAmbition, setActiveAmbition] = useState("makers");
+  const [finderSelections, setFinderSelections] = useState(finderDefaults);
+  const [finderMatches, setFinderMatches] = useState(null);
   const [topButtonState, setTopButtonState] = useState("hidden");
   const touchStart = useRef(null);
   const projectTouchStart = useRef(null);
@@ -775,6 +808,16 @@ export function HomePage() {
     showcaseRailRef.current?.scrollTo({ left: 0, behavior: "smooth" });
   }
 
+  function updateFinderSelection(field, value) {
+    setFinderSelections((current) => ({ ...current, [field]: value }));
+    setFinderMatches(null);
+  }
+
+  function submitFinder(event) {
+    event.preventDefault();
+    setFinderMatches(getFinderMatches(finderSelections));
+  }
+
   const filteredProjects = projectShowcase.filter((project) => projectMatchesFilter(project, projectFilter));
   const selectedAmbition = ambitions.find((ambition) => ambition.id === activeAmbition) || ambitions[0];
 
@@ -879,6 +922,57 @@ export function HomePage() {
           </div>
         </section>
 
+        <section className="home-finder" aria-labelledby="home-finder-title" data-v3-section="finder">
+          <div className="home-finder__intro">
+            <span>NOT SURE WHERE TO START?</span>
+            <h2 id="home-finder-title">Find the right machine.</h2>
+            <p>Tell us what you make and how you work. We’ll show two strong fits—and explain why each one belongs on your shortlist.</p>
+          </div>
+          <form className="home-finder__form" onSubmit={submitFinder}>
+            {Object.entries(finderOptions).map(([field, options]) => (
+              <label htmlFor={`home-finder-${field}`} key={field}>
+                <span>{field === "application" ? "Primary application" : field === "volume" ? "Output volume" : field[0].toUpperCase() + field.slice(1)}</span>
+                <span className="home-finder__select-wrap">
+                  <select
+                    id={`home-finder-${field}`}
+                    aria-label={field === "application" ? "Primary application" : field === "volume" ? "Output volume" : field[0].toUpperCase() + field.slice(1)}
+                    value={finderSelections[field]}
+                    onChange={(event) => updateFinderSelection(field, event.target.value)}
+                    required
+                  >
+                    <option value="" disabled>Select {field === "application" ? "application" : field === "volume" ? "output volume" : field}</option>
+                    {options.map(([value, label]) => <option value={value} key={value}>{label}</option>)}
+                  </select>
+                  <CaretDown size={20} weight="bold" aria-hidden="true" />
+                </span>
+              </label>
+            ))}
+            <button type="submit">Show my matches <ArrowUpRight size={20} weight="bold" /></button>
+          </form>
+          {finderMatches && (
+            <div className="home-finder__results" aria-live="polite">
+              <div className="home-finder__result-heading">
+                <span>YOUR TWO BEST-FIT PATHS</span>
+                <h3>Start with fit, then compare the details.</h3>
+              </div>
+              <div className="home-finder__result-grid">
+                {finderMatches.map((machine) => (
+                  <a href={machine.href} target="_blank" rel="noreferrer" key={machine.id}>
+                    <div>
+                      <span>{machine.rank === 1 ? "BEST MATCH" : "ALSO CONSIDER"}</span>
+                      <h3>{machine.name}</h3>
+                      <p>{machine.reason}</p>
+                      <strong>Explore {machine.name} <ArrowUpRight size={16} weight="bold" /></strong>
+                    </div>
+                    <img src={asset(machine.image)} alt={`${machine.name} laser machine`} loading="lazy" />
+                  </a>
+                ))}
+              </div>
+              <p className="home-finder__note">Recommendations are based on project fit. Confirm material compatibility, rotary requirements, work area, and final configuration with a OneLaser expert.</p>
+            </div>
+          )}
+        </section>
+
         <section className="home-showcase" id="inspiration" aria-labelledby="home-showcase-title" data-v3-section="made-with-onelaser">
           <header className="home-showcase__header">
             <div className="home-showcase__heading">
@@ -913,42 +1007,6 @@ export function HomePage() {
                 <span className="home-showcase-card__shade" />
                 <span className="home-showcase-card__copy"><small>{project.material}</small><strong>{project.title}</strong></span>
               </button>
-            ))}
-          </div>
-        </section>
-
-        <section className="home-performance" id="why-onelaser" aria-labelledby="home-performance-title" data-v3-section="performance">
-          <div className="home-performance-stage">
-            <div className="home-performance-stage__statement">
-              <span>WHY ONELASER</span>
-              <h2 id="home-performance-title">OneLaser means high performance, reinvented.</h2>
-              <p>RF response, intelligent vision, controlled motion, rigid construction, and U.S. support work together—from the first alignment to finished output.</p>
-              <strong>Buy Once. Run Longer. Make More.</strong>
-              <div className="home-performance-metrics" aria-label="OneLaser performance proof points">
-                <div><b>30,000</b><span>hours RF source life</span></div>
-                <div><b>2,000</b><span>mm/s on Hydra Gen2</span></div>
-                <div><b>4G</b><span>acceleration</span></div>
-              </div>
-            </div>
-            <img src={asset("why-onelaser-rf-precision.jpg")} alt="Exploded OneLaser RF engineering system with fine engraving detail" loading="lazy" />
-          </div>
-          <div className="home-performance-media-proof" aria-label="OneLaser RF longevity and detail proof">
-            <figure>
-              <img src={asset("why-onelaser-rf-lifespan.webp")} alt="Glass tube and RF tube lifespan, cooling, and stability comparison" loading="lazy" />
-              <figcaption><span>LONGEVITY PROOF</span><strong>Stable RF output, less cooling complexity, and less maintenance.</strong></figcaption>
-            </figure>
-            <figure>
-              <img src={asset("why-onelaser-detail-proof.webp")} alt="Fine OneLaser logo engraved on a wooden applicator" loading="lazy" />
-              <figcaption><span>DETAIL PROOF</span><strong>Fast response preserves detail at production scale.</strong></figcaption>
-            </figure>
-          </div>
-          <div className="home-performance-pillars" aria-label="Why OneLaser performs better">
-            {performancePillars.map((pillar) => (
-              <article className="home-performance-point" key={pillar.index}>
-                <span>{pillar.index}</span>
-                <h3>{pillar.title}</h3>
-                <div>{pillar.lines.map((line) => <p key={line}>{line}</p>)}</div>
-              </article>
             ))}
           </div>
         </section>
@@ -1011,21 +1069,26 @@ export function HomePage() {
         </section>
 
         <section className="home-standard" id="support" aria-labelledby="home-standard-title" data-v3-section="standard">
-          <header className="home-standard__header">
-            <span>THE ONELASER STANDARD</span>
-            <h2 id="home-standard-title">Make better with one.</h2>
-            <p>Ownership is backed by a U.S. company, local guidance, training, official policy coverage, and technical support after delivery.</p>
-          </header>
-          <div className="home-standard__grid">
-            {standardPillars.map((pillar) => (
-              <article key={pillar.index}>
-                <span>{pillar.index}</span>
-                <h3>{pillar.title}</h3>
-                <p>{pillar.copy}</p>
-              </article>
-            ))}
+          <div className="home-standard__visual">
+            <img src={asset("onelaser-us-headquarters.webp")} alt="Aerial view of OneLaser headquarters in Lake Forest, California" loading="lazy" />
           </div>
-          <a className="home-standard__cta" href="https://www.1laser.com/pages/sales-consultation" target="_blank" rel="noreferrer">Explore OneLaser support <ArrowUpRight size={17} weight="bold" /></a>
+          <div className="home-standard__content">
+            <header className="home-standard__header">
+              <span>THE ONELASER STANDARD</span>
+              <h2 id="home-standard-title">Make better with one.</h2>
+              <p>Ownership is backed by a U.S. company, local guidance, training, official policy coverage, and technical support after delivery.</p>
+            </header>
+            <div className="home-standard__grid">
+              {standardPillars.map((pillar) => (
+                <article key={pillar.index}>
+                  <span>{pillar.index}</span>
+                  <h3>{pillar.title}</h3>
+                  <p>{pillar.copy}</p>
+                </article>
+              ))}
+            </div>
+            <a className="home-standard__cta" href="https://www.1laser.com/pages/sales-consultation" target="_blank" rel="noreferrer">Explore OneLaser support <ArrowUpRight size={17} weight="bold" /></a>
+          </div>
         </section>
 
         <section className="home-explore" id="explore" aria-labelledby="home-explore-title" data-v3-section="explore">
@@ -1041,6 +1104,13 @@ export function HomePage() {
                 <strong>{item.action} <ArrowUpRight size={16} weight="bold" /></strong>
               </a>
             ))}
+          </div>
+          <div className="home-final-cta">
+            <div>
+              <span>READY WHEN YOU ARE</span>
+              <h2>Find the OneLaser built for you.</h2>
+            </div>
+            <a href="https://www.1laser.com/collections/laser-engraving-cutting-marking-machines" target="_blank" rel="noreferrer">Shop laser machines <ArrowUpRight size={20} weight="bold" /></a>
           </div>
         </section>
 

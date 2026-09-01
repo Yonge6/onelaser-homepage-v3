@@ -136,3 +136,38 @@ final result: passed
 - None required for handoff. The unified selector treatment is an intentional user-directed difference from the generated option.
 
 final result: passed
+---
+
+# OneLaser V3 Finder and Closing Modules Design QA
+
+## Sources and captures
+
+- Machine finder reference: `/var/folders/vd/kws8fm5509l6b9hnywhd8yfr0000gn/T/codex-clipboard-7956c80e-f71f-4aa3-8a66-49f6ede1a4a2.png` — 2580 × 672.
+- OneLaser Standard reference: `/var/folders/vd/kws8fm5509l6b9hnywhd8yfr0000gn/T/codex-clipboard-8a4d2abf-8b4a-48da-8576-ea3fc88f86a0.png` — 2582 × 2056.
+- Explore and final CTA reference: `/var/folders/vd/kws8fm5509l6b9hnywhd8yfr0000gn/T/codex-clipboard-48a499b6-45ee-4df3-ad5e-6d23435a9612.png` — 2600 × 1348.
+- Desktop implementation captures: `references/incoming/v3-finder-desktop.png`, `references/incoming/v3-standard-desktop.png`, and `references/incoming/v3-explore-desktop.png` — each captured at a 1598 × 1179 viewport.
+- Mobile implementation captures: `references/incoming/v3-finder-mobile-fixed.png`, `references/incoming/v3-standard-mobile.png`, and `references/incoming/v3-explore-mobile.png` — each captured at a 390 × 844 viewport.
+- Combined comparison: `references/incoming/v3-design-comparison.png` — 1480 × 2100.
+
+## Comparison findings
+
+- The machine finder keeps the reference hierarchy, pale-gray rounded container, two-column desktop form, and red pill action while extending the interaction to four required inputs and two explained machine matches.
+- The OneLaser Standard preserves the reference's full-width aerial proof, left-aligned ownership message, four equal proof columns, and centered support action. Mobile changes the proof row to a horizontal snap rail to reduce page height.
+- Explore preserves the reference's three-column editorial links and black final action panel. The existing V3 type, spacing, and OneLaser red tokens remain consistent.
+- The existing Makers, Business, and Education tabbed stage remains the approved single-stage pattern and was not duplicated.
+
+## Responsive and interaction checks
+
+- Desktop: 1598 × 1179; no document overflow; old `#why-onelaser` section absent.
+- Mobile: 390 × 844; no document overflow; minimum customer-facing text in the changed modules is 12 px.
+- Finder: all four native selects are required; submission returns exactly two linked recommendations; the test cases returned VertiGo + XRF for tumbler engraving and Cobra + Hydra for large production cutting/engraving.
+- Images: finder machine images, ambition art, and the 1800 × 729 headquarters image loaded with real natural dimensions.
+- Console: no warnings or errors in the checked desktop and mobile flows.
+
+## Iteration history
+
+1. Initial mobile review found long material option text expanding the form's min-content width and clipping controls.
+2. Added explicit min/max-width constraints to the form, select, results, and mobile result rail.
+3. Rechecked at 390 px: form width 314 px inside a 354 px finder, document width 390 px, and the recommendation rail scrolls independently (314 px viewport / 670 px content).
+
+final result: passed
