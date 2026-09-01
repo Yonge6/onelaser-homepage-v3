@@ -15,20 +15,23 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 
 ## Current homepage state
 
-- Narrative order is Hero Campaigns → machine lineup → Made with OneLaser → performance → audience fit → real-world proof → OneLaser Standard → Explore / Community / Final CTA.
+- Narrative order is Hero Campaigns → machine lineup → Made with OneLaser → performance → audience fit → real-world proof → OneLaser Standard → Explore / Community → footer.
 - The four-machine lineup explains project fit before specifications and preserves the Cobra, XRF, Hydra Gen2 and VertiGo capability boundaries.
-- Finished work restores all 42 V2 project images in a dense material-filtered rail: three rows on desktop and two rows on mobile. Performance uses the user-approved `OneLaser means high performance, reinvented.` content in one unified RF Precision / Speed & Motion / Vision Workflow selector, with two supplied RF proof images and three compact brand-proof cells. Makers, Business and Education share one tab-controlled stage with the same expert-consultation CTA.
+- Finished work restores all 42 V2 project images in a dense material-filtered rail: three rows on desktop and two rows on mobile. Performance presents the user-supplied 01–06 content simultaneously in a 2 × 3 desktop card grid, followed by the two supplied RF proof images. Makers, Business and Education share one tab-controlled stage with the same expert-consultation CTA.
 - The real-world video module keeps the protected V2 heading, story link, card sizing and rail rhythm.
 - Existing global navigation, Mega Menu, image placeholder system, project modal, lazy video modal, accessibility and XRF detail route remain intact.
 - Desktop uses a 2 × 2 lineup with single-line lineup and project-introduction descriptions at wide breakpoints. Mobile uses horizontal scroll-snap rails and a 390 px-specific campaign treatment.
+- All four lineup machine renders are visually centered within the open media area while retaining aligned copy and Explore actions.
 - The three ambition images are 84–127 KB WebP files and are preloaded for immediate tab switching. Explore cards use a shared hover/focus treatment, and The OneLaser Standard title is `Make better with one.`.
+- Performance and Built for Every Ambition headers follow the shared 1280 px left-aligned content baseline.
+- The redundant `Ready When You Are` final CTA panel has been removed; Explore transitions directly to the footer.
 
 ## Validation state
 
 - `npm run verify` passes.
-- Desktop and 390 × 844 have zero document overflow, a 12 px minimum visible text floor and 64/64 loaded homepage images with real natural dimensions.
+- Desktop and 390 × 844 have zero document overflow, a 12 px minimum visible text floor and 63/63 loaded homepage images with real natural dimensions.
 - Browser console errors and warnings are empty.
-- The 42-image material filter, performance mouse/keyboard tabs, ambition image tabs, Explore hover treatment and mobile menu are interaction-verified; the earlier Hero, Mega Menu, project modal and lazy video behavior remains intact.
+- The 42-image material filter, ambition image tabs, Explore hover treatment and mobile menu are interaction-verified; the earlier Hero, Mega Menu, project modal and lazy video behavior remains intact.
 
 ## Working-tree contract
 

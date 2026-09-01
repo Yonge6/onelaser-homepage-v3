@@ -222,44 +222,26 @@ const communityMenu = {
   ],
 };
 
-const performanceStories = [
+const performancePillars = [
   {
     index: "01",
-    eyebrow: "LONG-LIFE RF PRECISION",
-    tabLabel: "RF Precision",
     title: "Long-Life RF Precision",
-    copy: "Sealed Metal RF Tube. Stable Beam & 20,000–50,000-Hour Lifespan",
-    proof: "Sharper Details, Less Downtime, Better Long-Term ROI",
-    image: "why-onelaser-rf-system.webp",
-    alt: "OneLaser sealed metal RF system engineered for long-life precision",
+    lines: ["Sealed Metal RF Tube, Stable Beam & 20,000–50,000-Hour Lifespan", "Sharper Details, Less Downtime, Better Long-Term ROI"],
   },
-  {
-    index: "04",
-    eyebrow: "UNMATCHED SPEED",
-    tabLabel: "Speed & Motion",
-    title: "Unmatched Speed",
-    copy: "Up to 2,000 mm/s with True 4G Acceleration",
-    proof: "Finish 3× More Orders Per Day",
-    image: "why-onelaser-unmatched-speed.jpg",
-    alt: "OneLaser motion system shown during high-speed engraving",
-  },
-  {
-    index: "03",
-    eyebrow: "FULL VISION INTELLIGENCE",
-    tabLabel: "Vision Workflow",
-    title: "Print & Cut with Full Vision Intelligence",
-    copy: "Camera-Guided Alignment, Auto Edge & Mark Detection",
-    proof: "Every Cut Lands Exactly Where It Should",
-    image: "why-onelaser-vision-intelligence.jpg",
-    alt: "OneLaser vision system aligning artwork to material",
-  },
-];
-
-const performanceProofs = [
   {
     index: "02",
     title: "The RF Laser Leader",
     lines: ["Industrial #1 RF Brand for Desktop", "Industrial First Auto-Switch RF Hybrid System"],
+  },
+  {
+    index: "03",
+    title: "Print & Cut with Full Vision Intelligence",
+    lines: ["Camera-Guided Alignment, Auto Edge & Mark Detection", "Every Cut Lands Exactly Where It Should"],
+  },
+  {
+    index: "04",
+    title: "Unmatched Speed",
+    lines: ["Up to 2,000 mm/s with True 4G Acceleration", "Finish 3× More Orders Per Day"],
   },
   {
     index: "05",
@@ -600,7 +582,6 @@ export function HomePage() {
   const [activeVideo, setActiveVideo] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
   const [projectFilter, setProjectFilter] = useState("All");
-  const [activePerformance, setActivePerformance] = useState(0);
   const [activeAmbition, setActiveAmbition] = useState("makers");
   const [topButtonState, setTopButtonState] = useState("hidden");
   const touchStart = useRef(null);
@@ -608,9 +589,7 @@ export function HomePage() {
   const projectPanelRef = useRef(null);
   const showcaseRailRef = useRef(null);
   const videoRailRef = useRef(null);
-  const performanceTabRefs = useRef([]);
   const lastScrollYRef = useRef(0);
-  const activePerformanceStory = performanceStories[activePerformance];
 
   useEffect(() => {
     document.title = "OneLaser — Make More";
@@ -944,48 +923,15 @@ export function HomePage() {
             <h2 id="home-performance-title">OneLaser means high performance, reinvented.</h2>
             <p>Buy Once. Run Longer. Make More.</p>
           </header>
-          <div className="home-performance__tabs" role="tablist" aria-label="OneLaser performance systems">
-            {performanceStories.map((story, index) => (
-              <button
-                type="button"
-                role="tab"
-                id={`home-performance-tab-${index}`}
-                aria-selected={activePerformance === index}
-                aria-controls="home-performance-panel"
-                className={activePerformance === index ? "is-active" : ""}
-                tabIndex={activePerformance === index ? 0 : -1}
-                ref={(element) => { performanceTabRefs.current[index] = element; }}
-                onClick={() => setActivePerformance(index)}
-                onKeyDown={(event) => {
-                  const direction = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
-                  if (!direction) return;
-                  event.preventDefault();
-                  const nextIndex = (index + direction + performanceStories.length) % performanceStories.length;
-                  setActivePerformance(nextIndex);
-                  performanceTabRefs.current[nextIndex]?.focus();
-                }}
-                key={story.tabLabel}
-              >
-                {story.tabLabel}
-              </button>
+          <div className="home-performance__grid" aria-label="Why OneLaser performs better">
+            {performancePillars.map((pillar) => (
+              <article key={pillar.index}>
+                <span>{pillar.index}</span>
+                <h3>{pillar.title}</h3>
+                <div>{pillar.lines.map((line) => <p key={line}>{line}</p>)}</div>
+              </article>
             ))}
           </div>
-          <article
-            className={`home-performance-stage home-performance-stage--${activePerformanceStory.index}`}
-            id="home-performance-panel"
-            role="tabpanel"
-            aria-labelledby={`home-performance-tab-${activePerformance}`}
-          >
-            <figure key={activePerformanceStory.image}>
-              <img src={asset(activePerformanceStory.image)} alt={activePerformanceStory.alt} loading="lazy" />
-            </figure>
-            <div className="home-performance-stage__copy" key={activePerformanceStory.title}>
-              <span>{activePerformanceStory.index} / {activePerformanceStory.eyebrow}</span>
-              <h3>{activePerformanceStory.title}</h3>
-              <p>{activePerformanceStory.copy}</p>
-              <strong>{activePerformanceStory.proof}</strong>
-            </div>
-          </article>
           <div className="home-performance__evidence" aria-label="OneLaser RF precision and lifespan evidence">
             <figure>
               <img src={asset("why-onelaser-detail-proof.webp")} alt="Fine OneLaser engraving detail on a wooden applicator" loading="lazy" />
@@ -995,15 +941,6 @@ export function HomePage() {
               <img src={asset("why-onelaser-rf-lifespan.webp")} alt="Glass tube and RF tube lifespan, cooling, and stability comparison" loading="lazy" />
               <figcaption className="sr-only">RF tube longevity and stability comparison</figcaption>
             </figure>
-          </div>
-          <div className="home-performance__proof" aria-label="OneLaser platform proof">
-            {performanceProofs.map((proof) => (
-              <article key={proof.index}>
-                <span>{proof.index}</span>
-                <strong>{proof.title}</strong>
-                <p>{proof.lines.map((line) => <span key={line}>{line}</span>)}</p>
-              </article>
-            ))}
           </div>
           <a className="home-text-link" href="https://www.1laser.com/collections/laser-engraving-cutting-marking-machines" target="_blank" rel="noreferrer">
             Compare OneLaser machines <ArrowUpRight size={17} weight="bold" />
@@ -1098,13 +1035,6 @@ export function HomePage() {
                 <strong>{item.action} <ArrowUpRight size={16} weight="bold" /></strong>
               </a>
             ))}
-          </div>
-          <div className="home-final-cta">
-            <div><span>READY WHEN YOU ARE</span><h2>Find the OneLaser built for your next chapter.</h2></div>
-            <div>
-              <a href="https://www.1laser.com/collections/laser-engraving-cutting-marking-machines" target="_blank" rel="noreferrer">Shop laser machines <ArrowUpRight size={17} weight="bold" /></a>
-              <a href="https://www.1laser.com/products/sales-consultation-call" target="_blank" rel="noreferrer">Book a free call</a>
-            </div>
           </div>
         </section>
 
