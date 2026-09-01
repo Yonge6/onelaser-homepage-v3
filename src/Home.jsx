@@ -918,32 +918,38 @@ export function HomePage() {
         </section>
 
         <section className="home-performance" id="why-onelaser" aria-labelledby="home-performance-title" data-v3-section="performance">
-          <header className="home-performance__header">
-            <span>WHY ONELASER</span>
-            <h2 id="home-performance-title">OneLaser means high performance, reinvented.</h2>
-            <p>Buy Once. Run Longer. Make More.</p>
-          </header>
-          <div className="home-performance-board">
-            <div className="home-performance-proof">
-              <figure className="home-performance-proof__system">
-                <img className="home-performance-proof__machine" src={asset("why-onelaser-rf-system.webp")} alt="OneLaser sealed metal RF system engineered from the inside out" loading="lazy" />
-                <img className="home-performance-proof__detail" src={asset("why-onelaser-detail-proof.webp")} alt="Fine OneLaser engraving detail on a wooden applicator" loading="lazy" />
-                <figcaption><span>RF ENGINEERING</span><strong>Performance built from the inside out.</strong></figcaption>
-              </figure>
-              <figure className="home-performance-proof__lifespan">
-                <img src={asset("why-onelaser-rf-lifespan.webp")} alt="Glass tube and RF tube lifespan, cooling, and stability comparison" loading="lazy" />
-                <figcaption className="sr-only">RF tube longevity and stability comparison</figcaption>
-              </figure>
+          <div className="home-performance-stage">
+            <div className="home-performance-stage__statement">
+              <span>WHY ONELASER</span>
+              <h2 id="home-performance-title">OneLaser means high performance, reinvented.</h2>
+              <p>RF response, intelligent vision, controlled motion, rigid construction, and U.S. support work together—from the first alignment to finished output.</p>
+              <strong>Buy Once. Run Longer. Make More.</strong>
+              <div className="home-performance-metrics" aria-label="OneLaser performance proof points">
+                <div><b>30,000</b><span>hours RF source life</span></div>
+                <div><b>2,000</b><span>mm/s on Hydra Gen2</span></div>
+                <div><b>4G</b><span>acceleration</span></div>
+              </div>
             </div>
-            <div className="home-performance-matrix" aria-label="Why OneLaser performs better">
-              {performancePillars.map((pillar) => (
+            <img src={asset("why-onelaser-rf-precision.jpg")} alt="Exploded OneLaser RF engineering system with fine engraving detail" loading="lazy" />
+          </div>
+          <div className="home-performance-media-proof" aria-label="OneLaser RF longevity and detail proof">
+            <figure>
+              <img src={asset("why-onelaser-rf-lifespan.webp")} alt="Glass tube and RF tube lifespan, cooling, and stability comparison" loading="lazy" />
+              <figcaption><span>LONGEVITY PROOF</span><strong>Stable RF output, less cooling complexity, and less maintenance.</strong></figcaption>
+            </figure>
+            <figure>
+              <img src={asset("why-onelaser-detail-proof.webp")} alt="Fine OneLaser logo engraved on a wooden applicator" loading="lazy" />
+              <figcaption><span>DETAIL PROOF</span><strong>Fast response preserves detail at production scale.</strong></figcaption>
+            </figure>
+          </div>
+          <div className="home-performance-pillars" aria-label="Why OneLaser performs better">
+            {performancePillars.map((pillar) => (
               <article className="home-performance-point" key={pillar.index}>
                 <span>{pillar.index}</span>
                 <h3>{pillar.title}</h3>
                 <div>{pillar.lines.map((line) => <p key={line}>{line}</p>)}</div>
               </article>
-              ))}
-            </div>
+            ))}
           </div>
           <a className="home-text-link" href="https://www.1laser.com/collections/laser-engraving-cutting-marking-machines" target="_blank" rel="noreferrer">
             Compare OneLaser machines <ArrowUpRight size={17} weight="bold" />
