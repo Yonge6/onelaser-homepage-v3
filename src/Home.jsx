@@ -951,9 +951,6 @@ export function HomePage() {
               </article>
             ))}
           </div>
-          <a className="home-text-link" href="https://www.1laser.com/collections/laser-engraving-cutting-marking-machines" target="_blank" rel="noreferrer">
-            Compare OneLaser machines <ArrowUpRight size={17} weight="bold" />
-          </a>
         </section>
 
         <section className="home-ambitions" id="industries" aria-labelledby="home-ambitions-title" data-v3-section="ambition">
