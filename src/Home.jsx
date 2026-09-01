@@ -237,11 +237,15 @@ const performancePillars = [
     index: "03",
     title: "Print & Cut with Full Vision Intelligence",
     lines: ["Camera-Guided Alignment, Auto Edge & Mark Detection", "Every Cut Lands Exactly Where It Should"],
+    image: "why-onelaser-vision-intelligence.jpg",
+    alt: "OneLaser full-vision workflow aligning printed artwork in the laser bed",
   },
   {
     index: "04",
     title: "Unmatched Speed",
     lines: ["Up to 2,000 mm/s with True 4G Acceleration", "Finish 3× More Orders Per Day"],
+    image: "why-onelaser-unmatched-speed.jpg",
+    alt: "OneLaser completing detailed engraving work at production speed",
   },
   {
     index: "05",
@@ -923,24 +927,49 @@ export function HomePage() {
             <h2 id="home-performance-title">OneLaser means high performance, reinvented.</h2>
             <p>Buy Once. Run Longer. Make More.</p>
           </header>
-          <div className="home-performance__grid" aria-label="Why OneLaser performs better">
-            {performancePillars.map((pillar) => (
+          <div className="home-performance-system">
+            <figure className="home-performance-system__visual">
+              <img className="home-performance-system__machine" src={asset("why-onelaser-rf-system.webp")} alt="OneLaser sealed metal RF system engineered from the inside out" loading="lazy" />
+              <img className="home-performance-system__detail" src={asset("why-onelaser-detail-proof.webp")} alt="Fine OneLaser engraving detail on a wooden applicator" loading="lazy" />
+              <figcaption><span>RF ENGINEERING</span><strong>Performance built from the inside out.</strong></figcaption>
+            </figure>
+            <div className="home-performance-system__core">
+              <article className="home-performance-point home-performance-point--primary">
+                <span>{performancePillars[0].index}</span>
+                <h3>{performancePillars[0].title}</h3>
+                <div>{performancePillars[0].lines.map((line) => <p key={line}>{line}</p>)}</div>
+              </article>
+              <figure className="home-performance-system__lifespan">
+                <img src={asset("why-onelaser-rf-lifespan.webp")} alt="Glass tube and RF tube lifespan, cooling, and stability comparison" loading="lazy" />
+                <figcaption className="sr-only">RF tube longevity and stability comparison</figcaption>
+              </figure>
+              <article className="home-performance-point">
+                <span>{performancePillars[1].index}</span>
+                <h3>{performancePillars[1].title}</h3>
+                <div>{performancePillars[1].lines.map((line) => <p key={line}>{line}</p>)}</div>
+              </article>
+            </div>
+          </div>
+          <div className="home-performance-workflows" aria-label="OneLaser vision and speed systems">
+            {performancePillars.slice(2, 4).map((pillar) => (
               <article key={pillar.index}>
+                <figure><img src={asset(pillar.image)} alt={pillar.alt} loading="lazy" /></figure>
+                <div className="home-performance-point">
+                  <span>{pillar.index}</span>
+                  <h3>{pillar.title}</h3>
+                  <div>{pillar.lines.map((line) => <p key={line}>{line}</p>)}</div>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="home-performance-foundation" aria-label="OneLaser engineering and construction foundation">
+            {performancePillars.slice(4).map((pillar) => (
+              <article className="home-performance-point" key={pillar.index}>
                 <span>{pillar.index}</span>
                 <h3>{pillar.title}</h3>
                 <div>{pillar.lines.map((line) => <p key={line}>{line}</p>)}</div>
               </article>
             ))}
-          </div>
-          <div className="home-performance__evidence" aria-label="OneLaser RF precision and lifespan evidence">
-            <figure>
-              <img src={asset("why-onelaser-detail-proof.webp")} alt="Fine OneLaser engraving detail on a wooden applicator" loading="lazy" />
-              <figcaption className="sr-only">Fine engraving detail proof</figcaption>
-            </figure>
-            <figure>
-              <img src={asset("why-onelaser-rf-lifespan.webp")} alt="Glass tube and RF tube lifespan, cooling, and stability comparison" loading="lazy" />
-              <figcaption className="sr-only">RF tube longevity and stability comparison</figcaption>
-            </figure>
           </div>
           <a className="home-text-link" href="https://www.1laser.com/collections/laser-engraving-cutting-marking-machines" target="_blank" rel="noreferrer">
             Compare OneLaser machines <ArrowUpRight size={17} weight="bold" />

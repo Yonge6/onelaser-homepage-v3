@@ -17,7 +17,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 
 - Narrative order is Hero Campaigns → machine lineup → Made with OneLaser → performance → audience fit → real-world proof → OneLaser Standard → Explore / Community → footer.
 - The four-machine lineup explains project fit before specifications and preserves the Cobra, XRF, Hydra Gen2 and VertiGo capability boundaries.
-- Finished work restores all 42 V2 project images in a dense material-filtered rail: three rows on desktop and two rows on mobile. Performance presents the user-supplied 01–06 content simultaneously in a 2 × 3 desktop card grid, followed by the two supplied RF proof images. Makers, Business and Education share one tab-controlled stage with the same expert-consultation CTA.
+- Finished work restores all 42 V2 project images in a dense material-filtered rail: three rows on desktop and two rows on mobile. Performance uses an editorial system hierarchy instead of a card wall: 01/02 anchor an RF core with machine, detail and lifespan proof; 03/04 are image-led Vision and Speed workflows; 05/06 form one connected engineering foundation. All user-supplied content remains simultaneously visible. Makers, Business and Education share one tab-controlled stage with the same expert-consultation CTA.
 - The real-world video module keeps the protected V2 heading, story link, card sizing and rail rhythm.
 - Existing global navigation, Mega Menu, image placeholder system, project modal, lazy video modal, accessibility and XRF detail route remain intact.
 - Desktop uses a 2 × 2 lineup with single-line lineup and project-introduction descriptions at wide breakpoints. Mobile uses horizontal scroll-snap rails and a 390 px-specific campaign treatment.
@@ -29,7 +29,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 ## Validation state
 
 - `npm run verify` passes.
-- Desktop and 390 × 844 have zero document overflow, a 12 px minimum visible text floor and 63/63 loaded homepage images with real natural dimensions.
+- Desktop and 390 × 844 have zero document overflow, a 12 px minimum visible text floor and 66/66 loaded homepage images with real natural dimensions.
 - Browser console errors and warnings are empty.
 - The 42-image material filter, ambition image tabs, Explore hover treatment and mobile menu are interaction-verified; the earlier Hero, Mega Menu, project modal and lazy video behavior remains intact.
 
