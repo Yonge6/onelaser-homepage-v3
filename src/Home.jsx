@@ -977,8 +977,8 @@ export function HomePage() {
           <header className="home-showcase__header">
             <div className="home-showcase__heading">
               <span>MADE WITH ONELASER</span>
-              <h2 id="home-showcase-title">See the outcome before the machine.</h2>
-              <p>Finished goods, popular product directions, and real project inspiration—organized by the materials you want to work with.</p>
+              <h2 id="home-showcase-title">One Machine. Endless Possibilities.</h2>
+              <p>Your work is only as good as your laser. That’s why the best work runs on OneLaser.</p>
             </div>
             <div className="home-showcase__controls" aria-label="Browse finished OneLaser projects">
               <button type="button" onClick={() => scrollShowcase(-1)} aria-label="Show previous finished projects"><CaretLeft size={22} /></button>

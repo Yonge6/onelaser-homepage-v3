@@ -643,7 +643,7 @@
   line-height: 1;
   letter-spacing: .14em;
 }
-.home-finder__intro h2 { margin: 12px 0 0; font-size: 46px; line-height: 1.02; letter-spacing: -.04em; }
+.home-finder__intro h2 { margin: 12px 0 0; font-size: 46px; font-weight: 800; line-height: 1.02; letter-spacing: -.04em; }
 .home-finder__intro p { max-width: 440px; margin: 24px 0 0; color: #6b6b70; font-size: 16px; line-height: 1.55; }
 .home-finder__intro,
 .home-finder__form,
