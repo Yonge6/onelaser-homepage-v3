@@ -673,7 +673,7 @@
 }
 .home-performance-stage,
 .home-performance-media-proof,
-.home-performance-pillars,
+.home-performance-pillars { max-width: 1280px; margin-inline: auto; }
 .home-performance-stage { position: relative; min-height: 640px; overflow: hidden; border-radius: 32px; background: #050505; color: #fff; }
 .home-performance-stage::after { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, #050505 0%, rgba(5,5,5,.98) 30%, rgba(5,5,5,.68) 52%, rgba(5,5,5,.08) 78%); pointer-events: none; }
 .home-performance-stage > img { position: absolute; inset: 0 0 0 auto; width: 78%; height: 100%; object-fit: contain; object-position: right bottom; }
