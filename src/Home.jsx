@@ -951,6 +951,7 @@ export function HomePage() {
               <div className="home-finder__result-heading">
                 <span>YOUR TWO BEST-FIT PATHS</span>
                 <h3>Start with fit, then compare the details.</h3>
+                <p className="home-finder__swipe-hint">Swipe to compare <CaretRight size={15} weight="bold" aria-hidden="true" /></p>
               </div>
               <div className="home-finder__result-grid">
                 {finderMatches.map((machine) => (
@@ -964,7 +965,9 @@ export function HomePage() {
                       </ul>
                       <strong>Explore {machine.name} <ArrowUpRight size={16} weight="bold" /></strong>
                     </div>
-                    <img src={asset(machine.image)} alt={`${machine.name} laser machine`} loading="lazy" />
+                    <span className={`home-finder__machine home-finder__machine--${machine.id}`}>
+                      <img src={asset(machine.image)} alt={`${machine.name} laser machine`} loading="lazy" />
+                    </span>
                   </a>
                 ))}
               </div>
