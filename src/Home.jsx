@@ -962,11 +962,11 @@ export function HomePage() {
                       <ul className="home-finder__specs" aria-label={`${machine.name} key specifications`}>
                         {machine.specs.map((spec) => <li key={spec}>{spec}</li>)}
                       </ul>
-                      <strong>Explore {machine.name} <ArrowUpRight size={16} weight="bold" /></strong>
                     </div>
                     <span className={`home-finder__machine home-finder__machine--${machine.id}`}>
                       <img src={asset(machine.image)} alt={`${machine.name} laser machine`} loading="lazy" />
                     </span>
+                    <strong>Explore {machine.name} <ArrowUpRight size={16} weight="bold" /></strong>
                   </a>
                 ))}
               </div>
