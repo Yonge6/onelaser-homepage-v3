@@ -105,7 +105,7 @@ const productCards = [
     name: "Cobra™ Series",
     label: "Workshop Essential",
     copy: "Performance CO₂+IR Dual-Laser System",
-    features: ["Up to 130W Glass+3/5W IR", "Master 300+ Materials", "1,200 mm/s Speed", "1,000 DPI Max Resolution"],
+    features: ["Up to 130W Glass + 3W/5W IR", "Master 300+ Materials", "1,200 mm/s Speed", "1,000 DPI Max Resolution"],
     image: "home-product-cobra.png",
     scene: "home-product-cobra-scene.webp",
     href: "https://www.1laser.com/products/cobra-10-100w-co2-laser-engraver-cutter",
@@ -192,7 +192,7 @@ const supportMenu = {
       image: "https://www.1laser.com/cdn/shop/files/Consultation_Call_Session_f357d165-c36d-445e-8589-cd76cb193639.png?v=1764916744&width=600",
     },
     {
-      label: "1-on-1 Support",
+      label: "1-on-1 Training",
       href: "https://www.1laser.com/products/engineer-1-on-1-training-support",
       image: "https://www.1laser.com/cdn/shop/files/1-on-1_training.png?v=1764920272&width=600",
     },
@@ -209,7 +209,7 @@ const supportMenu = {
 const communityMenu = {
   featured: [
     {
-      label: "Become Affiliate",
+      label: "Become an Affiliate",
       href: "https://www.1laser.com/pages/laser-engraving-community",
       image: "https://www.1laser.com/cdn/shop/files/3_154dd9e8-536b-43e4-9e64-5e1532331fdd.png?v=1782712883&width=600",
     },
@@ -220,7 +220,7 @@ const communityMenu = {
     },
   ],
   links: [
-    ["Join Community", "https://www.1laser.com/pages/laser-engraving-community"],
+    ["Join the Community", "https://www.1laser.com/pages/laser-engraving-community"],
     ["Testimonials", "https://www.1laser.com/pages/testimonials"],
     ["Demo Room", "https://www.1laser.com/pages/demoroom"],
   ],
@@ -253,7 +253,7 @@ const finderOptions = {
     ["compact", "Compact — up to 12 in"],
     ["standard", "Standard — 12–24 in"],
     ["large", "Large — 24–40 in"],
-    ["extra-large", "Extra large — 40 in+"],
+    ["extra-large", "Extra Large — 40+ in"],
   ],
 };
 
@@ -532,7 +532,7 @@ export function HomeFooter() {
         <section>
           <h2>Talk to a Rep</h2>
           <p>Have questions or need help?</p>
-          <a href="https://www.1laser.com/products/sales-consultation-call" target="_blank" rel="noreferrer">Book A Free Call</a>
+          <a href="https://www.1laser.com/products/sales-consultation-call" target="_blank" rel="noreferrer">Book a Free Call</a>
         </section>
         <section>
           <h2>Unlock Exclusive Updates &amp; Savings!</h2>
@@ -548,10 +548,10 @@ export function HomeFooter() {
       </div>
       <div className="home-footer__main">
         <div className="home-footer__links">
-          <div><strong>Community</strong><a href="https://www.1laser.com/pages/onelaser-rewards">Purchase Rewards</a><a href="https://af.uppromote.com/OneLaser/register">Become Affiliate</a><a href="https://www.1laser.com/pages/laser-engraving-community">Join Community</a><a href="https://www.1laser.com/pages/testimonials">Testimonials</a><a href="https://www.1laser.com/pages/demoroom">Demo Room</a></div>
+          <div><strong>Community</strong><a href="https://www.1laser.com/pages/onelaser-rewards">Purchase Rewards</a><a href="https://af.uppromote.com/OneLaser/register">Become an Affiliate</a><a href="https://www.1laser.com/pages/laser-engraving-community">Join the Community</a><a href="https://www.1laser.com/pages/testimonials">Testimonials</a><a href="https://www.1laser.com/pages/demoroom">Demo Room</a></div>
           <div><strong>Machines</strong><a href="https://www.1laser.com/collections/laser-engraving-cutting-marking-machines">OneLaser Machines</a><a href="https://www.1laser.com/collections/x-series">X Series</a><a href="https://www.1laser.com/collections/cobra-series">Cobra Series</a><a href="https://www.1laser.com/collections/hydra-gen-2-rf-laser-engravers-cutters">Hydra Gen2 Series</a><a href="https://www.1laser.com/collections/hydra-series">Hydra Series</a><a href="https://www.1laser.com/products/vertigo-vertical-laser-engraver">VertiGo</a><a href="https://www.1laser.com/collections/laser-accessories">Laser Accessories</a></div>
-          <div><strong>Support</strong><a href="https://www.1laser.com/pages/about-us">About Us</a><a href="https://www.1laser.com/pages/contact-us">Contact Us</a><a href="https://www.1laser.com/pages/financing">Financing</a><a href="https://www.1laser.com/blogs/topic">Blog Center</a><a href="https://www.1laser.com/pages/payment-methods">Payment Methods</a><a href="https://www.1laser.com/pages/faq">Common FAQ</a><a href="https://www.1laser.com/pages/laser-cutter-engraving-settings-for-different-materials">Laser Engraving &amp; Cutting Chart</a><a href="https://www.1laser.com/pages/find-demo-host">Schedule a Demo</a><a href="https://www.1laser.com/pages/demoroom">Become a Demo Host</a></div>
-          <div><strong>Policy</strong><a href="https://www.1laser.com/pages/shipping-policy">Shipping Policy</a><a href="https://www.1laser.com/pages/privacy-policy">Privacy Policy</a><a href="https://www.1laser.com/pages/refund-policy">Refund Policy</a><a href="https://www.1laser.com/pages/terms-of-service">Terms of Service</a><a href="https://www.1laser.com/pages/warranty-policy">Warranty Policy</a><a href="https://www.1laser.com/pages/pre-order-backorder-policy">Pre &amp; Backorder Policy</a><a href="https://www.1laser.com/pages/onelaser-giveaway-general-terms-conditions">Giveaway General Terms &amp; Conditions</a></div>
+          <div><strong>Support</strong><a href="https://www.1laser.com/pages/about-us">About Us</a><a href="https://www.1laser.com/pages/contact-us">Contact Us</a><a href="https://www.1laser.com/pages/financing">Financing</a><a href="https://www.1laser.com/blogs/topic">Blog Center</a><a href="https://www.1laser.com/pages/payment-methods">Payment Methods</a><a href="https://www.1laser.com/pages/faq">FAQs</a><a href="https://www.1laser.com/pages/laser-cutter-engraving-settings-for-different-materials">Laser Engraving &amp; Cutting Chart</a><a href="https://www.1laser.com/pages/find-demo-host">Schedule a Demo</a><a href="https://www.1laser.com/pages/demoroom">Become a Demo Host</a></div>
+          <div><strong>Policy</strong><a href="https://www.1laser.com/pages/shipping-policy">Shipping Policy</a><a href="https://www.1laser.com/pages/privacy-policy">Privacy Policy</a><a href="https://www.1laser.com/pages/refund-policy">Refund Policy</a><a href="https://www.1laser.com/pages/terms-of-service">Terms of Service</a><a href="https://www.1laser.com/pages/warranty-policy">Warranty Policy</a><a href="https://www.1laser.com/pages/pre-order-backorder-policy">Preorder &amp; Backorder Policy</a><a href="https://www.1laser.com/pages/onelaser-giveaway-general-terms-conditions">Giveaway General Terms &amp; Conditions</a></div>
         </div>
         <div className="home-footer__contact">
           <strong>Contact Us</strong>
@@ -596,7 +596,7 @@ const videos = [
   },
   {
     id: "RxgWwJg5kAk",
-    title: "Behind The Maker Ep.001",
+    title: "Behind the Maker Ep. 001",
     copy: "Stories from the makers who inspire us.",
     image: "home-video-behind-maker.jpg",
   },
