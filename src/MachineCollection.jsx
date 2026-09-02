@@ -1,0 +1,805 @@
+import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  ArrowCounterClockwise,
+  ArrowUpRight,
+  CaretDown,
+  Check,
+  FunnelSimple,
+  Headset,
+  Plus,
+  ShieldCheck,
+  SlidersHorizontal,
+  Sparkle,
+  X,
+} from "@phosphor-icons/react";
+import { HomeFooter, HomeNavigation } from "./Home.jsx";
+import { initializeAnalytics, trackEvent } from "./analytics.js";
+import "./machine-collection.css";
+
+const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}`;
+const officialProduct = (handle) => `https://www.1laser.com/products/${handle}`;
+const SALES_CALL_URL = "https://www.1laser.com/products/sales-consultation-call";
+const currency = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  maximumFractionDigits: 0,
+});
+
+const familyProfiles = [
+  {
+    id: "xrf",
+    eyebrow: "PERFORMANCE DESKTOP LASER",
+    name: "XRF™",
+    copy: "Fine-detail RF performance in a compact, air-cooled platform.",
+    bestFor: "Detailed products, personalization and growing shops",
+    specs: ["38W RF", "1,200 mm/s", "True 3.5G"],
+    image: "home-product-xrf.png",
+    scene: "home-product-xrf-scene.webp",
+  },
+  {
+    id: "cobra",
+    eyebrow: "WORKSHOP ESSENTIAL",
+    name: "Cobra™ Series",
+    copy: "High-power glass CO₂ cutting with an integrated IR workflow.",
+    bestFor: "Thicker materials, signage and workshop production",
+    specs: ["Up to 130W Glass", "CO₂ + IR", "1,200 mm/s"],
+    image: "home-product-cobra.png",
+    scene: "home-product-cobra-scene.webp",
+  },
+  {
+    id: "hydra",
+    eyebrow: "INDUSTRIAL LASER SYSTEM",
+    name: "Hydra™ Gen2",
+    copy: "Industrial hybrid performance for speed, detail and daily output.",
+    bestFor: "Production teams and broad job requirements",
+    specs: ["Up to 70W RF", "Up to 150W Glass", "2,000 mm/s"],
+    image: "home-product-hydra-gen2.png",
+    scene: "home-product-hydra-gen2-scene.webp",
+  },
+  {
+    id: "vertigo",
+    eyebrow: "PERFORMANCE ROTARY LASER",
+    name: "VertiGo™",
+    copy: "A vertical RF laser engineered around tumblers, cups and bottles.",
+    bestFor: "Drinkware specialists and repeat cylindrical work",
+    specs: ["38W RF", "Integrated PiBurn Grip", "Smart Autofocus"],
+    image: "home-product-vertigo.png",
+    scene: "home-product-vertigo-scene.webp",
+  },
+];
+
+const products = [
+  {
+    id: "xrf-38",
+    family: "xrf",
+    name: "XRF™ 38W",
+    label: "BEST SELLER",
+    generation: "Current lineup",
+    summary: "All-in-one RF desktop laser for fast, fine-detail production.",
+    bestFor: "Personalized goods, photo engraving and compact shops",
+    specs: ["38W RF", "24 × 12 in work area", "1,200 mm/s"],
+    laser: "38W RF CO₂",
+    materials: ["organic", "coated-metal"],
+    intents: ["engraving", "both"],
+    price: 4399,
+    compareAt: 6499,
+    handle: "onelaser-xrf-desktop-laser-machine",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/XRF_360cdcd1-c129-44be-a750-7da43a587a00.png?v=1782463970&width=900",
+  },
+  {
+    id: "cobra-8",
+    family: "cobra",
+    name: "Cobra™ 8",
+    label: "WORKSHOP ESSENTIAL",
+    generation: "Current lineup",
+    summary: "The compact entry into Cobra cutting power and IR versatility.",
+    bestFor: "Growing workshops cutting wood, acrylic and leather",
+    specs: ["90W Glass", "CO₂ + IR", "Workshop platform"],
+    laser: "90W Glass CO₂ + IR",
+    materials: ["organic", "coated-metal"],
+    intents: ["cutting", "both"],
+    price: 5999,
+    compareAt: 6999,
+    handle: "cobra-8-90w-co2-laser-engraver-cutter",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/Cobra_8.png?v=1782460144&width=900",
+  },
+  {
+    id: "cobra-10",
+    family: "cobra",
+    name: "Cobra™ 10",
+    label: "BALANCED CUTTING FIT",
+    generation: "Current lineup",
+    summary: "Balanced cutting power for a broader production catalog.",
+    bestFor: "Sign shops and businesses balancing size with throughput",
+    specs: ["100W Glass", "CO₂ + IR", "1,200 mm/s"],
+    laser: "100W Glass CO₂ + IR",
+    materials: ["organic", "coated-metal"],
+    intents: ["cutting", "both", "production"],
+    price: 6999,
+    compareAt: 7999,
+    handle: "cobra-10-100w-co2-laser-engraver-cutter",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/Cobra_10.png?v=1782460375&width=900",
+  },
+  {
+    id: "cobra-14",
+    family: "cobra",
+    name: "Cobra™ 14",
+    label: "MAXIMUM COBRA POWER",
+    generation: "Current lineup",
+    summary: "The largest Cobra cutting tier for demanding workshop jobs.",
+    bestFor: "Large-format work and higher-power material cutting",
+    specs: ["130W Glass", "CO₂ + IR", "Large workshop format"],
+    laser: "130W Glass CO₂ + IR",
+    materials: ["organic", "coated-metal"],
+    intents: ["cutting", "production"],
+    price: 8999,
+    compareAt: 9999,
+    handle: "cobra-14-130w-co2-laser-engraver-cutter",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/Cobra_14.png?v=1782460438&width=900",
+  },
+  {
+    id: "hydra-7-gen2",
+    family: "hydra",
+    name: "Hydra™ 7 Gen2",
+    label: "PURE RF PRODUCTION",
+    generation: "Current lineup",
+    summary: "A dedicated 70W RF platform for crisp detail at industrial scale.",
+    bestFor: "High-volume engraving where RF detail comes first",
+    specs: ["70W RF", "Industrial platform", "Fine-detail production"],
+    laser: "70W RF CO₂",
+    materials: ["organic", "coated-metal"],
+    intents: ["engraving", "production"],
+    price: 10999,
+    compareAt: 11999,
+    handle: "hydra-7-gen-2-70w-rf-co2-dual-laser-machine",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/Hydra_7Gen2.png?v=1782813665&width=900",
+  },
+  {
+    id: "hydra-9-gen2",
+    family: "hydra",
+    name: "Hydra™ 9 Gen2",
+    label: "INDUSTRIAL HYBRID",
+    generation: "Current lineup",
+    summary: "A hybrid production system for cutting range and RF detail.",
+    bestFor: "Businesses moving between fine engraving and cutting",
+    specs: ["70W RF + Glass", "Hybrid workflow", "Up to 2,000 mm/s"],
+    laser: "RF + Glass CO₂",
+    materials: ["organic", "coated-metal"],
+    intents: ["engraving", "cutting", "both", "production"],
+    price: 10999,
+    compareAt: 11999,
+    handle: "hydra-9-gen-2-70w-rf-co2-dual-laser-machine",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/Hydra_9Gen2.png?v=1782813672&width=900",
+  },
+  {
+    id: "hydra-13-gen2",
+    family: "hydra",
+    name: "Hydra™ 13 Gen2",
+    label: "EXPANDED CAPACITY",
+    generation: "Current lineup",
+    summary: "More room for mixed production without giving up RF precision.",
+    bestFor: "Established shops with larger work and varied orders",
+    specs: ["70W RF + Glass", "Expanded work format", "Smart dual air-assist"],
+    laser: "RF + Glass CO₂",
+    materials: ["organic", "coated-metal"],
+    intents: ["engraving", "cutting", "both", "production"],
+    price: 12999,
+    compareAt: 13999,
+    handle: "hydra-13-gen-2-70w-rf-co2-dual-laser-machine",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/Hydra_13Gen2.png?v=1782813672&width=900",
+  },
+  {
+    id: "hydra-16-gen2",
+    family: "hydra",
+    name: "Hydra™ 16 Gen2",
+    label: "MAXIMUM HYDRA CAPACITY",
+    generation: "Current lineup",
+    summary: "The largest Gen2 hybrid platform for demanding production floors.",
+    bestFor: "High-output teams that need maximum capacity",
+    specs: ["70W RF + Glass", "Largest Gen2 format", "Smart dual air-assist"],
+    laser: "RF + Glass CO₂",
+    materials: ["organic", "coated-metal"],
+    intents: ["cutting", "both", "production"],
+    price: 13999,
+    compareAt: 14999,
+    handle: "hydra-16-gen-2-70w-rf-co2-dual-laser-machine",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/Hydra_16Gen2.png?v=1782813672&width=900",
+  },
+  {
+    id: "vertigo-38",
+    family: "vertigo",
+    name: "VertiGo™ 38W",
+    label: "DRINKWARE SPECIALIST",
+    generation: "Current lineup",
+    summary: "A vertical RF workflow purpose-built for cylindrical products.",
+    bestFor: "Tumblers, cups, bottles and repeat drinkware jobs",
+    specs: ["38W RF", "Integrated PiBurn Grip", "Smart Autofocus"],
+    laser: "38W RF CO₂",
+    materials: ["drinkware", "coated-metal"],
+    intents: ["engraving", "drinkware", "production"],
+    price: 5599,
+    compareAt: 5999,
+    handle: "vertigo-vertical-laser-engraver",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/VertiGo_3c806291-bd5f-4153-9ca8-d54e3fd1cd0b.png?v=1782698357&width=900",
+  },
+  {
+    id: "xt-55",
+    family: "xrf",
+    name: "XT™ 55W",
+    label: "CLEARANCE",
+    generation: "Previous generation",
+    summary: "A previous-generation desktop glass CO₂ platform.",
+    bestFor: "Value-focused desktop cutting",
+    specs: ["55W Glass", "Desktop format", "Clearance"],
+    laser: "55W Glass CO₂",
+    materials: ["organic"],
+    intents: ["cutting", "both"],
+    price: 3599,
+    compareAt: 4599,
+    handle: "onelaser-xt-desktop-laser-machine",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/XT_1.png?v=1782464798&width=900",
+  },
+  {
+    id: "hydra-7",
+    family: "hydra",
+    name: "Hydra™ 7",
+    label: "CLEARANCE",
+    generation: "Previous generation",
+    summary: "Previous-generation dual-source Hydra platform.",
+    bestFor: "Value-focused hybrid capability",
+    specs: ["80W Glass", "38W RF", "Clearance"],
+    laser: "80W Glass + 38W RF CO₂",
+    materials: ["organic", "coated-metal"],
+    intents: ["engraving", "cutting", "both"],
+    price: 6299,
+    compareAt: 6999,
+    handle: "onelaser-hydra-7-cabinet-dual-laser-system-with-80-glass-tube-and-38w-rf-metal-tube",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/80W_d0085122-d2b3-4e5a-a510-6b0e8409eb5c.png?v=1742910341&width=900",
+  },
+  {
+    id: "hydra-9",
+    family: "hydra",
+    name: "Hydra™ 9",
+    label: "CLEARANCE",
+    generation: "Previous generation",
+    summary: "Previous-generation hybrid Hydra with RF detail capability.",
+    bestFor: "Established shops seeking a clearance hybrid",
+    specs: ["100W Glass", "38W RF", "Clearance"],
+    laser: "100W Glass + 38W RF CO₂",
+    materials: ["organic", "coated-metal"],
+    intents: ["engraving", "cutting", "both", "production"],
+    price: 8999,
+    compareAt: 9999,
+    handle: "onelaser-hydra-9-laser-engraving-machine",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/d4f70b20ae08baa91175811c4f952f6f_b9af453b-621f-4432-93f1-d8e7e635b31e.png?v=1745220554&width=900",
+  },
+  {
+    id: "hydra-16",
+    family: "hydra",
+    name: "Hydra™ 16",
+    label: "CLEARANCE",
+    generation: "Previous generation",
+    summary: "The largest previous-generation Hydra hybrid platform.",
+    bestFor: "Large jobs at a clearance price",
+    specs: ["150W Glass", "38W RF", "Clearance"],
+    laser: "150W Glass + 38W RF CO₂",
+    materials: ["organic", "coated-metal"],
+    intents: ["engraving", "cutting", "both", "production"],
+    price: 12599,
+    compareAt: 13999,
+    handle: "onelaser-hydra-16-cabinet-dual-laser-system-with150w-glass-tube-and-38w-rf-metal-tube",
+    image: "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/b208d4aba7990af021c0b2224580ee1c_d8d0feaf-a45d-4019-a54c-ebb36c18496e.png?v=1783933825&width=900",
+  },
+];
+
+const finderOptions = {
+  material: [
+    ["organic", "Wood, acrylic, leather or paper"],
+    ["coated-metal", "Anodized, coated or painted metal"],
+    ["drinkware", "Tumblers, cups, bottles and glassware"],
+  ],
+  application: [
+    ["engraving", "Engraving first"],
+    ["cutting", "Cutting first"],
+    ["both", "Both engraving and cutting"],
+  ],
+  volume: [
+    ["creator", "Creator and occasional projects"],
+    ["business", "Growing small business"],
+    ["production", "Daily production"],
+  ],
+  size: [
+    ["compact", "Compact — up to 12 in"],
+    ["standard", "Standard — 12–24 in"],
+    ["large", "Large — 24–40 in"],
+    ["extra-large", "Extra large — 40+ in"],
+  ],
+};
+
+const filterGroups = [
+  {
+    key: "intent",
+    label: "What do you need to do?",
+    options: [
+      ["all", "All jobs"],
+      ["engraving", "Fine engraving"],
+      ["cutting", "Cutting"],
+      ["both", "Engrave + cut"],
+      ["drinkware", "Drinkware"],
+      ["production", "Production"],
+    ],
+  },
+  {
+    key: "material",
+    label: "What do you work with?",
+    options: [
+      ["all", "All materials"],
+      ["organic", "Wood, acrylic + leather"],
+      ["coated-metal", "Coated + anodized metal"],
+      ["drinkware", "Tumblers + bottles"],
+    ],
+  },
+  {
+    key: "family",
+    label: "Series",
+    options: [
+      ["all", "All series"],
+      ["xrf", "XRF"],
+      ["cobra", "Cobra"],
+      ["hydra", "Hydra Gen2"],
+      ["vertigo", "VertiGo"],
+    ],
+  },
+];
+
+const defaultFilters = { intent: "all", material: "all", family: "all" };
+const defaultFinder = { material: "", application: "", volume: "", size: "" };
+
+function rankFamilies(selections) {
+  const scores = { xrf: 0, cobra: 0, hydra: 0, vertigo: 0 };
+  const add = (values) => Object.entries(values).forEach(([key, score]) => { scores[key] += score; });
+
+  if (selections.material === "organic") add({ cobra: 3, xrf: 2, hydra: 1 });
+  if (selections.material === "coated-metal") add({ xrf: 3, hydra: 2, cobra: 1 });
+  if (selections.material === "drinkware") add({ vertigo: 10, xrf: 2, hydra: 1 });
+  if (selections.application === "engraving") add({ xrf: 3, vertigo: 2, hydra: 1 });
+  if (selections.application === "cutting") add({ cobra: 4, hydra: 3, xrf: 1 });
+  if (selections.application === "both") add({ cobra: 3, hydra: 3, xrf: 1 });
+  if (selections.volume === "creator") add({ xrf: 3, cobra: 2, vertigo: 2 });
+  if (selections.volume === "business") add({ cobra: 2, xrf: 2, vertigo: 2, hydra: 1 });
+  if (selections.volume === "production") add({ hydra: 4, cobra: 3, vertigo: 2 });
+  if (selections.size === "compact") add({ xrf: 3, vertigo: 2, cobra: 1 });
+  if (selections.size === "standard") add({ cobra: 2, xrf: 2, hydra: 1 });
+  if (selections.size === "large") add({ hydra: 3, cobra: 3 });
+  if (selections.size === "extra-large") add({ hydra: 5, cobra: 3 });
+
+  return Object.entries(scores)
+    .sort((first, second) => second[1] - first[1])
+    .slice(0, 2)
+    .map(([id], index) => ({ ...familyProfiles.find((family) => family.id === id), rank: index + 1 }));
+}
+
+function useImageReadiness() {
+  useEffect(() => {
+    const palettes = [
+      ["#e7ded5", "#d8c9bc", "#f3ece5"],
+      ["#dfe5df", "#cbd8cf", "#edf2ed"],
+      ["#dde4e8", "#c7d4db", "#edf2f4"],
+      ["#e8dfdf", "#d9c8ca", "#f4ebeb"],
+      ["#e5e0e9", "#d3cadb", "#f1edf4"],
+      ["#e1e6e3", "#cbd7d2", "#eff3f1"],
+      ["#e8e2d7", "#d8cdbb", "#f4efe6"],
+    ];
+    const prepare = (image) => {
+      if (!(image instanceof HTMLImageElement)) return;
+      const seed = `${image.currentSrc || image.getAttribute("src") || ""}|${image.alt || ""}`;
+      const hash = [...seed].reduce((value, character) => (((value << 5) - value + character.charCodeAt(0)) | 0), 0);
+      const [base, low, high] = palettes[Math.abs(hash) % palettes.length];
+      image.style.setProperty("--image-placeholder-base", base);
+      image.style.setProperty("--image-placeholder-low", low);
+      image.style.setProperty("--image-placeholder-high", high);
+      image.classList.toggle("is-image-ready", image.complete && image.naturalWidth > 0);
+      image.classList.toggle("is-image-error", image.complete && image.naturalWidth === 0);
+    };
+    const ready = (event) => {
+      if (!(event.target instanceof HTMLImageElement)) return;
+      event.target.classList.add("is-image-ready");
+      event.target.classList.remove("is-image-error");
+    };
+    const error = (event) => {
+      if (!(event.target instanceof HTMLImageElement)) return;
+      event.target.classList.add("is-image-error");
+      event.target.classList.remove("is-image-ready");
+    };
+    const observer = new MutationObserver((records) => records.forEach((record) => {
+      record.addedNodes.forEach((node) => {
+        if (node instanceof HTMLImageElement) prepare(node);
+        if (node instanceof Element) node.querySelectorAll("img").forEach(prepare);
+      });
+    }));
+    document.querySelectorAll(".collection-shell img").forEach(prepare);
+    document.addEventListener("load", ready, true);
+    document.addEventListener("error", error, true);
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => {
+      document.removeEventListener("load", ready, true);
+      document.removeEventListener("error", error, true);
+      observer.disconnect();
+    };
+  }, []);
+}
+
+function ProductCard({ product, compareIds, onToggleCompare }) {
+  const isSelected = compareIds.includes(product.id);
+  const compareLimitReached = compareIds.length >= 3 && !isSelected;
+
+  return (
+    <article className={`collection-product-card collection-product-card--${product.family}`}>
+      <div className="collection-product-card__media">
+        <span>{product.label}</span>
+        <img src={product.image} alt={`${product.name} laser machine`} loading="lazy" />
+      </div>
+      <div className="collection-product-card__body">
+        <p className="collection-product-card__family">{product.generation}</p>
+        <h3>{product.name}</h3>
+        <p className="collection-product-card__summary">{product.summary}</p>
+        <p className="collection-product-card__best"><strong>Best for</strong>{product.bestFor}</p>
+        <ul aria-label={`${product.name} key facts`}>
+          {product.specs.map((spec) => <li key={spec}>{spec}</li>)}
+        </ul>
+        <div className="collection-product-card__price">
+          <div>
+            <small>Current price</small>
+            <strong>{currency.format(product.price)}</strong>
+            <del>{currency.format(product.compareAt)}</del>
+          </div>
+          <span>USD</span>
+        </div>
+        <div className="collection-product-card__actions">
+          <a href={officialProduct(product.handle)} target="_blank" rel="noreferrer" onClick={() => trackEvent("view_content", { content_name: product.name, content_category: "machine_collection" })}>
+            Explore <ArrowUpRight size={17} weight="bold" />
+          </a>
+          <button
+            type="button"
+            className={isSelected ? "is-selected" : ""}
+            aria-pressed={isSelected}
+            disabled={compareLimitReached}
+            title={compareLimitReached ? "Remove one selected machine before adding another." : undefined}
+            onClick={() => onToggleCompare(product.id)}
+          >
+            {isSelected ? <Check size={17} weight="bold" /> : <Plus size={17} weight="bold" />}
+            {isSelected ? "Selected" : "Compare"}
+          </button>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export function MachineCollectionPage() {
+  const [filters, setFilters] = useState(defaultFilters);
+  const [sort, setSort] = useState("recommended");
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [compareIds, setCompareIds] = useState([]);
+  const [finderSelections, setFinderSelections] = useState(defaultFinder);
+  const [finderMatches, setFinderMatches] = useState(null);
+  const catalogRef = useRef(null);
+  const compareRef = useRef(null);
+  useImageReadiness();
+
+  useEffect(() => {
+    document.title = "Laser Machines — Find Your OneLaser";
+    const description = document.querySelector('meta[name="description"]');
+    if (description) description.content = "Find and compare OneLaser XRF, Cobra, Hydra Gen2, and VertiGo laser machines by project, material, output, and fit.";
+    initializeAnalytics();
+    trackEvent("view_content", { content_name: "Machine Collection", content_category: "collection" });
+  }, []);
+
+  useEffect(() => {
+    if (!filtersOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setFiltersOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [filtersOpen]);
+
+  const currentProducts = useMemo(() => {
+    const filtered = products.filter((product) => {
+      if (product.generation !== "Current lineup") return false;
+      if (filters.family !== "all" && product.family !== filters.family) return false;
+      if (filters.material !== "all" && !product.materials.includes(filters.material)) return false;
+      if (filters.intent !== "all" && !product.intents.includes(filters.intent)) return false;
+      return true;
+    });
+    if (sort === "price-low") return [...filtered].sort((a, b) => a.price - b.price);
+    if (sort === "price-high") return [...filtered].sort((a, b) => b.price - a.price);
+    if (sort === "name") return [...filtered].sort((a, b) => a.name.localeCompare(b.name));
+    return filtered;
+  }, [filters, sort]);
+
+  const legacyProducts = products.filter((product) => product.generation === "Previous generation");
+  const comparedProducts = compareIds.map((id) => products.find((product) => product.id === id)).filter(Boolean);
+  const activeFilterCount = Object.values(filters).filter((value) => value !== "all").length;
+
+  function updateFilter(key, value) {
+    setFilters((current) => ({ ...current, [key]: value }));
+    trackEvent("machine_collection_filter", { filter_name: key, filter_value: value });
+  }
+
+  function chooseFamily(id) {
+    setFilters((current) => ({ ...current, family: id }));
+    window.requestAnimationFrame(() => catalogRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  }
+
+  function toggleCompare(id) {
+    setCompareIds((current) => {
+      if (current.includes(id)) return current.filter((item) => item !== id);
+      if (current.length >= 3) return current;
+      const next = [...current, id];
+      trackEvent("machine_compare_select", { machine_id: id, selection_count: next.length });
+      return next;
+    });
+  }
+
+  function submitFinder(event) {
+    event.preventDefault();
+    const matches = rankFamilies(finderSelections);
+    setFinderMatches(matches);
+    trackEvent("machine_finder_complete", { first_match: matches[0]?.id, second_match: matches[1]?.id });
+  }
+
+  return (
+    <div className="home-shell collection-shell" id="top">
+      <a className="home-skip" href="#collection-main">Skip to content</a>
+      <HomeNavigation />
+
+      <main id="collection-main">
+        <section className="collection-hero" aria-labelledby="collection-hero-title">
+          <div className="collection-hero__copy">
+            <span>ONE RANGE. FOUR WAYS TO MAKE.</span>
+            <h1 id="collection-hero-title">Find the machine that fits how you make.</h1>
+            <p>Start with your products and production goals. We’ll help you narrow the range before the specifications take over.</p>
+            <div className="collection-hero__actions">
+              <a href="#machine-finder">Find my fit <Sparkle size={18} weight="fill" /></a>
+              <a href="#machine-catalog">Browse all machines <ArrowUpRight size={18} weight="bold" /></a>
+            </div>
+            <ul aria-label="OneLaser ownership promises">
+              <li>30-Day Easy Returns</li>
+              <li>3-2-1 Warranty</li>
+              <li>U.S.-Based Support</li>
+            </ul>
+          </div>
+          <div className="collection-hero__machines" aria-label="OneLaser machine families">
+            {familyProfiles.map((family) => (
+              <figure className={`collection-hero-machine collection-hero-machine--${family.id}`} key={family.id}>
+                <img src={asset(family.image)} alt={`${family.name} laser system`} />
+                <figcaption>{family.name}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        <section className="collection-finder" id="machine-finder" aria-labelledby="collection-finder-title">
+          <div className="collection-finder__intro">
+            <span>NOT SURE WHERE TO START?</span>
+            <h2 id="collection-finder-title">Start with the work.</h2>
+            <p>Tell us what you make and how you work. You’ll get two strong family fits, plus the reason each belongs on your shortlist.</p>
+          </div>
+          <form className="collection-finder__form" onSubmit={submitFinder}>
+            {Object.entries(finderOptions).map(([field, options]) => (
+              <label htmlFor={`collection-finder-${field}`} key={field}>
+                <span>{field === "application" ? "Primary job" : field === "volume" ? "Output level" : field === "size" ? "Project size" : "Material"}</span>
+                <span className="collection-select-wrap">
+                  <select id={`collection-finder-${field}`} value={finderSelections[field]} onChange={(event) => { setFinderSelections((current) => ({ ...current, [field]: event.target.value })); setFinderMatches(null); }} required>
+                    <option value="" disabled>Select {field === "application" ? "primary job" : field === "volume" ? "output level" : field === "size" ? "project size" : "material"}</option>
+                    {options.map(([value, label]) => <option value={value} key={value}>{label}</option>)}
+                  </select>
+                  <CaretDown size={18} weight="bold" aria-hidden="true" />
+                </span>
+              </label>
+            ))}
+            <button type="submit">Show my matches <ArrowUpRight size={19} weight="bold" /></button>
+          </form>
+          {finderMatches && (
+            <div className="collection-finder__results" aria-live="polite">
+              <header><span>YOUR TWO BEST-FIT PATHS</span><h3>Compare the family fit first.</h3></header>
+              <div>
+                {finderMatches.map((family) => (
+                  <button type="button" onClick={() => chooseFamily(family.id)} key={family.id}>
+                    <span>{family.rank === 1 ? "BEST MATCH" : "ALSO CONSIDER"}</span>
+                    <h3>{family.name}</h3>
+                    <p>{family.bestFor}</p>
+                    <img src={asset(family.image)} alt="" loading="lazy" />
+                    <strong>View {family.name.replace("™", "")} models <ArrowUpRight size={16} weight="bold" /></strong>
+                  </button>
+                ))}
+              </div>
+              <p>Recommendations are based on project fit. Confirm material compatibility, rotary requirements, work area, and final configuration with a OneLaser expert.</p>
+            </div>
+          )}
+        </section>
+
+        <section className="collection-families" aria-labelledby="collection-families-title">
+          <header>
+            <span>MEET THE LINEUP</span>
+            <h2 id="collection-families-title">Choose the platform first.</h2>
+            <p>Each family starts with a different kind of work. Pick the closest fit, then compare models inside it.</p>
+          </header>
+          <div className="collection-families__grid">
+            {familyProfiles.map((family) => (
+              <button className={`collection-family-card collection-family-card--${family.id}`} type="button" onClick={() => chooseFamily(family.id)} key={family.id}>
+                <img className="collection-family-card__scene" src={asset(family.scene)} alt="" loading="lazy" />
+                <div className="collection-family-card__copy">
+                  <span>{family.eyebrow}</span>
+                  <h3>{family.name}</h3>
+                  <p>{family.copy}</p>
+                  <ul aria-label={`${family.name} highlights`}>{family.specs.map((spec) => <li key={spec}>{spec}</li>)}</ul>
+                </div>
+                <img className="collection-family-card__machine" src={asset(family.image)} alt={`${family.name} laser system`} loading="lazy" />
+                <strong>Explore the family <ArrowUpRight size={17} weight="bold" /></strong>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section className="collection-catalog" id="machine-catalog" ref={catalogRef} aria-labelledby="collection-catalog-title">
+          <header className="collection-catalog__header">
+            <div>
+              <span>CURRENT LINEUP</span>
+              <h2 id="collection-catalog-title">Find your machine.</h2>
+              <p>Filter by the job you need to do, then compare the details that change your workflow.</p>
+            </div>
+            <button className="collection-filter-trigger" type="button" aria-expanded={filtersOpen} aria-controls="collection-filters" onClick={() => setFiltersOpen(true)}>
+              <FunnelSimple size={19} weight="bold" /> Filters{activeFilterCount ? ` · ${activeFilterCount}` : ""}
+            </button>
+          </header>
+
+          <div className="collection-catalog__layout">
+            {filtersOpen && <button className="collection-filter-backdrop" type="button" aria-label="Close filters" onClick={() => setFiltersOpen(false)} />}
+            <aside id="collection-filters" className={`collection-filters${filtersOpen ? " is-open" : ""}`} aria-label="Filter current machines">
+              <header>
+                <div><SlidersHorizontal size={20} weight="bold" /><strong>Filter machines</strong></div>
+                <button type="button" aria-label="Close filters" onClick={() => setFiltersOpen(false)}><X size={19} weight="bold" /></button>
+              </header>
+              {filterGroups.map((group) => (
+                <fieldset key={group.key}>
+                  <legend>{group.label}</legend>
+                  <div>
+                    {group.options.map(([value, label]) => (
+                      <button type="button" className={filters[group.key] === value ? "is-active" : ""} aria-pressed={filters[group.key] === value} onClick={() => updateFilter(group.key, value)} key={value}>{label}</button>
+                    ))}
+                  </div>
+                </fieldset>
+              ))}
+              <button className="collection-filters__clear" type="button" onClick={() => setFilters(defaultFilters)} disabled={!activeFilterCount}>Clear filters</button>
+              <button className="collection-filters__apply" type="button" onClick={() => setFiltersOpen(false)}>Show {currentProducts.length} machines</button>
+            </aside>
+
+            <div className="collection-results">
+              <div className="collection-results__toolbar">
+                <p aria-live="polite"><strong>{currentProducts.length}</strong> current {currentProducts.length === 1 ? "machine" : "machines"}</p>
+                <label htmlFor="collection-sort">
+                  <span>Sort</span>
+                  <select id="collection-sort" value={sort} onChange={(event) => setSort(event.target.value)}>
+                    <option value="recommended">Recommended</option>
+                    <option value="price-low">Price: low to high</option>
+                    <option value="price-high">Price: high to low</option>
+                    <option value="name">Name</option>
+                  </select>
+                </label>
+              </div>
+              {currentProducts.length ? (
+                <div className="collection-product-grid">
+                  {currentProducts.map((product) => <ProductCard product={product} compareIds={compareIds} onToggleCompare={toggleCompare} key={product.id} />)}
+                </div>
+              ) : (
+                <div className="collection-empty">
+                  <h3>No exact match yet.</h3>
+                  <p>Clear one filter or talk with a OneLaser expert about the closest production fit.</p>
+                  <button type="button" onClick={() => setFilters(defaultFilters)}>Clear filters</button>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {comparedProducts.length >= 2 && (
+          <section className="collection-compare" id="machine-comparison" ref={compareRef} aria-labelledby="collection-compare-title">
+            <header>
+              <div><span>YOUR SHORTLIST</span><h2 id="collection-compare-title">Compare what changes the work.</h2></div>
+              <button type="button" onClick={() => setCompareIds([])}>Clear comparison</button>
+            </header>
+            <div className="collection-compare__table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Compare</th>
+                    {comparedProducts.map((product) => (
+                      <th scope="col" key={product.id}>
+                        <img src={product.image} alt="" loading="lazy" />
+                        <strong>{product.name}</strong>
+                        <button type="button" onClick={() => toggleCompare(product.id)} aria-label={`Remove ${product.name} from comparison`}><X size={16} weight="bold" /> Remove</button>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Best for</th>{comparedProducts.map((product) => <td key={product.id}>{product.bestFor}</td>)}</tr>
+                  <tr><th scope="row">Laser system</th>{comparedProducts.map((product) => <td key={product.id}>{product.laser}</td>)}</tr>
+                  <tr><th scope="row">Family</th>{comparedProducts.map((product) => <td key={product.id}>{familyProfiles.find((family) => family.id === product.family)?.name}</td>)}</tr>
+                  <tr><th scope="row">Generation</th>{comparedProducts.map((product) => <td key={product.id}>{product.generation}</td>)}</tr>
+                  <tr><th scope="row">Current price</th>{comparedProducts.map((product) => <td key={product.id}><strong>{currency.format(product.price)}</strong></td>)}</tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        <section className="collection-legacy" aria-labelledby="collection-legacy-title">
+          <details>
+            <summary>
+              <span><small>PREVIOUS GENERATION &amp; CLEARANCE</small><strong id="collection-legacy-title">Still comparing earlier platforms?</strong></span>
+              <span>View {legacyProducts.length} machines <CaretDown size={18} weight="bold" /></span>
+            </summary>
+            <p className="collection-legacy__intro">These models remain available while inventory lasts. Compare their exact configuration and support path before purchase.</p>
+            <div className="collection-product-grid collection-product-grid--legacy">
+              {legacyProducts.map((product) => <ProductCard product={product} compareIds={compareIds} onToggleCompare={toggleCompare} key={product.id} />)}
+            </div>
+          </details>
+        </section>
+
+        <section className="collection-support" aria-label="OneLaser ownership support">
+          {[
+            { icon: ArrowCounterClockwise, title: "30-Day Easy Returns", copy: "A clearer decision window after delivery, subject to the official return policy." },
+            { icon: ShieldCheck, title: "3-2-1 Warranty", copy: "Layered machine coverage backed by the official OneLaser warranty terms." },
+            { icon: Headset, title: "U.S.-Based Support", copy: "Talk with a real OneLaser team before and after choosing your platform." },
+          ].map((item) => {
+            const Icon = item.icon;
+            return <article key={item.title}><Icon size={27} weight="light" /><h3>{item.title}</h3><p>{item.copy}</p></article>;
+          })}
+        </section>
+
+        <section className="collection-guide" aria-labelledby="collection-guide-title">
+          <header><span>BUYING GUIDE</span><h2 id="collection-guide-title">Three decisions make the shortlist smaller.</h2></header>
+          <div>
+            <article><span>01</span><h3>Start with the product.</h3><p>Flat goods, deep cutting, large-format production and repeat drinkware each point to a different OneLaser family.</p></article>
+            <article><span>02</span><h3>Choose detail or cutting headroom.</h3><p>RF favors fast response and fine detail. Higher-power glass CO₂ tiers create more cutting headroom.</p></article>
+            <article><span>03</span><h3>Plan for tomorrow’s volume.</h3><p>Choose around your repeatable daily workflow—not a single sample job or an unsupported income promise.</p></article>
+          </div>
+          <a href={SALES_CALL_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("generate_lead", { lead_type: "machine_collection_consultation" })}>Talk with a OneLaser expert <ArrowUpRight size={18} weight="bold" /></a>
+        </section>
+
+        <section className="collection-faq" aria-labelledby="collection-faq-title">
+          <header><span>FAQ</span><h2 id="collection-faq-title">Before you choose.</h2></header>
+          <div>
+            <details><summary>Which OneLaser is best for a first serious machine?<CaretDown size={18} weight="bold" /></summary><p>Start with the products you plan to make, then use the finder above. XRF prioritizes desktop RF detail, Cobra prioritizes cutting, Hydra Gen2 combines industrial scale with RF options, and VertiGo specializes in drinkware.</p></details>
+            <details><summary>Can these machines engrave bare metal?<CaretDown size={18} weight="bold" /></summary><p>RF and glass CO₂ systems are intended for compatible organic materials and coated, painted or anodized metal surfaces. Confirm bare-metal requirements with OneLaser before purchase.</p></details>
+            <details><summary>Do I need a Rotary for cups and bottles?<CaretDown size={18} weight="bold" /></summary><p>Cylindrical work generally requires a compatible rotary setup. VertiGo is built around an integrated PiBurn Grip; confirm rotary compatibility for other models.</p></details>
+            <details><summary>Where can I confirm current price and availability?<CaretDown size={18} weight="bold" /></summary><p>Every product card opens the official OneLaser product page. That page is the final source for live pricing, availability, configuration and fulfillment expectations.</p></details>
+          </div>
+        </section>
+      </main>
+
+      {comparedProducts.length > 0 && (
+        <aside className="collection-compare-tray" aria-label="Machine comparison shortlist">
+          <div>
+            <span>{comparedProducts.length}/3 selected</span>
+            <strong>{comparedProducts.map((product) => product.name).join(" · ")}</strong>
+          </div>
+          <button type="button" disabled={comparedProducts.length < 2} onClick={() => compareRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}>
+            {comparedProducts.length < 2 ? "Select one more" : `Compare ${comparedProducts.length}`} <ArrowUpRight size={17} weight="bold" />
+          </button>
+          <button type="button" aria-label="Clear comparison" onClick={() => setCompareIds([])}><X size={18} weight="bold" /></button>
+        </aside>
+      )}
+
+      <HomeFooter />
+    </div>
+  );
+}

@@ -35,6 +35,7 @@ import {
 } from "@phosphor-icons/react";
 import { CommercialCapabilities } from "./components/CommercialCapabilities.jsx";
 import { HomeFooter, HomeNavigation, HomePage } from "./Home.jsx";
+import { MachineCollectionPage } from "./MachineCollection.jsx";
 import { initializeAnalytics, trackEvent } from "./analytics.js";
 import { useAutoplayCarousel } from "./hooks/useAutoplayCarousel.js";
 
@@ -2274,5 +2275,7 @@ export function XrfPage() {
 
 export function App() {
   const page = new URLSearchParams(window.location.search).get("page");
-  return page === "xrf" ? <XrfPage /> : <HomePage />;
+  if (page === "xrf") return <XrfPage />;
+  if (page === "machines") return <MachineCollectionPage />;
+  return <HomePage />;
 }
