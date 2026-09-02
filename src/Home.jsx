@@ -951,7 +951,6 @@ export function HomePage() {
               <div className="home-finder__result-heading">
                 <span>YOUR TWO BEST-FIT PATHS</span>
                 <h3>Start with fit, then compare the details.</h3>
-                <p className="home-finder__swipe-hint">Swipe to compare <CaretRight size={15} weight="bold" aria-hidden="true" /></p>
               </div>
               <div className="home-finder__result-grid">
                 {finderMatches.map((machine) => (
