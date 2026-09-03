@@ -1106,7 +1106,7 @@ export function MachineCollectionPage() {
         </section>
 
         <section className="collection-guide" aria-labelledby="collection-guide-title">
-          <header><span>BUYING GUIDE</span><h2 id="collection-guide-title">Three decisions make the shortlist smaller.</h2></header>
+          <header><span>BUYING GUIDE</span><h2 id="collection-guide-title">We’ll help you choose with confidence.</h2></header>
           <div>
             <article><span>01</span><h3>Start with the product.</h3><p>Flat goods, deep cutting, large-format production and repeat drinkware each point to a different OneLaser family.</p></article>
             <article><span>02</span><h3>Choose detail or cutting headroom.</h3><p>RF favors fast response and fine detail. Higher-power glass CO₂ tiers create more cutting headroom.</p></article>
