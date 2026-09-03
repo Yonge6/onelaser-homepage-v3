@@ -1024,6 +1024,19 @@ export function MachineCollectionPage() {
               )}
             </div>
           </div>
+
+          <section className="collection-legacy" aria-labelledby="collection-legacy-title">
+            <details>
+              <summary>
+                <span><small>PREVIOUS GENERATION · EXCEPTIONAL VALUE</small><strong id="collection-legacy-title">Proven performance. Exceptional value.</strong></span>
+                <span>View {legacyProducts.length} machines <CaretDown size={18} weight="bold" /></span>
+              </summary>
+              <p className="collection-legacy__intro">Built on proven platforms, these previous-generation machines still deliver strong performance at a more accessible price. Inventory is very limited—secure exceptional value while it lasts.</p>
+              <div className="collection-product-grid collection-product-grid--legacy">
+                {legacyProducts.map((product) => <ProductCard product={product} compareIds={compareIds} onToggleCompare={toggleCompare} key={product.id} />)}
+              </div>
+            </details>
+          </section>
         </section>
 
         {comparedProducts.length >= 2 && (
@@ -1063,19 +1076,6 @@ export function MachineCollectionPage() {
             </div>
           </section>
         )}
-
-        <section className="collection-legacy" aria-labelledby="collection-legacy-title">
-          <details>
-            <summary>
-              <span><small>PREVIOUS GENERATION · EXCEPTIONAL VALUE</small><strong id="collection-legacy-title">Proven performance. Exceptional value.</strong></span>
-              <span>View {legacyProducts.length} machines <CaretDown size={18} weight="bold" /></span>
-            </summary>
-            <p className="collection-legacy__intro">Built on proven platforms, these previous-generation machines still deliver strong performance at a more accessible price. Inventory is very limited—secure exceptional value while it lasts.</p>
-            <div className="collection-product-grid collection-product-grid--legacy">
-              {legacyProducts.map((product) => <ProductCard product={product} compareIds={compareIds} onToggleCompare={toggleCompare} key={product.id} />)}
-            </div>
-          </details>
-        </section>
 
         <section className="collection-guide" aria-labelledby="collection-guide-title">
           <header><span>BUYING GUIDE</span><h2 id="collection-guide-title">We’ll help you choose with confidence.</h2></header>
