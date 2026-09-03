@@ -2,8 +2,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowUpRight,
   CaretDown,
+  CaretLeft,
+  CaretRight,
   Check,
   FunnelSimple,
+  Play,
   Plus,
   ShieldCheck,
   SlidersHorizontal,
@@ -64,6 +67,39 @@ const familyProfiles = [
     specs: ["38W RF", "Integrated PiBurn Grip", "Smart Autofocus"],
     image: "home-product-vertigo.png",
     scene: "home-product-vertigo-scene.webp",
+  },
+];
+
+const collectionStoryVideos = [
+  {
+    id: "WD5has9K3IY",
+    title: "This Firefighter Made a Six-Figure Business With a Laser",
+    channel: "OneLaser",
+    tag: "CUSTOMER SUCCESS",
+  },
+  {
+    id: "HOh6qitWLqI",
+    title: "Best Laser for Your Small Business!?",
+    channel: "Bearded Builds Co",
+    tag: "SMALL BUSINESS",
+  },
+  {
+    id: "5q2-Iy9Nhdc",
+    title: "OneLaser XRF Unboxing",
+    channel: "Bearded Builds Co",
+    tag: "OWNER SETUP",
+  },
+  {
+    id: "f2cJ7G0t_cw",
+    title: "Install the Riser Base on Your XT / XRF",
+    channel: "Edmonds Woodshop",
+    tag: "WORKSHOP EXPANSION",
+  },
+  {
+    id: "arBKtqSz21o",
+    title: "OneLaser XRF 38W Unboxing & Test Cutting",
+    channel: "Peachy Creations",
+    tag: "MAKER TEST RUN",
   },
 ];
 
@@ -475,6 +511,28 @@ function ProductCard({ product, compareIds, onToggleCompare }) {
   );
 }
 
+function CollectionStoryCard({ video, index, onPlay }) {
+  return (
+    <button
+      type="button"
+      className="review-video-card"
+      aria-label={`Play ${video.title} by ${video.channel}`}
+      onClick={() => onPlay(video)}
+    >
+      <span className="review-video-card__media">
+        <img src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`} alt="" loading="lazy" />
+        <span><Play size={22} weight="fill" /></span>
+        <i>{String(index + 1).padStart(2, "0")} / {String(collectionStoryVideos.length).padStart(2, "0")}</i>
+      </span>
+      <span className="review-video-card__copy">
+        <small>{video.tag}</small>
+        <strong>{video.title}</strong>
+        <span>{video.channel}</span>
+      </span>
+    </button>
+  );
+}
+
 export function MachineCollectionPage() {
   const [filters, setFilters] = useState(defaultFilters);
   const [sort, setSort] = useState("recommended");
@@ -482,8 +540,10 @@ export function MachineCollectionPage() {
   const [compareIds, setCompareIds] = useState([]);
   const [finderSelections, setFinderSelections] = useState(defaultFinder);
   const [finderMatches, setFinderMatches] = useState(null);
+  const [youtubeVideo, setYoutubeVideo] = useState(null);
   const catalogRef = useRef(null);
   const compareRef = useRef(null);
+  const storyRailRef = useRef(null);
   useImageReadiness();
 
   useEffect(() => {
@@ -495,10 +555,13 @@ export function MachineCollectionPage() {
   }, []);
 
   useEffect(() => {
-    if (!filtersOpen) return undefined;
+    if (!filtersOpen && !youtubeVideo) return undefined;
     const previousOverflow = document.body.style.overflow;
     const closeOnEscape = (event) => {
-      if (event.key === "Escape") setFiltersOpen(false);
+      if (event.key === "Escape") {
+        setFiltersOpen(false);
+        setYoutubeVideo(null);
+      }
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", closeOnEscape);
@@ -506,7 +569,7 @@ export function MachineCollectionPage() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", closeOnEscape);
     };
-  }, [filtersOpen]);
+  }, [filtersOpen, youtubeVideo]);
 
   const currentProducts = useMemo(() => {
     const filtered = products.filter((product) => {
@@ -551,6 +614,22 @@ export function MachineCollectionPage() {
     const matches = rankFamilies(finderSelections);
     setFinderMatches(matches);
     trackEvent("machine_finder_complete", { first_match: matches[0]?.id, second_match: matches[1]?.id });
+  }
+
+  function scrollStories(direction) {
+    const rail = storyRailRef.current;
+    const card = rail?.querySelector(".review-video-card");
+    if (!rail || !card) return;
+    const gap = Number.parseFloat(window.getComputedStyle(rail).columnGap || window.getComputedStyle(rail).gap) || 18;
+    rail.scrollBy({
+      left: direction * (card.getBoundingClientRect().width + gap),
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  }
+
+  function playStory(video) {
+    setYoutubeVideo(video);
+    trackEvent("video_start", { video_id: video.id, video_title: video.title, content_category: "machine_collection_story" });
   }
 
   return (
@@ -789,6 +868,32 @@ export function MachineCollectionPage() {
           <a href={SALES_CALL_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("generate_lead", { lead_type: "machine_collection_consultation" })}>Talk with a OneLaser expert <ArrowUpRight size={18} weight="bold" /></a>
         </section>
 
+        <section className="review-proof collection-stories" id="customer-stories" aria-labelledby="collection-stories-title">
+          <div className="review-proof__header">
+            <div className="section-heading section-heading--stack">
+              <span className="eyebrow">CUSTOMER SUCCESS · OWNER STORIES</span>
+              <h2 id="collection-stories-title">Real businesses. Real results.</h2>
+              <p>Watch owners and independent creators put OneLaser machines into real workshop workflows—from first setup to business production.</p>
+            </div>
+            <div className="review-proof__controls" aria-label="Browse OneLaser customer stories">
+              <button type="button" onClick={() => scrollStories(-1)} aria-label="Show previous customer story"><CaretLeft size={22} /></button>
+              <button type="button" onClick={() => scrollStories(1)} aria-label="Show more customer stories"><CaretRight size={22} /></button>
+            </div>
+          </div>
+          <div
+            className="review-proof__rail"
+            ref={storyRailRef}
+            aria-label="OneLaser customer story videos"
+            tabIndex="0"
+            onKeyDown={(event) => {
+              if (event.key === "ArrowLeft") scrollStories(-1);
+              if (event.key === "ArrowRight") scrollStories(1);
+            }}
+          >
+            {collectionStoryVideos.map((video, index) => <CollectionStoryCard video={video} index={index} onPlay={playStory} key={video.id} />)}
+          </div>
+        </section>
+
         <section className="collection-faq" aria-labelledby="collection-faq-title">
           <header><span>FAQ</span><h2 id="collection-faq-title">Before you choose.</h2></header>
           <div>
@@ -814,6 +919,24 @@ export function MachineCollectionPage() {
       )}
 
       <HomeFooter />
+
+      {youtubeVideo && (
+        <div className="youtube-modal" role="dialog" aria-modal="true" aria-label={`${youtubeVideo.title} YouTube video`} onClick={() => setYoutubeVideo(null)}>
+          <div className="youtube-modal__dialog" onClick={(event) => event.stopPropagation()}>
+            <button type="button" className="youtube-modal__close" aria-label="Close YouTube video" onClick={() => setYoutubeVideo(null)}><X size={23} /></button>
+            <div className="youtube-modal__player">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${youtubeVideo.id}?autoplay=1&rel=0&modestbranding=1`}
+                title={youtubeVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+            <div className="youtube-modal__copy"><span className="eyebrow">{youtubeVideo.tag}</span><h2>{youtubeVideo.title}</h2><p>{youtubeVideo.channel} · YouTube</p></div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

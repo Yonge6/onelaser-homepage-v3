@@ -59,6 +59,7 @@ Issues found and resolved:
 - Removed `serious` from customer-facing source copy, including the collection FAQ and XRF authority heading.
 - Updated every product-card media badge to Independence Day navy `#002868`, while retaining OneLaser red for primary actions, prices and selected states.
 - Set the previous-generation disclosure title to the shared 800 display weight at all breakpoints.
+- Added the approved `Real businesses. Real results.` video rail with five live YouTube stories verified through YouTube metadata. The carousel supports arrows, touch/trackpad scrolling, keyboard arrows, reduced-motion behavior and a lazy privacy-enhanced player modal. Evidence: `references/incoming/machine-collection-qa/30-collections-customer-stories-desktop.jpg` and `31-collections-customer-stories-mobile.jpg`.
 
 ## Final result
 
