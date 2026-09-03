@@ -1067,10 +1067,10 @@ export function MachineCollectionPage() {
         <section className="collection-legacy" aria-labelledby="collection-legacy-title">
           <details>
             <summary>
-              <span><small>PREVIOUS GENERATION &amp; CLEARANCE</small><strong id="collection-legacy-title">Still comparing earlier platforms?</strong></span>
+              <span><small>PREVIOUS GENERATION · EXCEPTIONAL VALUE</small><strong id="collection-legacy-title">Proven performance. Exceptional value.</strong></span>
               <span>View {legacyProducts.length} machines <CaretDown size={18} weight="bold" /></span>
             </summary>
-            <p className="collection-legacy__intro">These models remain available while inventory lasts. Compare their exact configuration and support path before purchase.</p>
+            <p className="collection-legacy__intro">Built on proven platforms, these previous-generation machines still deliver strong performance at a more accessible price. Compare the remaining configurations while inventory lasts, and confirm exact specifications and support coverage before purchase.</p>
             <div className="collection-product-grid collection-product-grid--legacy">
               {legacyProducts.map((product) => <ProductCard product={product} compareIds={compareIds} onToggleCompare={toggleCompare} key={product.id} />)}
             </div>
