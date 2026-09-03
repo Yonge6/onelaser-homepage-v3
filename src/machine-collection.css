@@ -583,7 +583,7 @@
 
 .collection-legacy { padding: 32px var(--home-content-gutter) 48px; background: #fff; }
 .collection-catalog > .collection-legacy { max-width: 1280px; margin: 48px auto 0; padding: 0; background: transparent; }
-.collection-legacy details { max-width: 1280px; margin: 0 auto; padding: 0 30px 30px; border: 1px solid var(--collection-line); border-radius: 28px; background: var(--collection-surface); }
+.collection-legacy details { max-width: 1280px; margin: 0 auto; padding: 0 30px 30px; border: 1px solid var(--collection-line); border-radius: 28px; background: #fff; }
 .collection-legacy summary { min-height: 104px; display: flex; align-items: center; justify-content: space-between; gap: 24px; cursor: pointer; list-style: none; }
 .collection-legacy summary::-webkit-details-marker { display: none; }
 .collection-legacy summary > span:first-child { display: grid; gap: 9px; }
