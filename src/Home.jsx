@@ -29,7 +29,7 @@ import {
 
 const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}`;
 const XRF_PAGE_URL = `${import.meta.env.BASE_URL}?page=xrf`;
-const MACHINES_PAGE_URL = `${import.meta.env.BASE_URL}?page=machines`;
+const MACHINES_PAGE_URL = `${import.meta.env.BASE_URL}collections/`;
 const wholeCurrencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",

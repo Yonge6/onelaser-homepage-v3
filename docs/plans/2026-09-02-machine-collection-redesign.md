@@ -2,7 +2,7 @@
 
 ## Goal
 
-Create a public GitHub Pages route for the OneLaser machine collection that helps a buyer identify the right family, narrow the current lineup, compare up to three machines, and continue to the official product or consultation path.
+Create a public GitHub Pages `/collections/` route for the OneLaser machine collection that helps a buyer identify the right family, narrow the current lineup, compare up to three machines, and continue to the official product or consultation path.
 
 ## Considered approaches
 
@@ -44,4 +44,4 @@ Approach 3 is selected because it carries the Homepage V3 narrative into a pract
 - Run `npm run verify`.
 - Browser-check desktop and 390 x 844 for loaded images, zero horizontal overflow, Finder, filters, sorting, comparison, mobile filter sheet, navigation, and console errors.
 - Complete Product Design comparison against the captured Homepage V3 desktop/mobile references and save `docs/qa/machine-collection-design-qa.md` with `final result: passed`.
-- Push only the V3 remote `main`, wait for GitHub Pages, and validate the cache-busted `?page=machines` URL.
+- Push only the V3 remote `main`, wait for GitHub Pages, and validate the cache-busted `/collections/?v=<commit>` URL.

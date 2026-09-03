@@ -40,6 +40,14 @@ Issues found and resolved:
 - Deferred images are limited to off-screen horizontal cards and the collapsed legacy-products disclosure; visible images load with real natural dimensions when their content enters view.
 - Finder, filters, sorting, family shortcuts, shortlist selection, comparison navigation, and clear-comparison actions respond correctly.
 
+## 2026-09-03 annotation follow-up
+
+- Removed the four-machine media grid from the Hero and reflowed the message into a shorter single-column panel. Evidence: `references/incoming/machine-collection-qa/22-collections-hero-no-machines-desktop.jpg` and `24-collections-hero-no-machines-mobile.jpg`.
+- Reduced the desktop filter panel from the original loose vertical treatment to an 837px compact panel at the annotated 1755 × 1179 viewport.
+- Made the desktop filter panel sticky at 82px, directly below the 76px fixed header. The checked scroll state held the filter at 82px without page overflow. Evidence: `references/incoming/machine-collection-qa/23-collections-filter-sticky-desktop.jpg`.
+- Preserved the mobile bottom-sheet behavior: 655px tall at 390 × 844, fixed to the viewport bottom, with the `Show 9 machines` action fully visible.
+- Added a real GitHub Pages entry at `/collections/`; `?page=machines` remains a compatibility route.
+
 ## Final result
 
 passed

@@ -575,14 +575,6 @@ export function MachineCollectionPage() {
               <li>U.S.-Based Support</li>
             </ul>
           </div>
-          <div className="collection-hero__machines" aria-label="OneLaser machine families">
-            {familyProfiles.map((family) => (
-              <figure className={`collection-hero-machine collection-hero-machine--${family.id}`} key={family.id}>
-                <img src={asset(family.image)} alt={`${family.name} laser system`} />
-                <figcaption>{family.name}</figcaption>
-              </figure>
-            ))}
-          </div>
         </section>
 
         <section className="collection-finder" id="machine-finder" aria-labelledby="collection-finder-title">
