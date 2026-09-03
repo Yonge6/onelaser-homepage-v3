@@ -40,7 +40,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 - Current machine prices use Certia 800 consistently on cards and in the comparison table.
 - The comparison table covers eleven decision fields, including exact laser configuration, work area, raster engraving speed, acceleration, positioning accuracy and engraving resolution. Its per-machine remove action is a lightweight Old Glory Blue text control with an outlined close-circle.
 - The previous-generation disclosure uses a visible 42 px red-outlined pill control with hover, keyboard-focus, pressed and expanded-state feedback; reduced-motion users receive the same state changes without transitions.
-- The previous-generation disclosure leads with `Proven performance. Exceptional value.` and positions the remaining machines as mature, capable platforms at a more accessible price without weakening the inventory, specification or support-confirmation caveats.
+- The previous-generation disclosure leads with `Proven performance. Exceptional value.` and positions the remaining machines as mature, capable platforms at a more accessible price, followed by a concise very-limited-inventory prompt without implying guaranteed financial returns.
 - The Buying Guide leads with the benefit-focused heading `We’ll help you choose with confidence.` before its three practical decision steps.
 - The 13-video customer-story rail is full-bleed and matches the XRF listing card height: an intrinsic 16:9 cover plus a fixed 174 px copy area. Long titles clamp to two lines so no card stretches the row; all covers remain 1280 × 720 with no crop or CSS blank space.
 

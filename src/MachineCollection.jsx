@@ -1070,7 +1070,7 @@ export function MachineCollectionPage() {
               <span><small>PREVIOUS GENERATION · EXCEPTIONAL VALUE</small><strong id="collection-legacy-title">Proven performance. Exceptional value.</strong></span>
               <span>View {legacyProducts.length} machines <CaretDown size={18} weight="bold" /></span>
             </summary>
-            <p className="collection-legacy__intro">Built on proven platforms, these previous-generation machines still deliver strong performance at a more accessible price. Compare the remaining configurations while inventory lasts, and confirm exact specifications and support coverage before purchase.</p>
+            <p className="collection-legacy__intro">Built on proven platforms, these previous-generation machines still deliver strong performance at a more accessible price. Inventory is very limited—secure exceptional value while it lasts.</p>
             <div className="collection-product-grid collection-product-grid--legacy">
               {legacyProducts.map((product) => <ProductCard product={product} compareIds={compareIds} onToggleCompare={toggleCompare} key={product.id} />)}
             </div>
