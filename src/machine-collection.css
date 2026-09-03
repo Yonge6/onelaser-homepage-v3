@@ -1,6 +1,7 @@
 .collection-shell {
   --collection-red: #e7310e;
   --collection-action: #d92d0d;
+  --collection-independence-blue: #002868;
   --collection-ink: #090909;
   --collection-muted: #6b6b70;
   --collection-line: #d2d2d7;
@@ -476,7 +477,7 @@
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 .collection-product-card__media { position: relative; min-height: 250px; display: grid; place-items: center; overflow: hidden; padding: 26px 24px 12px; background: #fff; }
-.collection-product-card__media > span { position: absolute; z-index: 1; left: 18px; top: 18px; min-height: 26px; display: inline-flex; align-items: center; padding: 4px 9px; border-radius: 999px; background: var(--collection-action); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .04em; }
+.collection-product-card__media > span { position: absolute; z-index: 1; left: 18px; top: 18px; min-height: 26px; display: inline-flex; align-items: center; padding: 4px 9px; border-radius: 999px; background: var(--collection-independence-blue); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .04em; }
 .collection-product-card__media img { width: 100%; height: 220px; object-fit: contain; filter: drop-shadow(0 16px 20px rgba(0,0,0,.08)); transition: transform 360ms ease; }
 .collection-product-card--xrf .collection-product-card__media img { transform: scale(.9); }
 .collection-product-card--vertigo .collection-product-card__media img { transform: scale(.76); }
@@ -536,7 +537,7 @@
 .collection-legacy summary::-webkit-details-marker { display: none; }
 .collection-legacy summary > span:first-child { display: grid; gap: 9px; }
 .collection-legacy summary small { color: var(--collection-action); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
-.collection-legacy summary strong { font-size: 28px; line-height: 1.05; letter-spacing: -.03em; }
+.collection-legacy summary strong { font-size: 28px; font-weight: 800; line-height: 1.05; letter-spacing: -.03em; }
 .collection-legacy summary > span:last-child { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 800; }
 .collection-legacy summary svg { transition: transform 180ms ease; }
 .collection-legacy details[open] summary svg { transform: rotate(180deg); }

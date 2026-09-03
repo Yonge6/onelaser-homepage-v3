@@ -57,6 +57,8 @@ Issues found and resolved:
 - Rechecked 1755 × 1179 desktop and 390 × 844 mobile: zero horizontal overflow, no broken loaded images, and no console warnings or errors.
 - Replaced the compact ownership strip with the approved XRF-style support composition: two cards above and one full-width card below, collapsing to a single column on mobile. Evidence: `references/incoming/machine-collection-qa/28-collections-ownership-support-desktop.jpg` and `29-collections-ownership-support-mobile.jpg`.
 - Removed `serious` from customer-facing source copy, including the collection FAQ and XRF authority heading.
+- Updated every product-card media badge to Independence Day navy `#002868`, while retaining OneLaser red for primary actions, prices and selected states.
+- Set the previous-generation disclosure title to the shared 800 display weight at all breakpoints.
 
 ## Final result
 
