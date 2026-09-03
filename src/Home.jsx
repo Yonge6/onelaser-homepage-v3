@@ -1113,7 +1113,7 @@ export function HomePage() {
               <span>READY WHEN YOU ARE</span>
               <h2>Find the OneLaser built for you.</h2>
             </div>
-            <a href="https://www.1laser.com/collections/laser-engraving-cutting-marking-machines" target="_blank" rel="noreferrer">Shop laser machines <ArrowUpRight size={20} weight="bold" /></a>
+            <a href="https://yonge6.github.io/onelaser-homepage-v3/collections/">Shop laser machines <ArrowUpRight size={20} weight="bold" /></a>
           </div>
         </section>
 
