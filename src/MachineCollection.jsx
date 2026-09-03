@@ -13,6 +13,7 @@ import {
   Sparkle,
   Star,
   X,
+  XCircle,
 } from "@phosphor-icons/react";
 import { HomeFooter, HomeNavigation } from "./Home.jsx";
 import { initializeAnalytics, trackEvent } from "./analytics.js";
@@ -42,9 +43,9 @@ const familyProfiles = [
     id: "cobra",
     eyebrow: "WORKSHOP ESSENTIAL",
     name: "Cobra™ Series",
-    copy: "High-power glass CO₂ cutting with an integrated IR workflow.",
+    copy: "High-power glass CO₂ cutting with an optional IR upgrade workflow.",
     bestFor: "Thicker materials, signage and workshop production",
-    specs: ["Up to 130W Glass", "CO₂ + IR", "1,200 mm/s"],
+    specs: ["Up to 130W Glass", "Optional 2W / 3W / 5W IR", "1,200 mm/s"],
     image: "home-product-cobra.png",
     scene: "home-product-cobra-scene.webp",
   },
@@ -160,8 +161,15 @@ const products = [
     generation: "Current lineup",
     summary: "All-in-one RF desktop laser for fast, fine-detail production.",
     bestFor: "Personalized goods, photo engraving and compact shops",
-    specs: ["38W RF", "24 × 12 in work area", "1,200 mm/s"],
+    specs: ["38W RF", "23.6 × 11.8 in", "1,200 mm/s"],
     laser: "38W RF CO₂",
+    workArea: "23.6 × 11.8 in",
+    maxSpeed: "1,200 mm/s",
+    keyCapability: "Air-cooled RF · 0.07 mm laser spot",
+    acceleration: "True 3.5G",
+    positioningAccuracy: "≤0.01 mm",
+    maxResolution: "2,000 DPI",
+    productLine: "XRF™ Series",
     materials: ["organic", "coated-metal"],
     intents: ["engraving", "both"],
     price: 4399,
@@ -175,10 +183,17 @@ const products = [
     name: "Cobra™ 8",
     label: "WORKSHOP ESSENTIAL",
     generation: "Current lineup",
-    summary: "The compact entry into Cobra cutting power and IR versatility.",
+    summary: "The compact entry into Cobra glass CO₂ cutting power.",
     bestFor: "Growing workshops cutting wood, acrylic and leather",
-    specs: ["90W Glass", "CO₂ + IR", "Workshop platform"],
-    laser: "90W Glass CO₂ + IR",
+    specs: ["90W Glass", "31.5 × 19.7 in", "1,200 mm/s"],
+    laser: "90W Glass CO₂; 2W / 3W / 5W IR optional",
+    workArea: "31.50 × 19.69 in (800 × 500 mm)",
+    maxSpeed: "1,200 mm/s",
+    keyCapability: "Smart Dual Air-Assist · optional IR upgrade",
+    acceleration: "2G",
+    positioningAccuracy: "±0.02 mm",
+    maxResolution: "1,000 DPI",
+    productLine: "Cobra™ Series",
     materials: ["organic", "coated-metal"],
     intents: ["cutting", "both"],
     price: 5999,
@@ -194,8 +209,15 @@ const products = [
     generation: "Current lineup",
     summary: "Balanced cutting power for a broader production catalog.",
     bestFor: "Sign shops and businesses balancing size with throughput",
-    specs: ["100W Glass", "CO₂ + IR", "1,200 mm/s"],
-    laser: "100W Glass CO₂ + IR",
+    specs: ["100W Glass", "39.4 × 23.6 in", "1,200 mm/s"],
+    laser: "100W Glass CO₂; 2W / 3W / 5W IR optional",
+    workArea: "39.37 × 23.62 in (1,000 × 600 mm)",
+    maxSpeed: "1,200 mm/s",
+    keyCapability: "Smart Dual Air-Assist · optional IR upgrade",
+    acceleration: "2G",
+    positioningAccuracy: "±0.02 mm",
+    maxResolution: "1,000 DPI",
+    productLine: "Cobra™ Series",
     materials: ["organic", "coated-metal"],
     intents: ["cutting", "both", "production"],
     price: 6999,
@@ -211,8 +233,15 @@ const products = [
     generation: "Current lineup",
     summary: "The largest Cobra cutting tier for demanding workshop jobs.",
     bestFor: "Large-format work and higher-power material cutting",
-    specs: ["130W Glass", "CO₂ + IR", "Large workshop format"],
-    laser: "130W Glass CO₂ + IR",
+    specs: ["130W Glass", "55.1 × 35.4 in", "1,200 mm/s"],
+    laser: "130W Glass CO₂; 2W / 3W / 5W IR optional",
+    workArea: "55.12 × 35.43 in (1,400 × 900 mm)",
+    maxSpeed: "1,200 mm/s",
+    keyCapability: "Smart Dual Air-Assist · optional IR upgrade",
+    acceleration: "2G",
+    positioningAccuracy: "±0.02 mm",
+    maxResolution: "1,000 DPI",
+    productLine: "Cobra™ Series",
     materials: ["organic", "coated-metal"],
     intents: ["cutting", "production"],
     price: 8999,
@@ -228,8 +257,15 @@ const products = [
     generation: "Current lineup",
     summary: "A dedicated 70W RF platform for crisp detail at industrial scale.",
     bestFor: "High-volume engraving where RF detail comes first",
-    specs: ["70W RF", "Industrial platform", "Fine-detail production"],
+    specs: ["70W RF", "27.6 × 19.7 in", "2,000 mm/s"],
     laser: "70W RF CO₂",
+    workArea: "27.56 × 19.69 in",
+    maxSpeed: "2,000 mm/s",
+    keyCapability: "Air-cooled 70W RF · optional fiber upgrade",
+    acceleration: "4G",
+    positioningAccuracy: "≤0.01 mm",
+    maxResolution: "2,000 DPI",
+    productLine: "Hydra™ Gen2",
     materials: ["organic", "coated-metal"],
     intents: ["engraving", "production"],
     price: 10999,
@@ -245,8 +281,15 @@ const products = [
     generation: "Current lineup",
     summary: "A hybrid production system for cutting range and RF detail.",
     bestFor: "Businesses moving between fine engraving and cutting",
-    specs: ["70W RF + Glass", "Hybrid workflow", "Up to 2,000 mm/s"],
-    laser: "RF + Glass CO₂",
+    specs: ["38W RF + 100W Glass", "70W RF option", "2,000 mm/s"],
+    laser: "38W RF + 100W Glass CO₂, or 70W RF",
+    workArea: "35.43 × 23.62 in",
+    maxSpeed: "2,000 mm/s",
+    keyCapability: "Hybrid or Pro configuration · Smart Dual Air-Assist",
+    acceleration: "4G",
+    positioningAccuracy: "≤0.01 mm",
+    maxResolution: "2,000 DPI",
+    productLine: "Hydra™ Gen2",
     materials: ["organic", "coated-metal"],
     intents: ["engraving", "cutting", "both", "production"],
     price: 10999,
@@ -262,8 +305,15 @@ const products = [
     generation: "Current lineup",
     summary: "More room for mixed production without giving up RF precision.",
     bestFor: "Established shops with larger work and varied orders",
-    specs: ["70W RF + Glass", "Expanded work format", "Smart dual air-assist"],
-    laser: "RF + Glass CO₂",
+    specs: ["38W RF + 130W Glass", "70W RF option", "2,000 mm/s"],
+    laser: "38W RF + 130W Glass CO₂, or 70W RF",
+    workArea: "51.18 × 35.43 in",
+    maxSpeed: "2,000 mm/s",
+    keyCapability: "Hybrid or Pro configuration · Smart Dual Air-Assist",
+    acceleration: "4G",
+    positioningAccuracy: "≤0.01 mm",
+    maxResolution: "2,000 DPI",
+    productLine: "Hydra™ Gen2",
     materials: ["organic", "coated-metal"],
     intents: ["engraving", "cutting", "both", "production"],
     price: 12999,
@@ -279,8 +329,15 @@ const products = [
     generation: "Current lineup",
     summary: "The largest Gen2 hybrid platform for demanding production floors.",
     bestFor: "High-output teams that need maximum capacity",
-    specs: ["70W RF + Glass", "Largest Gen2 format", "Smart dual air-assist"],
-    laser: "RF + Glass CO₂",
+    specs: ["38W RF + 150W Glass", "70W RF option", "2,000 mm/s"],
+    laser: "38W RF + 150W Glass CO₂, or 70W RF",
+    workArea: "62.99 × 39.37 in",
+    maxSpeed: "2,000 mm/s",
+    keyCapability: "Hybrid or Pro configuration · Smart Dual Air-Assist",
+    acceleration: "4G",
+    positioningAccuracy: "≤0.01 mm",
+    maxResolution: "2,000 DPI",
+    productLine: "Hydra™ Gen2",
     materials: ["organic", "coated-metal"],
     intents: ["cutting", "both", "production"],
     price: 13999,
@@ -296,8 +353,15 @@ const products = [
     generation: "Current lineup",
     summary: "A vertical RF workflow purpose-built for cylindrical products.",
     bestFor: "Tumblers, cups, bottles and repeat drinkware jobs",
-    specs: ["38W RF", "Integrated PiBurn Grip", "Smart Autofocus"],
+    specs: ["38W RF", "Ø 16–230 mm", "800 mm/s"],
     laser: "38W RF CO₂",
+    workArea: "300 mm X travel; Ø 16–230 mm manual focus",
+    maxSpeed: "800 mm/s",
+    keyCapability: "Integrated rotary · Ø 89–230 mm autofocus range",
+    acceleration: "3G",
+    positioningAccuracy: "≤0.01 mm",
+    maxResolution: "1,000 DPI",
+    productLine: "VertiGo™",
     materials: ["drinkware", "coated-metal"],
     intents: ["engraving", "drinkware", "production"],
     price: 5599,
@@ -313,8 +377,15 @@ const products = [
     generation: "Previous generation",
     summary: "A previous-generation desktop glass CO₂ platform.",
     bestFor: "Value-focused desktop cutting",
-    specs: ["55W Glass", "Desktop format", "Clearance"],
+    specs: ["55W Glass", "23.6 × 11.8 in", "1,000 mm/s"],
     laser: "55W Glass CO₂",
+    workArea: "23.6 × 11.8 in",
+    maxSpeed: "1,000 mm/s",
+    keyCapability: "Built-in water cooling · 5MP camera",
+    acceleration: "3G",
+    positioningAccuracy: "≤0.01 mm",
+    maxResolution: "1,000 DPI",
+    productLine: "X Series",
     materials: ["organic"],
     intents: ["cutting", "both"],
     price: 3599,
@@ -330,8 +401,15 @@ const products = [
     generation: "Previous generation",
     summary: "Previous-generation dual-source Hydra platform.",
     bestFor: "Value-focused hybrid capability",
-    specs: ["80W Glass", "38W RF", "Clearance"],
-    laser: "80W Glass + 38W RF CO₂",
+    specs: ["80W Glass + 38W RF", "28 × 20 in", "1,200 mm/s"],
+    laser: "80W Glass CO₂ + 38W RF CO₂",
+    workArea: "28 × 20 in",
+    maxSpeed: "1,200 mm/s",
+    keyCapability: "Dual-laser cabinet · 5MP camera",
+    acceleration: "3G",
+    positioningAccuracy: "≤0.01 mm",
+    maxResolution: "2,000 DPI",
+    productLine: "Hydra™ Series",
     materials: ["organic", "coated-metal"],
     intents: ["engraving", "cutting", "both"],
     price: 6299,
@@ -347,8 +425,15 @@ const products = [
     generation: "Previous generation",
     summary: "Previous-generation hybrid Hydra with RF detail capability.",
     bestFor: "Established shops seeking a clearance hybrid",
-    specs: ["100W Glass", "38W RF", "Clearance"],
-    laser: "100W Glass + 38W RF CO₂",
+    specs: ["100W Glass + 38W RF", "35.4 × 23.6 in", "1,200 mm/s"],
+    laser: "100W Glass CO₂ + 38W RF CO₂",
+    workArea: "35.43 × 23.62 in",
+    maxSpeed: "1,200 mm/s",
+    keyCapability: "Dual-laser cabinet · 5MP camera",
+    acceleration: "3G",
+    positioningAccuracy: "≤0.01 mm",
+    maxResolution: "2,000 DPI",
+    productLine: "Hydra™ Series",
     materials: ["organic", "coated-metal"],
     intents: ["engraving", "cutting", "both", "production"],
     price: 8999,
@@ -364,8 +449,15 @@ const products = [
     generation: "Previous generation",
     summary: "The largest previous-generation Hydra hybrid platform.",
     bestFor: "Large jobs at a clearance price",
-    specs: ["150W Glass", "38W RF", "Clearance"],
-    laser: "150W Glass + 38W RF CO₂",
+    specs: ["150W Glass + 38W RF", "63 × 39.4 in", "1,200 mm/s"],
+    laser: "150W Glass CO₂ + 38W RF CO₂",
+    workArea: "62.99 × 39.37 in",
+    maxSpeed: "1,200 mm/s",
+    keyCapability: "Dual-laser cabinet · 5MP camera",
+    acceleration: "3G",
+    positioningAccuracy: "≤0.01 mm",
+    maxResolution: "2,000 DPI",
+    productLine: "Hydra™ Series",
     materials: ["organic", "coated-metal"],
     intents: ["engraving", "cutting", "both", "production"],
     price: 12599,
@@ -567,7 +659,15 @@ function CollectionStoryCard({ video, index, onPlay }) {
       onClick={() => onPlay(video)}
     >
       <span className="review-video-card__media">
-        <img src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`} alt="" loading="lazy" />
+        <img
+          src={`https://i.ytimg.com/vi/${video.id}/hq720.jpg`}
+          alt=""
+          loading="lazy"
+          onError={(event) => {
+            event.currentTarget.onerror = null;
+            event.currentTarget.src = `https://i.ytimg.com/vi/${video.id}/mqdefault.jpg`;
+          }}
+        />
         <span><Play size={22} weight="fill" /></span>
         <i>{String(index + 1).padStart(2, "0")} / {String(collectionStoryVideos.length).padStart(2, "0")}</i>
       </span>
@@ -847,17 +947,23 @@ export function MachineCollectionPage() {
                       <th scope="col" key={product.id}>
                         <img src={product.image} alt="" loading="lazy" />
                         <strong>{product.name}</strong>
-                        <button type="button" onClick={() => toggleCompare(product.id)} aria-label={`Remove ${product.name} from comparison`}><X size={16} weight="bold" /> Remove</button>
+                        <button type="button" onClick={() => toggleCompare(product.id)} aria-label={`Remove ${product.name} from comparison`}><XCircle size={17} weight="fill" /> Remove</button>
                       </th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   <tr><th scope="row">Best for</th>{comparedProducts.map((product) => <td key={product.id}>{product.bestFor}</td>)}</tr>
-                  <tr><th scope="row">Laser system</th>{comparedProducts.map((product) => <td key={product.id}>{product.laser}</td>)}</tr>
-                  <tr><th scope="row">Family</th>{comparedProducts.map((product) => <td key={product.id}>{familyProfiles.find((family) => family.id === product.family)?.name}</td>)}</tr>
+                  <tr><th scope="row">Laser configuration</th>{comparedProducts.map((product) => <td key={product.id}>{product.laser}</td>)}</tr>
+                  <tr><th scope="row">Work area / object size</th>{comparedProducts.map((product) => <td key={product.id}>{product.workArea}</td>)}</tr>
+                  <tr><th scope="row">Max engraving speed</th>{comparedProducts.map((product) => <td key={product.id}>{product.maxSpeed}</td>)}</tr>
+                  <tr><th scope="row">Acceleration</th>{comparedProducts.map((product) => <td key={product.id}>{product.acceleration}</td>)}</tr>
+                  <tr><th scope="row">Positioning accuracy</th>{comparedProducts.map((product) => <td key={product.id}>{product.positioningAccuracy}</td>)}</tr>
+                  <tr><th scope="row">Max engraving resolution</th>{comparedProducts.map((product) => <td key={product.id}>{product.maxResolution}</td>)}</tr>
+                  <tr><th scope="row">Key capability</th>{comparedProducts.map((product) => <td key={product.id}>{product.keyCapability}</td>)}</tr>
+                  <tr><th scope="row">Product line</th>{comparedProducts.map((product) => <td key={product.id}>{product.productLine}</td>)}</tr>
                   <tr><th scope="row">Generation</th>{comparedProducts.map((product) => <td key={product.id}>{product.generation}</td>)}</tr>
-                  <tr><th scope="row">Current price</th>{comparedProducts.map((product) => <td key={product.id}><strong>{currency.format(product.price)}</strong></td>)}</tr>
+                  <tr><th scope="row">Starting price</th>{comparedProducts.map((product) => <td key={product.id}><strong>{currency.format(product.price)}</strong></td>)}</tr>
                 </tbody>
               </table>
             </div>

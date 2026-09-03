@@ -1,6 +1,6 @@
 # OneLaser Homepage + XRF Gen2 Current State
 
-Updated: 2026-09-01 (Asia/Shanghai)
+Updated: 2026-09-03 (Asia/Shanghai)
 
 ## Start here
 
@@ -26,11 +26,20 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 - Performance and Built for Every Ambition headers follow the shared 1280 px left-aligned content baseline.
 - The redundant `Ready When You Are` final CTA panel has been removed; Explore transitions directly to the footer.
 
+## Current collection state
+
+- The public machine collection route is `/collections/` in the independent V3 repository.
+- Nine current machines and four previous-generation machines use the user-supplied Cobra, Hydra Gen2 and VertiGo specification workbooks; X Series and first-generation Hydra specifications use the official OneLaser product pages. Live pricing remains sourced from the current official product pages.
+- Cobra cards identify the 2W/3W/5W IR module as an optional upgrade. Hydra 9/13/16 Gen2 cards distinguish the 38W RF + glass-tube Hybrid configuration from the 70W RF Pro configuration.
+- The comparison table covers eleven decision fields, including exact laser configuration, work area, raster engraving speed, acceleration, positioning accuracy and engraving resolution. Its per-machine remove action uses a filled close-circle inside an Old Glory Blue pill.
+- The 13-video customer-story rail uses 1280 × 720 YouTube covers with uncropped `contain` rendering and a 16:9 stage.
+
 ## Validation state
 
 - `npm run verify` passes.
 - Desktop and 390 × 844 have zero document overflow, a 12 px minimum visible text floor and 64/64 loaded homepage images with real natural dimensions.
 - Browser console errors and warnings are empty.
+- Collection desktop and 390 × 844 checks have zero document overflow; the comparison table uses contained horizontal scrolling on mobile, and all 13 story covers load at 1280 × 720.
 - The 42-image material filter, ambition image tabs, Explore hover treatment and mobile menu are interaction-verified; the earlier Hero, Mega Menu, project modal and lazy video behavior remains intact.
 
 ## Working-tree contract

@@ -26,8 +26,9 @@ Use sources in this order:
 1. Direct user feedback and supplied approved assets.
 2. `/Users/yongyuan/Downloads/OneLaser Web UI Guideline.pdf` and `UI-SPEC.md` for the visual system.
 3. `XRF Gen2 卖点参数发布汇总.xlsx`, specifically `XRF Gen2 卖点` and `XRF Gen2 Specs-1`, for features and specifications. Never use `参数作废`.
-4. `https://www.1laser.com/products/onelaser-xrf-desktop-laser-machine` for current commercial facts not covered by the workbook.
-5. `docs/decisions/AGENTS-2026-08-03-full.md` only through a narrow search when exact legacy detail is required.
+4. For collection-page machine specifications, use `/Users/yongyuan/Downloads/[Cobra] 卖点参数发布汇总 (KC版).xlsx`, `/Users/yongyuan/Downloads/[Hydra G2] 卖点参数发布汇总 (KC版).xlsx` and `/Users/yongyuan/Downloads/(VertiGo)卖点参数发布汇总.xlsx`; use the official OneLaser website for X Series and first-generation Hydra data.
+5. `https://www.1laser.com/products/onelaser-xrf-desktop-laser-machine` for current commercial facts not covered by the workbook.
+6. `docs/decisions/AGENTS-2026-08-03-full.md` only through a narrow search when exact legacy detail is required.
 
 Do not invent reviews, discounts, urgency, shipping dates, accessory pricing, financing rates, performance gaps or checkout targets. Revalidate time-sensitive commercial facts before changing them.
 

@@ -1,6 +1,7 @@
 .collection-shell {
   --collection-red: #e7310e;
   --collection-action: #d92d0d;
+  --collection-blue: #0a3161;
   --collection-ink: #090909;
   --collection-muted: #6b6b70;
   --collection-line: #d2d2d7;
@@ -106,6 +107,7 @@
 .collection-family-card:focus-visible,
 .collection-product-card__actions a:focus-visible,
 .collection-product-card__actions button:focus-visible,
+.collection-compare thead button:focus-visible,
 .collection-compare-tray button:focus-visible,
 .collection-guide > a:focus-visible {
   outline: 2px solid var(--collection-action);
@@ -524,7 +526,8 @@
 .collection-compare thead th:first-child { width: 150px; color: var(--collection-muted); font-size: 12px; }
 .collection-compare thead img { width: 100%; height: 110px; object-fit: contain; }
 .collection-compare thead strong { display: block; margin-top: 10px; font-size: 18px; }
-.collection-compare thead button { min-height: 36px; display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; padding: 0; border: 0; background: transparent; color: var(--collection-muted); font-size: 12px; font-weight: 800; cursor: pointer; }
+.collection-compare thead button { min-height: 34px; display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; padding: 0 12px; border: 1px solid var(--collection-blue); border-radius: 999px; background: var(--collection-blue); color: #fff; font-size: 12px; font-weight: 800; cursor: pointer; }
+.collection-compare thead button:focus-visible { outline-color: var(--collection-blue); }
 .collection-compare tbody th { width: 150px; color: #45454a; font-size: 12px; }
 .collection-compare tbody td { color: #55555a; font-size: 13px; line-height: 1.45; }
 .collection-compare tbody td > strong { color: var(--collection-action); font-size: 18px; }
@@ -566,6 +569,7 @@
 .collection-stories .review-proof__header p { max-width: 900px; margin: 12px 0 0; color: var(--collection-muted); font-size: 16px; line-height: 1.55; }
 .collection-stories .review-proof__rail { padding-bottom: 8px; }
 .collection-stories .review-video-card { border: 0; }
+.collection-stories .review-video-card__media img { object-fit: contain; }
 .collection-stories .review-video-card__media > span { background: rgba(0,0,0,.2); color: #fff; }
 .collection-stories .review-video-card__copy strong { font-weight: 800; }
 
