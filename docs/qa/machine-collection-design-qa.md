@@ -48,6 +48,16 @@ Issues found and resolved:
 - Preserved the mobile bottom-sheet behavior: 655px tall at 390 × 844, fixed to the viewport bottom, with the `Show 9 machines` action fully visible.
 - Added a real GitHub Pages entry at `/collections/`; `?page=machines` remains a compatibility route.
 
+## 2026-09-03 visual refinement follow-up
+
+- Rebuilt the Hero as a left-copy/right-image composition using the supplied four-machine lineup image. It remains a single responsive module and stacks the image below the copy at 390px. Evidence: `references/incoming/machine-collection-qa/25-collections-hero-lineup-desktop.jpg` and `27-collections-hero-lineup-mobile.jpg`.
+- Standardized interactive button labels to 800 weight. The paired `Explore` and `Compare` actions both resolve to 12px / 800; the Finder submit and mobile filter confirmation resolve to 800.
+- Replaced every black product badge with OneLaser action red, moved the custom sort caret 16px inside the select edge, and added breathing room between filter dividers and fieldset titles.
+- Standardized major collection section boundaries to 48px desktop and 32px mobile, removing the oversized catalog lead-in while keeping the filter panel sticky at 82px on desktop.
+- Rechecked 1755 × 1179 desktop and 390 × 844 mobile: zero horizontal overflow, no broken loaded images, and no console warnings or errors.
+- Replaced the compact ownership strip with the approved XRF-style support composition: two cards above and one full-width card below, collapsing to a single column on mobile. Evidence: `references/incoming/machine-collection-qa/28-collections-ownership-support-desktop.jpg` and `29-collections-ownership-support-mobile.jpg`.
+- Removed `serious` from customer-facing source copy, including the collection FAQ and XRF authority heading.
+
 ## Final result
 
 passed

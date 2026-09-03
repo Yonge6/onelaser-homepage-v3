@@ -1791,7 +1791,7 @@ export function XrfPage() {
           <div className="review-proof__header">
             <div className="section-heading section-heading--stack">
               <span className="eyebrow">INDUSTRY &amp; MEDIA VALIDATION</span>
-              <h2 id="authority-proof-title">Why professionals take XRF seriously.</h2>
+              <h2 id="authority-proof-title">Why professionals choose XRF.</h2>
               <p>Start with independent hands-on evaluations and performance testing from experienced laser reviewers.</p>
             </div>
             <div className="review-proof__controls" aria-label="Browse independent XRF reviews">

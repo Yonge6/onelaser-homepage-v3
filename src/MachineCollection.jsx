@@ -1,15 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  ArrowCounterClockwise,
   ArrowUpRight,
   CaretDown,
   Check,
   FunnelSimple,
-  Headset,
   Plus,
   ShieldCheck,
   SlidersHorizontal,
   Sparkle,
+  Star,
   X,
 } from "@phosphor-icons/react";
 import { HomeFooter, HomeNavigation } from "./Home.jsx";
@@ -575,6 +574,9 @@ export function MachineCollectionPage() {
               <li>U.S.-Based Support</li>
             </ul>
           </div>
+          <figure className="collection-hero__media">
+            <img src={asset("collection-hero-lineup.jpg")} alt="OneLaser XRF, Cobra, Hydra Gen2 and VertiGo laser machines" />
+          </figure>
         </section>
 
         <section className="collection-finder" id="machine-finder" aria-labelledby="collection-finder-title">
@@ -678,12 +680,15 @@ export function MachineCollectionPage() {
                 <p aria-live="polite"><strong>{currentProducts.length}</strong> current {currentProducts.length === 1 ? "machine" : "machines"}</p>
                 <label htmlFor="collection-sort">
                   <span>Sort</span>
-                  <select id="collection-sort" value={sort} onChange={(event) => setSort(event.target.value)}>
-                    <option value="recommended">Recommended</option>
-                    <option value="price-low">Price: low to high</option>
-                    <option value="price-high">Price: high to low</option>
-                    <option value="name">Name</option>
-                  </select>
+                  <span className="collection-sort-wrap">
+                    <select id="collection-sort" value={sort} onChange={(event) => setSort(event.target.value)}>
+                      <option value="recommended">Recommended</option>
+                      <option value="price-low">Price: low to high</option>
+                      <option value="price-high">Price: high to low</option>
+                      <option value="name">Name</option>
+                    </select>
+                    <CaretDown size={16} weight="bold" aria-hidden="true" />
+                  </span>
                 </label>
               </div>
               {currentProducts.length ? (
@@ -746,15 +751,32 @@ export function MachineCollectionPage() {
           </details>
         </section>
 
-        <section className="collection-support" aria-label="OneLaser ownership support">
-          {[
-            { icon: ArrowCounterClockwise, title: "30-Day Easy Returns", copy: "A clearer decision window after delivery, subject to the official return policy." },
-            { icon: ShieldCheck, title: "3-2-1 Warranty", copy: "Layered machine coverage backed by the official OneLaser warranty terms." },
-            { icon: Headset, title: "U.S.-Based Support", copy: "Talk with a real OneLaser team before and after choosing your platform." },
-          ].map((item) => {
-            const Icon = item.icon;
-            return <article key={item.title}><Icon size={27} weight="light" /><h3>{item.title}</h3><p>{item.copy}</p></article>;
-          })}
+        <section className="ownership-support ownership-support--collection" id="collection-support" aria-label="OneLaser ownership support">
+          <div className="ownership-support__inner">
+            <div className="ownership-support__grid">
+              <article className="ownership-support__card">
+                <div className="ownership-support__card-top"><Check size={26} weight="bold" aria-hidden="true" /><span>01</span></div>
+                <div className="ownership-support__lead"><h3>30-Day Money-Back Guarantee.</h3></div>
+                <div className="ownership-support__details">
+                  <p>Take a full 30 days to get to know your OneLaser. If it&apos;s not the right fit for you, just reach out — we&apos;ll help you send it back, no hard feelings, no hassle. We&apos;d rather you find the perfect machine than keep one that isn&apos;t. (Refunds are issued in full, less a 3% payment processing fee and round-trip shipping costs.)</p>
+                </div>
+              </article>
+              <article className="ownership-support__card">
+                <div className="ownership-support__card-top"><ShieldCheck size={26} weight="regular" aria-hidden="true" /><span>02</span></div>
+                <div className="ownership-support__lead"><h3>We built it to last. We back it to prove it.</h3></div>
+                <div className="ownership-support__details">
+                  <p>OneLaser&apos;s 3-2-1 warranty provides three years on the frame and structure, two years on electronics, and one year on the laser source. It&apos;s not fine print; it&apos;s what confidence in our own build quality looks like. Confirm exact coverage for your selected model before purchase.</p>
+                </div>
+              </article>
+              <article className="ownership-support__card ownership-support__card--wide">
+                <div className="ownership-support__card-top"><Star size={26} weight="regular" aria-hidden="true" /><span>03</span></div>
+                <div className="ownership-support__lead"><h3>One Support. Real engineers. Real experience.</h3></div>
+                <div className="ownership-support__details">
+                  <p>When you call OneLaser, you talk to a U.S.-based engineer with more than five years of laser-industry experience on average—people who&apos;ve built, tuned and repaired these machines, not script readers. That experience means faster answers, first-call solutions and real support. You&apos;re not just buying a machine; you&apos;re buying the team behind it.</p>
+                </div>
+              </article>
+            </div>
+          </div>
         </section>
 
         <section className="collection-guide" aria-labelledby="collection-guide-title">
@@ -770,7 +792,7 @@ export function MachineCollectionPage() {
         <section className="collection-faq" aria-labelledby="collection-faq-title">
           <header><span>FAQ</span><h2 id="collection-faq-title">Before you choose.</h2></header>
           <div>
-            <details><summary>Which OneLaser is best for a first serious machine?<CaretDown size={18} weight="bold" /></summary><p>Start with the products you plan to make, then use the finder above. XRF prioritizes desktop RF detail, Cobra prioritizes cutting, Hydra Gen2 combines industrial scale with RF options, and VertiGo specializes in drinkware.</p></details>
+            <details><summary>Which OneLaser is best for a first machine?<CaretDown size={18} weight="bold" /></summary><p>Start with the products you plan to make, then use the finder above. XRF prioritizes desktop RF detail, Cobra prioritizes cutting, Hydra Gen2 combines industrial scale with RF options, and VertiGo specializes in drinkware.</p></details>
             <details><summary>Can these machines engrave bare metal?<CaretDown size={18} weight="bold" /></summary><p>RF and glass CO₂ systems are intended for compatible organic materials and coated, painted or anodized metal surfaces. Confirm bare-metal requirements with OneLaser before purchase.</p></details>
             <details><summary>Do I need a Rotary for cups and bottles?<CaretDown size={18} weight="bold" /></summary><p>Cylindrical work generally requires a compatible rotary setup. VertiGo is built around an integrated PiBurn Grip; confirm rotary compatibility for other models.</p></details>
             <details><summary>Where can I confirm current price and availability?<CaretDown size={18} weight="bold" /></summary><p>Every product card opens the official OneLaser product page. That page is the final source for live pricing, availability, configuration and fulfillment expectations.</p></details>
