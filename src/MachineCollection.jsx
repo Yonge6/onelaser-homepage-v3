@@ -947,7 +947,7 @@ export function MachineCollectionPage() {
                       <th scope="col" key={product.id}>
                         <img src={product.image} alt="" loading="lazy" />
                         <strong>{product.name}</strong>
-                        <button type="button" onClick={() => toggleCompare(product.id)} aria-label={`Remove ${product.name} from comparison`}><XCircle size={17} weight="fill" /> Remove</button>
+                        <button type="button" onClick={() => toggleCompare(product.id)} aria-label={`Remove ${product.name} from comparison`}><XCircle size={17} weight="regular" /> Remove</button>
                       </th>
                     ))}
                   </tr>

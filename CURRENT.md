@@ -31,7 +31,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 - The public machine collection route is `/collections/` in the independent V3 repository.
 - Nine current machines and four previous-generation machines use the user-supplied Cobra, Hydra Gen2 and VertiGo specification workbooks; X Series and first-generation Hydra specifications use the official OneLaser product pages. Live pricing remains sourced from the current official product pages.
 - Cobra cards identify the 2W/3W/5W IR module as an optional upgrade. Hydra 9/13/16 Gen2 cards distinguish the 38W RF + glass-tube Hybrid configuration from the 70W RF Pro configuration.
-- The comparison table covers eleven decision fields, including exact laser configuration, work area, raster engraving speed, acceleration, positioning accuracy and engraving resolution. Its per-machine remove action uses a filled close-circle inside an Old Glory Blue pill.
+- The comparison table covers eleven decision fields, including exact laser configuration, work area, raster engraving speed, acceleration, positioning accuracy and engraving resolution. Its per-machine remove action is a lightweight Old Glory Blue text control with an outlined close-circle.
 - The 13-video customer-story rail uses 1280 × 720 YouTube covers with uncropped `contain` rendering and a 16:9 stage.
 
 ## Validation state
