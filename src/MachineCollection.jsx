@@ -27,6 +27,9 @@ const currency = new Intl.NumberFormat("en-US", {
   currency: "USD",
   maximumFractionDigits: 0,
 });
+const PRICE_MIN = 0;
+const PRICE_MAX = 15000;
+const PRICE_STEP = 100;
 
 const familyProfiles = [
   {
@@ -502,19 +505,6 @@ const finderOptions = {
 
 const filterGroups = [
   {
-    key: "power",
-    label: "Laser Power",
-    options: [
-      ["all", "All power"],
-      ["38", "38W"],
-      ["70", "70W"],
-      ["90", "90W"],
-      ["100", "100W"],
-      ["130", "130W"],
-      ["150", "150W"],
-    ],
-  },
-  {
     key: "intent",
     label: "Primary job",
     options: [
@@ -537,8 +527,23 @@ const filterGroups = [
     ],
   },
   {
+    key: "power",
+    label: "Laser Power",
+    multiple: true,
+    options: [
+      ["all", "All power"],
+      ["38", "38W"],
+      ["70", "70W"],
+      ["90", "90W"],
+      ["100", "100W"],
+      ["130", "130W"],
+      ["150", "150W"],
+    ],
+  },
+  {
     key: "family",
     label: "Series",
+    multiple: true,
     options: [
       ["all", "All series"],
       ["xrf", "XRF"],
@@ -549,7 +554,7 @@ const filterGroups = [
   },
 ];
 
-const defaultFilters = { power: "all", intent: "all", material: "all", family: "all", minPrice: "", maxPrice: "" };
+const defaultFilters = { power: [], intent: "all", material: "all", family: [], minPrice: "", maxPrice: "" };
 const defaultFinder = { material: "", application: "", volume: "", size: "" };
 
 function rankFamilies(selections) {
@@ -745,10 +750,10 @@ export function MachineCollectionPage() {
   const currentProducts = useMemo(() => {
     const filtered = products.filter((product) => {
       if (product.generation !== "Current lineup") return false;
-      if (filters.family !== "all" && product.family !== filters.family) return false;
+      if (filters.family.length > 0 && !filters.family.includes(product.family)) return false;
       if (filters.material !== "all" && !product.materials.includes(filters.material)) return false;
       if (filters.intent !== "all" && !product.intents.includes(filters.intent)) return false;
-      if (filters.power !== "all" && !product.powers.includes(Number(filters.power))) return false;
+      if (filters.power.length > 0 && !filters.power.some((power) => product.powers.includes(Number(power)))) return false;
       if (filters.minPrice !== "" && product.price < Number(filters.minPrice)) return false;
       if (filters.maxPrice !== "" && product.price > Number(filters.maxPrice)) return false;
       return true;
@@ -761,7 +766,8 @@ export function MachineCollectionPage() {
 
   const legacyProducts = products.filter((product) => product.generation === "Previous generation");
   const comparedProducts = compareIds.map((id) => products.find((product) => product.id === id)).filter(Boolean);
-  const activeFilterCount = ["power", "intent", "material", "family"].filter((key) => filters[key] !== "all").length
+  const activeFilterCount = filters.power.length + filters.family.length
+    + ["intent", "material"].filter((key) => filters[key] !== "all").length
     + (filters.minPrice !== "" || filters.maxPrice !== "" ? 1 : 0);
 
   function updateFilter(key, value) {
@@ -769,8 +775,41 @@ export function MachineCollectionPage() {
     trackEvent("machine_collection_filter", { filter_name: key, filter_value: value });
   }
 
+  function updatePriceFilter(key, rawValue) {
+    if (rawValue === "") {
+      setFilters((current) => ({ ...current, [key]: "" }));
+      return;
+    }
+
+    const numericValue = Number(rawValue);
+    if (!Number.isFinite(numericValue)) return;
+
+    setFilters((current) => {
+      const currentMin = current.minPrice === "" ? PRICE_MIN : Number(current.minPrice);
+      const currentMax = current.maxPrice === "" ? PRICE_MAX : Number(current.maxPrice);
+      const boundedValue = key === "minPrice"
+        ? Math.min(Math.max(numericValue, PRICE_MIN), currentMax)
+        : Math.max(Math.min(numericValue, PRICE_MAX), currentMin);
+      const isDefaultBoundary = key === "minPrice" ? boundedValue === PRICE_MIN : boundedValue === PRICE_MAX;
+      return { ...current, [key]: isDefaultBoundary ? "" : String(boundedValue) };
+    });
+  }
+
+  function toggleMultiFilter(key, value) {
+    setFilters((current) => {
+      const selected = current[key];
+      const next = value === "all"
+        ? []
+        : selected.includes(value)
+          ? selected.filter((item) => item !== value)
+          : [...selected, value];
+      trackEvent("machine_collection_filter", { filter_name: key, filter_value: next.join(",") || "all" });
+      return { ...current, [key]: next };
+    });
+  }
+
   function chooseFamily(id) {
-    setFilters((current) => ({ ...current, family: id }));
+    setFilters((current) => ({ ...current, family: [id] }));
     window.requestAnimationFrame(() => catalogRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
   }
 
@@ -806,6 +845,13 @@ export function MachineCollectionPage() {
     setYoutubeVideo(video);
     trackEvent("video_start", { video_id: video.id, video_title: video.title, content_category: "machine_collection_story" });
   }
+
+  const selectedMinPrice = filters.minPrice === "" ? PRICE_MIN : Number(filters.minPrice);
+  const selectedMaxPrice = filters.maxPrice === "" ? PRICE_MAX : Number(filters.maxPrice);
+  const priceRangeStyle = {
+    "--price-start": `${((selectedMinPrice - PRICE_MIN) / (PRICE_MAX - PRICE_MIN)) * 100}%`,
+    "--price-end": `${((selectedMaxPrice - PRICE_MIN) / (PRICE_MAX - PRICE_MIN)) * 100}%`,
+  };
 
   return (
     <div className="home-shell collection-shell" id="top">
@@ -902,26 +948,39 @@ export function MachineCollectionPage() {
               <p className="collection-filters__count"><strong>{currentProducts.length}</strong> {currentProducts.length === 1 ? "machine" : "machines"} match</p>
               <fieldset className="collection-filters__price">
                 <legend>Price</legend>
-                <div>
+                <div className="collection-price-range" style={priceRangeStyle}>
+                  <div className="collection-price-range__values" aria-hidden="true">
+                    <span>{currency.format(PRICE_MIN)}</span>
+                    <strong>{currency.format(selectedMinPrice)} — {currency.format(selectedMaxPrice)}</strong>
+                    <span>{currency.format(PRICE_MAX)}</span>
+                  </div>
+                  <div className="collection-price-range__track">
+                    <input type="range" min={PRICE_MIN} max={PRICE_MAX} step={PRICE_STEP} value={selectedMinPrice} aria-label="Minimum price" onChange={(event) => updatePriceFilter("minPrice", event.target.value)} onPointerUp={() => trackEvent("machine_collection_filter", { filter_name: "min_price", filter_value: filters.minPrice || "all" })} />
+                    <input type="range" min={PRICE_MIN} max={PRICE_MAX} step={PRICE_STEP} value={selectedMaxPrice} aria-label="Maximum price" onChange={(event) => updatePriceFilter("maxPrice", event.target.value)} onPointerUp={() => trackEvent("machine_collection_filter", { filter_name: "max_price", filter_value: filters.maxPrice || "all" })} />
+                  </div>
+                </div>
+                <div className="collection-price-fields">
                   <label>
                     <span>Min</span>
-                    <span className="collection-price-input"><span>$</span><input type="number" min="0" step="100" inputMode="numeric" placeholder="0" value={filters.minPrice} onChange={(event) => setFilters((current) => ({ ...current, minPrice: event.target.value }))} onBlur={() => trackEvent("machine_collection_filter", { filter_name: "min_price", filter_value: filters.minPrice || "all" })} /></span>
+                    <span className="collection-price-input"><span>$</span><input type="number" min={PRICE_MIN} max={selectedMaxPrice} step={PRICE_STEP} inputMode="numeric" placeholder="0" value={filters.minPrice} onChange={(event) => updatePriceFilter("minPrice", event.target.value)} onBlur={() => trackEvent("machine_collection_filter", { filter_name: "min_price", filter_value: filters.minPrice || "all" })} /></span>
                   </label>
                   <span aria-hidden="true">to</span>
                   <label>
                     <span>Max</span>
-                    <span className="collection-price-input"><span>$</span><input type="number" min="0" step="100" inputMode="numeric" placeholder="15000" value={filters.maxPrice} onChange={(event) => setFilters((current) => ({ ...current, maxPrice: event.target.value }))} onBlur={() => trackEvent("machine_collection_filter", { filter_name: "max_price", filter_value: filters.maxPrice || "all" })} /></span>
+                    <span className="collection-price-input"><span>$</span><input type="number" min={selectedMinPrice} max={PRICE_MAX} step={PRICE_STEP} inputMode="numeric" placeholder="15000" value={filters.maxPrice} onChange={(event) => updatePriceFilter("maxPrice", event.target.value)} onBlur={() => trackEvent("machine_collection_filter", { filter_name: "max_price", filter_value: filters.maxPrice || "all" })} /></span>
                   </label>
                 </div>
               </fieldset>
               {filterGroups.map((group) => (
-                <fieldset className={group.key === "power" ? "collection-filters__power" : undefined} key={group.key}>
+                <fieldset className={`${group.key === "power" ? "collection-filters__power " : ""}${group.multiple ? "collection-filters__multi" : ""}`.trim() || undefined} key={group.key}>
                   <legend>{group.label}</legend>
                   <div>
                     {group.options.map(([value, label]) => {
-                      const isActive = filters[group.key] === value;
+                      const isActive = group.multiple
+                        ? value === "all" ? filters[group.key].length === 0 : filters[group.key].includes(value)
+                        : filters[group.key] === value;
                       return (
-                        <button type="button" className={isActive ? "is-active" : ""} aria-pressed={isActive} onClick={() => updateFilter(group.key, value)} key={value}>
+                        <button type="button" className={isActive ? "is-active" : ""} aria-pressed={isActive} onClick={() => group.multiple ? toggleMultiFilter(group.key, value) : updateFilter(group.key, value)} key={value}>
                           <span>{label}</span>
                           <span className="collection-filter-option__mark" aria-hidden="true">{isActive && <Check size={13} weight="bold" />}</span>
                         </button>

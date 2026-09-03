@@ -32,10 +32,10 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 - Nine current machines and four previous-generation machines use the user-supplied Cobra, Hydra Gen2 and VertiGo specification workbooks; X Series and first-generation Hydra specifications use the official OneLaser product pages. Live pricing remains sourced from the current official product pages.
 - Cobra cards identify the 2W/3W/5W IR module as an optional upgrade. Hydra 9/13/16 Gen2 cards distinguish the 38W RF + glass-tube Hybrid configuration from the 70W RF Pro configuration.
 - The standalone `Choose the platform first` family module is removed. The catalog now follows the Finder directly.
-- The sticky catalog filter follows the compact xTool-style hierarchy: Price, Laser Power, Primary job, Material and Series. Price accepts minimum/maximum values, Laser Power matches exact available configurations, the header shows active-filter and result counts, and mobile uses the existing bottom drawer.
+- The sticky catalog filter follows the compact xTool-style hierarchy: Price, Primary job, Material, Laser Power and Series. Price uses a synchronized red dual-thumb range slider plus minimum/maximum inputs; Laser Power and Series are multi-select OR groups with square checkmarks, while different groups combine with AND logic. Group headings are 14 px and vertically centered between the preceding divider and first option. The header shows active-filter and result counts, and mobile uses the existing bottom drawer.
 - Every discounted product card calculates and displays `Saved $X` from its official current and compare-at prices.
 - The comparison table covers eleven decision fields, including exact laser configuration, work area, raster engraving speed, acceleration, positioning accuracy and engraving resolution. Its per-machine remove action is a lightweight Old Glory Blue text control with an outlined close-circle.
-- The 13-video customer-story rail is full-bleed and uses 1280 × 720 YouTube covers in intrinsic 16:9 media stages; the cover and stage share the same ratio so the image fills without crop or CSS blank space.
+- The 13-video customer-story rail is full-bleed and matches the XRF listing card height: an intrinsic 16:9 cover plus a fixed 174 px copy area. Long titles clamp to two lines so no card stretches the row; all covers remain 1280 × 720 with no crop or CSS blank space.
 
 ## Validation state
 
