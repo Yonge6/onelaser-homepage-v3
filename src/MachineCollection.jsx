@@ -162,6 +162,7 @@ const products = [
     summary: "All-in-one RF desktop laser for fast, fine-detail production.",
     bestFor: "Personalized goods, photo engraving and compact shops",
     specs: ["38W RF", "23.6 × 11.8 in", "1,200 mm/s"],
+    powers: [38],
     laser: "38W RF CO₂",
     workArea: "23.6 × 11.8 in",
     maxSpeed: "1,200 mm/s",
@@ -186,6 +187,7 @@ const products = [
     summary: "The compact entry into Cobra glass CO₂ cutting power.",
     bestFor: "Growing workshops cutting wood, acrylic and leather",
     specs: ["90W Glass", "31.5 × 19.7 in", "1,200 mm/s"],
+    powers: [90],
     laser: "90W Glass CO₂; 2W / 3W / 5W IR optional",
     workArea: "31.50 × 19.69 in (800 × 500 mm)",
     maxSpeed: "1,200 mm/s",
@@ -210,6 +212,7 @@ const products = [
     summary: "Balanced cutting power for a broader production catalog.",
     bestFor: "Sign shops and businesses balancing size with throughput",
     specs: ["100W Glass", "39.4 × 23.6 in", "1,200 mm/s"],
+    powers: [100],
     laser: "100W Glass CO₂; 2W / 3W / 5W IR optional",
     workArea: "39.37 × 23.62 in (1,000 × 600 mm)",
     maxSpeed: "1,200 mm/s",
@@ -234,6 +237,7 @@ const products = [
     summary: "The largest Cobra cutting tier for demanding workshop jobs.",
     bestFor: "Large-format work and higher-power material cutting",
     specs: ["130W Glass", "55.1 × 35.4 in", "1,200 mm/s"],
+    powers: [130],
     laser: "130W Glass CO₂; 2W / 3W / 5W IR optional",
     workArea: "55.12 × 35.43 in (1,400 × 900 mm)",
     maxSpeed: "1,200 mm/s",
@@ -258,6 +262,7 @@ const products = [
     summary: "A dedicated 70W RF platform for crisp detail at industrial scale.",
     bestFor: "High-volume engraving where RF detail comes first",
     specs: ["70W RF", "27.6 × 19.7 in", "2,000 mm/s"],
+    powers: [70],
     laser: "70W RF CO₂",
     workArea: "27.56 × 19.69 in",
     maxSpeed: "2,000 mm/s",
@@ -282,6 +287,7 @@ const products = [
     summary: "A hybrid production system for cutting range and RF detail.",
     bestFor: "Businesses moving between fine engraving and cutting",
     specs: ["38W RF + 100W Glass", "70W RF option", "2,000 mm/s"],
+    powers: [38, 70, 100],
     laser: "38W RF + 100W Glass CO₂, or 70W RF",
     workArea: "35.43 × 23.62 in",
     maxSpeed: "2,000 mm/s",
@@ -306,6 +312,7 @@ const products = [
     summary: "More room for mixed production without giving up RF precision.",
     bestFor: "Established shops with larger work and varied orders",
     specs: ["38W RF + 130W Glass", "70W RF option", "2,000 mm/s"],
+    powers: [38, 70, 130],
     laser: "38W RF + 130W Glass CO₂, or 70W RF",
     workArea: "51.18 × 35.43 in",
     maxSpeed: "2,000 mm/s",
@@ -330,6 +337,7 @@ const products = [
     summary: "The largest Gen2 hybrid platform for demanding production floors.",
     bestFor: "High-output teams that need maximum capacity",
     specs: ["38W RF + 150W Glass", "70W RF option", "2,000 mm/s"],
+    powers: [38, 70, 150],
     laser: "38W RF + 150W Glass CO₂, or 70W RF",
     workArea: "62.99 × 39.37 in",
     maxSpeed: "2,000 mm/s",
@@ -354,6 +362,7 @@ const products = [
     summary: "A vertical RF workflow purpose-built for cylindrical products.",
     bestFor: "Tumblers, cups, bottles and repeat drinkware jobs",
     specs: ["38W RF", "Ø 16–230 mm", "800 mm/s"],
+    powers: [38],
     laser: "38W RF CO₂",
     workArea: "300 mm X travel; Ø 16–230 mm manual focus",
     maxSpeed: "800 mm/s",
@@ -493,8 +502,21 @@ const finderOptions = {
 
 const filterGroups = [
   {
+    key: "power",
+    label: "Laser Power",
+    options: [
+      ["all", "All power"],
+      ["38", "38W"],
+      ["70", "70W"],
+      ["90", "90W"],
+      ["100", "100W"],
+      ["130", "130W"],
+      ["150", "150W"],
+    ],
+  },
+  {
     key: "intent",
-    label: "What do you need to do?",
+    label: "Primary job",
     options: [
       ["all", "All jobs"],
       ["engraving", "Fine engraving"],
@@ -506,7 +528,7 @@ const filterGroups = [
   },
   {
     key: "material",
-    label: "What do you work with?",
+    label: "Material",
     options: [
       ["all", "All materials"],
       ["organic", "Wood, acrylic + leather"],
@@ -527,7 +549,7 @@ const filterGroups = [
   },
 ];
 
-const defaultFilters = { intent: "all", material: "all", family: "all" };
+const defaultFilters = { power: "all", intent: "all", material: "all", family: "all", minPrice: "", maxPrice: "" };
 const defaultFinder = { material: "", application: "", volume: "", size: "" };
 
 function rankFamilies(selections) {
@@ -607,6 +629,7 @@ function useImageReadiness() {
 function ProductCard({ product, compareIds, onToggleCompare }) {
   const isSelected = compareIds.includes(product.id);
   const compareLimitReached = compareIds.length >= 3 && !isSelected;
+  const savedAmount = Math.max(0, product.compareAt - product.price);
 
   return (
     <article className={`collection-product-card collection-product-card--${product.family}`}>
@@ -626,6 +649,7 @@ function ProductCard({ product, compareIds, onToggleCompare }) {
             <small>Current price</small>
             <strong>{currency.format(product.price)}</strong>
             <del>{currency.format(product.compareAt)}</del>
+            {savedAmount > 0 && <span className="collection-product-card__saving">Saved {currency.format(savedAmount)}</span>}
           </div>
           <span>USD</span>
         </div>
@@ -724,6 +748,9 @@ export function MachineCollectionPage() {
       if (filters.family !== "all" && product.family !== filters.family) return false;
       if (filters.material !== "all" && !product.materials.includes(filters.material)) return false;
       if (filters.intent !== "all" && !product.intents.includes(filters.intent)) return false;
+      if (filters.power !== "all" && !product.powers.includes(Number(filters.power))) return false;
+      if (filters.minPrice !== "" && product.price < Number(filters.minPrice)) return false;
+      if (filters.maxPrice !== "" && product.price > Number(filters.maxPrice)) return false;
       return true;
     });
     if (sort === "price-low") return [...filtered].sort((a, b) => a.price - b.price);
@@ -734,7 +761,8 @@ export function MachineCollectionPage() {
 
   const legacyProducts = products.filter((product) => product.generation === "Previous generation");
   const comparedProducts = compareIds.map((id) => products.find((product) => product.id === id)).filter(Boolean);
-  const activeFilterCount = Object.values(filters).filter((value) => value !== "all").length;
+  const activeFilterCount = ["power", "intent", "material", "family"].filter((key) => filters[key] !== "all").length
+    + (filters.minPrice !== "" || filters.maxPrice !== "" ? 1 : 0);
 
   function updateFilter(key, value) {
     setFilters((current) => ({ ...current, [key]: value }));
@@ -845,29 +873,6 @@ export function MachineCollectionPage() {
           )}
         </section>
 
-        <section className="collection-families" aria-labelledby="collection-families-title">
-          <header>
-            <span>MEET THE LINEUP</span>
-            <h2 id="collection-families-title">Choose the platform first.</h2>
-            <p>Each family starts with a different kind of work. Pick the closest fit, then compare models inside it.</p>
-          </header>
-          <div className="collection-families__grid">
-            {familyProfiles.map((family) => (
-              <button className={`collection-family-card collection-family-card--${family.id}`} type="button" onClick={() => chooseFamily(family.id)} key={family.id}>
-                <img className="collection-family-card__scene" src={asset(family.scene)} alt="" loading="lazy" />
-                <div className="collection-family-card__copy">
-                  <span>{family.eyebrow}</span>
-                  <h3>{family.name}</h3>
-                  <p>{family.copy}</p>
-                  <ul aria-label={`${family.name} highlights`}>{family.specs.map((spec) => <li key={spec}>{spec}</li>)}</ul>
-                </div>
-                <img className="collection-family-card__machine" src={asset(family.image)} alt={`${family.name} laser system`} loading="lazy" />
-                <strong>Explore the family <ArrowUpRight size={17} weight="bold" /></strong>
-              </button>
-            ))}
-          </div>
-        </section>
-
         <section className="collection-catalog" id="machine-catalog" ref={catalogRef} aria-labelledby="collection-catalog-title">
           <header className="collection-catalog__header">
             <div>
@@ -884,20 +889,47 @@ export function MachineCollectionPage() {
             {filtersOpen && <button className="collection-filter-backdrop" type="button" aria-label="Close filters" onClick={() => setFiltersOpen(false)} />}
             <aside id="collection-filters" className={`collection-filters${filtersOpen ? " is-open" : ""}`} aria-label="Filter current machines">
               <header>
-                <div><SlidersHorizontal size={20} weight="bold" /><strong>Filter machines</strong></div>
-                <button type="button" aria-label="Close filters" onClick={() => setFiltersOpen(false)}><X size={19} weight="bold" /></button>
+                <div>
+                  <SlidersHorizontal size={20} weight="bold" />
+                  <strong>Filters</strong>
+                  {activeFilterCount > 0 && <span>{activeFilterCount}</span>}
+                </div>
+                <div className="collection-filters__header-actions">
+                  <button className="collection-filters__reset" type="button" onClick={() => setFilters(defaultFilters)} disabled={!activeFilterCount}>Reset</button>
+                  <button className="collection-filters__close" type="button" aria-label="Close filters" onClick={() => setFiltersOpen(false)}><X size={19} weight="bold" /></button>
+                </div>
               </header>
+              <p className="collection-filters__count"><strong>{currentProducts.length}</strong> {currentProducts.length === 1 ? "machine" : "machines"} match</p>
+              <fieldset className="collection-filters__price">
+                <legend>Price</legend>
+                <div>
+                  <label>
+                    <span>Min</span>
+                    <span className="collection-price-input"><span>$</span><input type="number" min="0" step="100" inputMode="numeric" placeholder="0" value={filters.minPrice} onChange={(event) => setFilters((current) => ({ ...current, minPrice: event.target.value }))} onBlur={() => trackEvent("machine_collection_filter", { filter_name: "min_price", filter_value: filters.minPrice || "all" })} /></span>
+                  </label>
+                  <span aria-hidden="true">to</span>
+                  <label>
+                    <span>Max</span>
+                    <span className="collection-price-input"><span>$</span><input type="number" min="0" step="100" inputMode="numeric" placeholder="15000" value={filters.maxPrice} onChange={(event) => setFilters((current) => ({ ...current, maxPrice: event.target.value }))} onBlur={() => trackEvent("machine_collection_filter", { filter_name: "max_price", filter_value: filters.maxPrice || "all" })} /></span>
+                  </label>
+                </div>
+              </fieldset>
               {filterGroups.map((group) => (
-                <fieldset key={group.key}>
+                <fieldset className={group.key === "power" ? "collection-filters__power" : undefined} key={group.key}>
                   <legend>{group.label}</legend>
                   <div>
-                    {group.options.map(([value, label]) => (
-                      <button type="button" className={filters[group.key] === value ? "is-active" : ""} aria-pressed={filters[group.key] === value} onClick={() => updateFilter(group.key, value)} key={value}>{label}</button>
-                    ))}
+                    {group.options.map(([value, label]) => {
+                      const isActive = filters[group.key] === value;
+                      return (
+                        <button type="button" className={isActive ? "is-active" : ""} aria-pressed={isActive} onClick={() => updateFilter(group.key, value)} key={value}>
+                          <span>{label}</span>
+                          <span className="collection-filter-option__mark" aria-hidden="true">{isActive && <Check size={13} weight="bold" />}</span>
+                        </button>
+                      );
+                    })}
                   </div>
                 </fieldset>
               ))}
-              <button className="collection-filters__clear" type="button" onClick={() => setFilters(defaultFilters)} disabled={!activeFilterCount}>Clear filters</button>
               <button className="collection-filters__apply" type="button" onClick={() => setFiltersOpen(false)}>Show {currentProducts.length} machines</button>
             </aside>
 

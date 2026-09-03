@@ -31,15 +31,18 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 - The public machine collection route is `/collections/` in the independent V3 repository.
 - Nine current machines and four previous-generation machines use the user-supplied Cobra, Hydra Gen2 and VertiGo specification workbooks; X Series and first-generation Hydra specifications use the official OneLaser product pages. Live pricing remains sourced from the current official product pages.
 - Cobra cards identify the 2W/3W/5W IR module as an optional upgrade. Hydra 9/13/16 Gen2 cards distinguish the 38W RF + glass-tube Hybrid configuration from the 70W RF Pro configuration.
+- The standalone `Choose the platform first` family module is removed. The catalog now follows the Finder directly.
+- The sticky catalog filter follows the compact xTool-style hierarchy: Price, Laser Power, Primary job, Material and Series. Price accepts minimum/maximum values, Laser Power matches exact available configurations, the header shows active-filter and result counts, and mobile uses the existing bottom drawer.
+- Every discounted product card calculates and displays `Saved $X` from its official current and compare-at prices.
 - The comparison table covers eleven decision fields, including exact laser configuration, work area, raster engraving speed, acceleration, positioning accuracy and engraving resolution. Its per-machine remove action is a lightweight Old Glory Blue text control with an outlined close-circle.
-- The 13-video customer-story rail uses 1280 × 720 YouTube covers with uncropped `contain` rendering and a 16:9 stage.
+- The 13-video customer-story rail is full-bleed and uses 1280 × 720 YouTube covers in intrinsic 16:9 media stages; the cover and stage share the same ratio so the image fills without crop or CSS blank space.
 
 ## Validation state
 
 - `npm run verify` passes.
 - Desktop and 390 × 844 have zero document overflow, a 12 px minimum visible text floor and 64/64 loaded homepage images with real natural dimensions.
 - Browser console errors and warnings are empty.
-- Collection desktop and 390 × 844 checks have zero document overflow; the comparison table uses contained horizontal scrolling on mobile, and all 13 story covers load at 1280 × 720.
+- Collection desktop and 390 × 844 checks have zero document overflow; the comparison table uses contained horizontal scrolling on mobile, the Price and Laser Power filters return the expected products, and all 13 full-bleed story covers load at 1280 × 720.
 - The 42-image material filter, ambition image tabs, Explore hover treatment and mobile menu are interaction-verified; the earlier Hero, Mega Menu, project modal and lazy video behavior remains intact.
 
 ## Working-tree contract
