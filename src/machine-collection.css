@@ -272,10 +272,10 @@
 
 .collection-finder__results > div > button {
   min-width: 0;
-  min-height: 260px;
+  min-height: 290px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 42%;
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto auto auto 1fr auto;
   overflow: hidden;
   padding: 28px;
   border: 1px solid #dedee3;
@@ -289,7 +289,9 @@
 .collection-finder__results > div > button > span { color: var(--collection-action); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
 .collection-finder__results > div > button h3 { grid-column: 1; margin: 12px 0 0; font-size: 27px; line-height: 1; letter-spacing: -.03em; }
 .collection-finder__results > div > button p { grid-column: 1; margin: 14px 0 0; color: var(--collection-muted); font-size: 13px; line-height: 1.45; }
-.collection-finder__results > div > button img { grid-column: 2; grid-row: 1 / 5; align-self: center; width: 100%; height: 150px; object-fit: contain; }
+.collection-finder__results > div > button ul { grid-column: 1; display: flex; flex-wrap: wrap; align-content: start; gap: 6px; margin: 16px 0 0; padding: 0; list-style: none; }
+.collection-finder__results > div > button li { min-height: 26px; display: inline-flex; align-items: center; padding: 4px 9px; border: 1px solid #dedee3; border-radius: 999px; background: var(--collection-surface); color: #45454a; font-size: 11px; font-weight: 700; line-height: 1.2; }
+.collection-finder__results > div > button img { grid-column: 2; grid-row: 1 / 6; align-self: center; width: 100%; height: 150px; object-fit: contain; }
 .collection-finder__results > div > button strong { grid-column: 1; display: inline-flex; align-items: center; gap: 7px; margin-top: 20px; font-size: 13px; font-weight: 800; }
 .collection-finder__results > div > button:focus-visible { outline: 2px solid var(--collection-action); outline-offset: 3px; }
 .collection-finder__results > p { margin: 18px 0 0; color: var(--collection-muted); font-size: 12px; line-height: 1.5; }
@@ -755,9 +757,9 @@
   .collection-finder__results header h3 { font-size: 25px; }
   .collection-finder__results > div { display: flex; gap: 10px; overflow-x: auto; padding: 0 42px 10px 0; scroll-snap-type: x mandatory; scrollbar-width: none; }
   .collection-finder__results > div::-webkit-scrollbar { display: none; }
-  .collection-finder__results > div > button { min-height: 330px; flex: 0 0 calc(100% - 42px); grid-template-columns: 1fr; grid-template-rows: auto auto auto 112px auto; padding: 20px; scroll-snap-align: start; }
-  .collection-finder__results > div > button img { grid-column: 1; grid-row: 4; height: 112px; margin-top: 4px; }
-  .collection-finder__results > div > button strong { grid-column: 1; grid-row: 5; margin-top: 12px; }
+  .collection-finder__results > div > button { min-height: 380px; flex: 0 0 calc(100% - 42px); grid-template-columns: 1fr; grid-template-rows: auto auto auto auto 112px auto; padding: 20px; scroll-snap-align: start; }
+  .collection-finder__results > div > button img { grid-column: 1; grid-row: 5; height: 112px; margin-top: 4px; }
+  .collection-finder__results > div > button strong { grid-column: 1; grid-row: 6; margin-top: 12px; }
 
   .collection-families,
   .collection-catalog,

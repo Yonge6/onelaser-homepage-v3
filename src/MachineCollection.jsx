@@ -909,6 +909,9 @@ export function MachineCollectionPage() {
                     <span>{family.rank === 1 ? "BEST MATCH" : "ALSO CONSIDER"}</span>
                     <h3>{family.name}</h3>
                     <p>{family.bestFor}</p>
+                    <ul aria-label={`${family.name} key specifications`}>
+                      {family.specs.map((spec) => <li key={spec}>{spec}</li>)}
+                    </ul>
                     <img src={asset(family.image)} alt="" loading="lazy" />
                     <strong>View {family.name.replace("™", "")} models <ArrowUpRight size={16} weight="bold" /></strong>
                   </button>

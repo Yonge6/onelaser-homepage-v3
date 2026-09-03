@@ -33,6 +33,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 - Cobra cards identify the 2W/3W/5W IR module as an optional upgrade. Hydra 9/13/16 Gen2 cards distinguish the 38W RF + glass-tube Hybrid configuration from the 70W RF Pro configuration.
 - The standalone `Choose the platform first` family module is removed. The catalog now follows the Finder directly.
 - Finder uses the standard 48 px desktop / 32 px mobile section rhythm, including an explicit white boundary below it before the catalog begins.
+- Finder recommendations reuse each family profile's verified specification pills, matching the product-family tag treatment on the homepage.
 - The sticky catalog filter follows the compact xTool-style hierarchy: Price, Primary job, Material, Laser Power and Series. Price uses a synchronized red dual-thumb range slider plus minimum/maximum inputs; Laser Power and Series are multi-select OR groups with square checkmarks, while different groups combine with AND logic. Group headings are 14 px and vertically centered between the preceding divider and first option. The header shows active-filter and result counts, and mobile uses the existing bottom drawer.
 - Every discounted product card calculates and displays `Saved $X` from its official current and compare-at prices.
 - Current machine prices use Certia 800 consistently on cards and in the comparison table.
