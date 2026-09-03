@@ -84,6 +84,42 @@ const collectionStoryVideos = [
     tag: "SMALL BUSINESS",
   },
   {
+    id: "F1ZJvoeANgk",
+    title: "Meet the COBRA™: Official Product Tour & Launch Announcement",
+    channel: "OneLaser",
+    tag: "COBRA PRODUCT TOUR",
+  },
+  {
+    id: "UxN-bVOpAKg",
+    title: "I Spent 10 Years Evaluating Lasers—Here’s Why I Chose the Cobra",
+    channel: "OneLaser",
+    tag: "COBRA OWNER STORY",
+  },
+  {
+    id: "Fqtlsk_NsKM",
+    title: "Is the OneLaser Hydra 13 Worth It? A Pottery Owner's Honest Review",
+    channel: "OneLaser",
+    tag: "HYDRA OWNER REVIEW",
+  },
+  {
+    id: "HdP62cQVzs0",
+    title: "The Machine Behind His Best-Selling Maps | OneLaser Hydra 16 Testimonial",
+    channel: "OneLaser",
+    tag: "HYDRA TESTIMONIAL",
+  },
+  {
+    id: "qAn4HhGjRDs",
+    title: "Getting Started with VertiGo: Complete Setup Guide",
+    channel: "OneLaser",
+    tag: "VERTIGO SETUP",
+  },
+  {
+    id: "qomhIor8-Ww",
+    title: "OneLaser VertiGo First Setup",
+    channel: "OneLaser",
+    tag: "VERTIGO FIRST RUN",
+  },
+  {
     id: "5q2-Iy9Nhdc",
     title: "OneLaser XRF Unboxing",
     channel: "Bearded Builds Co",
@@ -100,6 +136,18 @@ const collectionStoryVideos = [
     title: "OneLaser XRF 38W Unboxing & Test Cutting",
     channel: "Peachy Creations",
     tag: "MAKER TEST RUN",
+  },
+  {
+    id: "r5m8As2oOJ4",
+    title: "Hobby Laser vs. OneLaser XRF: Does Speed Actually Matter?",
+    channel: "OneLaser",
+    tag: "XRF PERFORMANCE TEST",
+  },
+  {
+    id: "waBw5gDMPIM",
+    title: "Testing the New OneLaser Machines at Next Level Maker Conference",
+    channel: "OneLaser",
+    tag: "FULL LINEUP",
   },
 ];
 
@@ -471,11 +519,10 @@ function ProductCard({ product, compareIds, onToggleCompare }) {
   return (
     <article className={`collection-product-card collection-product-card--${product.family}`}>
       <div className="collection-product-card__media">
-        <span>{product.label}</span>
         <img src={product.image} alt={`${product.name} laser machine`} loading="lazy" />
       </div>
       <div className="collection-product-card__body">
-        <p className="collection-product-card__family">{product.generation}</p>
+        <p className="collection-product-card__family">{product.label}</p>
         <h3>{product.name}</h3>
         <p className="collection-product-card__summary">{product.summary}</p>
         <p className="collection-product-card__best"><strong>Best for</strong>{product.bestFor}</p>

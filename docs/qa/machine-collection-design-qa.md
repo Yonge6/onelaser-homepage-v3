@@ -60,6 +60,8 @@ Issues found and resolved:
 - Updated every product-card media badge to Independence Day navy `#002868`, while retaining OneLaser red for primary actions, prices and selected states.
 - Set the previous-generation disclosure title to the shared 800 display weight at all breakpoints.
 - Added the approved `Real businesses. Real results.` video rail with five live YouTube stories verified through YouTube metadata. The carousel supports arrows, touch/trackpad scrolling, keyboard arrows, reduced-motion behavior and a lazy privacy-enhanced player modal. Evidence: `references/incoming/machine-collection-qa/30-collections-customer-stories-desktop.jpg` and `31-collections-customer-stories-mobile.jpg`.
+- Removed the over-image product badge treatment and moved each badge label into the former generation-label position as red 12px / 800 metadata text.
+- Expanded the video rail from 5 to 13 verified YouTube videos, adding official Cobra product/owner stories, Hydra 13 and Hydra 16 owner proof, VertiGo setup coverage, an XRF performance test and a full-lineup conference video.
 
 ## Final result
 
