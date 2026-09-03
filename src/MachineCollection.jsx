@@ -1077,6 +1077,16 @@ export function MachineCollectionPage() {
           </details>
         </section>
 
+        <section className="collection-guide" aria-labelledby="collection-guide-title">
+          <header><span>BUYING GUIDE</span><h2 id="collection-guide-title">We’ll help you choose with confidence.</h2></header>
+          <div>
+            <article><span>01</span><h3>Start with the product.</h3><p>Flat goods, deep cutting, large-format production and repeat drinkware each point to a different OneLaser family.</p></article>
+            <article><span>02</span><h3>Choose detail or cutting headroom.</h3><p>RF favors fast response and fine detail. Higher-power glass CO₂ tiers create more cutting headroom.</p></article>
+            <article><span>03</span><h3>Plan for tomorrow’s volume.</h3><p>Choose around your repeatable daily workflow—not a single sample job or an unsupported income promise.</p></article>
+          </div>
+          <a href={SALES_CALL_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("generate_lead", { lead_type: "machine_collection_consultation" })}>Talk with a OneLaser expert <ArrowUpRight size={18} weight="bold" /></a>
+        </section>
+
         <section className="ownership-support ownership-support--collection" id="collection-support" aria-label="OneLaser ownership support">
           <div className="ownership-support__inner">
             <div className="ownership-support__grid">
@@ -1103,16 +1113,6 @@ export function MachineCollectionPage() {
               </article>
             </div>
           </div>
-        </section>
-
-        <section className="collection-guide" aria-labelledby="collection-guide-title">
-          <header><span>BUYING GUIDE</span><h2 id="collection-guide-title">We’ll help you choose with confidence.</h2></header>
-          <div>
-            <article><span>01</span><h3>Start with the product.</h3><p>Flat goods, deep cutting, large-format production and repeat drinkware each point to a different OneLaser family.</p></article>
-            <article><span>02</span><h3>Choose detail or cutting headroom.</h3><p>RF favors fast response and fine detail. Higher-power glass CO₂ tiers create more cutting headroom.</p></article>
-            <article><span>03</span><h3>Plan for tomorrow’s volume.</h3><p>Choose around your repeatable daily workflow—not a single sample job or an unsupported income promise.</p></article>
-          </div>
-          <a href={SALES_CALL_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("generate_lead", { lead_type: "machine_collection_consultation" })}>Talk with a OneLaser expert <ArrowUpRight size={18} weight="bold" /></a>
         </section>
 
         <section className="review-proof collection-stories" id="customer-stories" aria-labelledby="collection-stories-title">
