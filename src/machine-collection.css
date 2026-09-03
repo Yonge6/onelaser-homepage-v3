@@ -159,7 +159,7 @@
   display: grid;
   grid-template-columns: minmax(300px, .78fr) minmax(560px, 1.35fr);
   gap: 56px;
-  margin: 48px auto 0;
+  margin: 48px auto;
   padding: 48px 52px;
   scroll-margin-top: 88px;
   border-radius: 32px;
@@ -527,7 +527,7 @@
 .collection-product-card__price { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 24px; }
 .collection-product-card__price > div { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px 8px; }
 .collection-product-card__price small { width: 100%; color: var(--collection-muted); font-size: 12px; font-weight: 700; }
-.collection-product-card__price strong { color: var(--collection-action); font-size: 24px; line-height: 1; }
+.collection-product-card__price strong { color: var(--collection-action); font-size: 24px; font-weight: 800; line-height: 1; }
 .collection-product-card__price del { color: #86868b; font-size: 12px; }
 .collection-product-card__price .collection-product-card__saving { width: auto; min-height: 22px; display: inline-flex; align-items: center; padding: 0 8px; border-radius: 999px; background: #fff3ef; color: var(--collection-action); font-size: 11px; font-weight: 800; }
 .collection-product-card__price > span { color: #86868b; font-size: 12px; }
@@ -566,7 +566,7 @@
 .collection-compare thead button:focus-visible { outline-color: var(--collection-blue); }
 .collection-compare tbody th { width: 150px; color: #45454a; font-size: 12px; }
 .collection-compare tbody td { color: #55555a; font-size: 13px; line-height: 1.45; }
-.collection-compare tbody td > strong { color: var(--collection-action); font-size: 18px; }
+.collection-compare tbody td > strong { color: var(--collection-action); font-size: 18px; font-weight: 800; }
 
 .collection-legacy { padding: 32px var(--home-content-gutter) 48px; background: #fff; }
 .collection-legacy details { max-width: 1280px; margin: 0 auto; padding: 0 30px 30px; border: 1px solid var(--collection-line); border-radius: 28px; background: var(--collection-surface); }
@@ -737,7 +737,7 @@
   .collection-finder {
     width: calc(100% - 36px);
     gap: 28px;
-    margin-top: 32px;
+    margin: 32px auto;
     padding: 32px 20px;
     border-radius: 24px;
   }
