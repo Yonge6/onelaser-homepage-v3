@@ -875,7 +875,7 @@ export function MachineCollectionPage() {
             </ul>
           </div>
           <figure className="collection-hero__media">
-            <img src={asset("collection-hero-lineup.jpg")} alt="OneLaser XRF, Cobra, Hydra Gen2 and VertiGo laser machines" />
+            <img src={asset("collection-hero-trade-show.webp")} alt="OneLaser laser machines displayed at the OneLaser trade show booth" />
           </figure>
         </section>
 

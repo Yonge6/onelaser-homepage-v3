@@ -1,6 +1,6 @@
 # OneLaser Homepage + XRF Gen2 Current State
 
-Updated: 2026-09-03 (Asia/Shanghai)
+Updated: 2026-09-04 (Asia/Shanghai)
 
 ## Start here
 
@@ -29,6 +29,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 ## Current collection state
 
 - The public machine collection route is `/collections/` in the independent V3 repository.
+- The collection Hero uses the supplied 1920 × 1081 OneLaser trade-show image in an intrinsic-ratio media stage with `object-fit: contain`; desktop height follows the image instead of a fixed 500 px crop, and narrower layouts stack the copy above the uncropped image.
 - Nine current machines and four previous-generation machines use the user-supplied Cobra, Hydra Gen2 and VertiGo specification workbooks; X Series and first-generation Hydra specifications use the official OneLaser product pages. Live pricing remains sourced from the current official product pages.
 - Cobra cards identify the 2W/3W/5W IR module as an optional upgrade. Hydra 9/13/16 Gen2 cards distinguish the 38W RF + glass-tube Hybrid configuration from the 70W RF Pro configuration.
 - The standalone `Choose the platform first` family module is removed. The catalog now follows the Finder directly.
