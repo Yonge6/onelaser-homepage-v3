@@ -474,10 +474,12 @@
   .home-product-card__copy p { min-height: 0; margin-top: 14px; font-size: 15px; line-height: 1.42; }
   .home-product-card__features { gap: 7px; margin-top: 18px; }
   .home-product-card__features span { min-height: 28px; padding: 5px 10px; border-radius: 999px; font-size: 12px; }
-  .home-product-card__media { padding: 0 20px; transform: translateY(-50px); }
-  .home-product-card--xrf .home-product-card__media img { width: 100%; }
+  .home-product-card__media { padding: 0 20px; transform: none; }
+  .home-product-card__media img { position: absolute; left: 50%; top: 50%; height: auto; transform: translate(-50%, -50%); }
+  .home-product-card:hover .home-product-card__media img, .home-product-card:focus-visible .home-product-card__media img { transform: translate(-50%, -50%); }
+  .home-product-card--xrf .home-product-card__media img, .home-product-card--cobra .home-product-card__media img { width: 100%; }
+  .home-product-card--hydra .home-product-card__media img { width: 86%; }
   .home-product-card--vertigo .home-product-card__media img { width: 70%; }
-  .home-product-card--hydra .home-product-card__media img, .home-product-card--cobra .home-product-card__media img { width: 100%; }
   .home-product-card__cta { min-height: 42px; margin-bottom: 14px; font-size: 14px; }
   .home-why { padding-top: 32px; padding-bottom: 32px; }
   .home-why__header h2 { font-size: 32px; }
