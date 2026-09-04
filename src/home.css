@@ -478,7 +478,7 @@
   .home-product-card__media img { position: absolute; left: 50%; top: 50%; height: auto; transform: translate(-50%, -50%); }
   .home-product-card:hover .home-product-card__media img, .home-product-card:focus-visible .home-product-card__media img { transform: translate(-50%, -50%); }
   .home-product-card--xrf .home-product-card__media img, .home-product-card--cobra .home-product-card__media img { width: 100%; }
-  .home-product-card--hydra .home-product-card__media img { width: 86%; }
+  .home-product-card--hydra .home-product-card__media img { width: 74%; }
   .home-product-card--vertigo .home-product-card__media img { width: 70%; }
   .home-product-card__cta { min-height: 42px; margin-bottom: 14px; font-size: 14px; }
   .home-why { padding-top: 32px; padding-bottom: 32px; }
