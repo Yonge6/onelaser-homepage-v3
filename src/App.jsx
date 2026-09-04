@@ -2276,7 +2276,8 @@ export function XrfPage() {
 export function App() {
   const page = new URLSearchParams(window.location.search).get("page");
   const isCollectionsPath = window.location.pathname.replace(/\/+$/, "").endsWith("/collections");
-  if (page === "xrf") return <XrfPage />;
+  const isXrfListingRoot = window.location.pathname.replace(/^\/+|\/+$/g, "") === "xrf-gen2-listing";
+  if (page === "xrf" || (isXrfListingRoot && !page)) return <XrfPage />;
   if (page === "machines" || page === "collections" || isCollectionsPath) return <MachineCollectionPage />;
   return <HomePage />;
 }
