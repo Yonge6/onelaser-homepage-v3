@@ -100,19 +100,23 @@ const heroSlides = [
 ];
 const loopedHeroSlides = [heroSlides.at(-1), ...heroSlides, heroSlides[0]];
 
+// USD base prices verified against official product .js endpoints on 2026-09-09.
+const productPrice = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
 const productCards = [
   {
     id: "cobra",
+    startingPrice: 5999,
     name: "Cobra™ Series",
     label: "Workshop Essential",
     copy: "Performance CO₂+IR Dual-Laser System",
     features: ["Up to 130W Glass + 3W/5W IR", "Master 300+ Materials", "1,200 mm/s Speed", "1,000 DPI Max Resolution"],
     image: "home-product-cobra.png",
     scene: "home-product-cobra-scene.webp",
-    href: "https://www.1laser.com/products/cobra-10-100w-co2-laser-engraver-cutter",
+    href: "https://www.1laser.com/collections/cobra-series",
   },
   {
     id: "xrf",
+    startingPrice: 4399,
     name: "XRF™",
     label: "Performance Desktop Laser",
     copy: "World’s Best-Performing RF Desktop Laser",
@@ -123,6 +127,7 @@ const productCards = [
   },
   {
     id: "hydra",
+    startingPrice: 10999,
     name: "Hydra™ Gen2",
     label: "Industrial Laser System",
     copy: "RF Laser Beast: Brutal Speed Meets Insane Detail.",
@@ -133,6 +138,7 @@ const productCards = [
   },
   {
     id: "vertigo",
+    startingPrice: 5599,
     name: "VertiGo™",
     label: "Performance Rotary Laser",
     copy: "World’s First Vertical Laser — Tumblers & Cups Engraved Like Never Before",
@@ -913,6 +919,9 @@ export function HomePage() {
                 </div>
                 <div className="home-product-card__media">
                   <img src={asset(product.image)} alt={`${product.name} laser system`} loading="lazy" />
+                </div>
+                <div className="home-product-card__price">
+                  <span>From</span> <strong>{productPrice.format(product.startingPrice)}</strong> <span>USD</span>
                 </div>
                 <strong className="home-product-card__cta">Explore {product.name.replace("™ Series", "").replace("™", "")} <ArrowUpRight size={16} weight="bold" /></strong>
               </a>

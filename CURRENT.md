@@ -15,6 +15,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 
 ## Current homepage state
 
+- Lineup price update (2026-09-09): all four lineup cards show a centered `From $X,XXX USD` line above Explore, using official base prices Cobra $5,999, XRF $4,399, Hydra Gen2 $10,999 and VertiGo $5,599. Prices were verified through the official product JSON endpoints; Cobra uses the Cobra 8 series entry price and now links to the official series collection. Cards gain 40 px to preserve their original image space; scene hover/focus switches price text to white.
 - Narrative order is Hero Campaigns → machine lineup → Made with OneLaser → performance → audience fit → real-world proof → OneLaser Standard → Explore / Community → footer.
 - The four-machine lineup explains project fit before specifications and preserves the Cobra, XRF, Hydra Gen2 and VertiGo capability boundaries.
 - Finished work restores all 42 V2 project images in a dense material-filtered rail: three rows on desktop and two rows on mobile. Performance follows the user-approved three-stage anatomy: one dark metric-led RF system stage, two supplied evidence images, then the complete user-supplied 01–06 capability set in a divided desktop grid and mobile snap rail. The extra Vision and Speed images and the comparison link remain removed. Makers, Business and Education share one tab-controlled stage with the same expert-consultation CTA.
