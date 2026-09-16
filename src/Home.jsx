@@ -400,6 +400,8 @@ export function HomeNavigation() {
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
   const [activeMachineSeries, setActiveMachineSeries] = useState("x");
   const suppressMegaFocusRef = useRef(false);
+  const headerRef = useRef(null);
+  const menuButtonRef = useRef(null);
   const activeResourceMenu = activeMegaMenu === "support" ? supportMenu : communityMenu;
 
   useEffect(() => {
@@ -418,6 +420,42 @@ export function HomeNavigation() {
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [activeMegaMenu]);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    setActiveMegaMenu(null);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const updatePosition = () => {
+      if (window.innerWidth > 820) { setMenuOpen(false); return; }
+      headerRef.current?.style.setProperty("--mobile-nav-top", `${headerRef.current.getBoundingClientRect().bottom}px`);
+    };
+    updatePosition();
+    const observer = new ResizeObserver(updatePosition);
+    observer.observe(headerRef.current);
+    window.addEventListener("resize", updatePosition);
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+      if (event.key === "Tab") {
+        const controls = [...headerRef.current.querySelectorAll("a, button, summary")].filter(el => el.getClientRects().length > 0 && !el.closest("details:not([open]) > div"));
+        const first = controls[0];
+        const last = controls.at(-1);
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      observer.disconnect();
+      window.removeEventListener("resize", updatePosition);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen, announcementVisible]);
 
   const enterMegaMenu = (menu) => (event) => {
     if (event.key !== "ArrowDown") return;
@@ -447,6 +485,7 @@ export function HomeNavigation() {
         </div>
       )}
       <header
+        ref={headerRef}
         className="home-header"
         onMouseLeave={() => setActiveMegaMenu(null)}
         onBlur={(event) => {
@@ -457,10 +496,11 @@ export function HomeNavigation() {
           <img src={asset("onelaser-logo.png")} alt="OneLaser" />
         </a>
         <button
+          ref={menuButtonRef}
           className="home-menu-button"
           type="button"
           aria-expanded={menuOpen}
-          aria-controls="home-navigation"
+          aria-controls="home-mobile-navigation"
           onClick={() => setMenuOpen((value) => !value)}
         >
           {menuOpen ? <X size={21} weight="bold" /> : <List size={22} weight="bold" />}
@@ -480,6 +520,48 @@ export function HomeNavigation() {
           </div>
           <a href="https://www.1laser.com/pages/contact-us" target="_blank" rel="noreferrer" onMouseEnter={() => setActiveMegaMenu(null)} onFocus={() => setActiveMegaMenu(null)}>Contact</a>
         </nav>
+        {menuOpen && (
+          <nav id="home-mobile-navigation" className="home-mobile-nav" aria-label="Mobile main navigation" onClick={(event) => {
+            if (event.target.closest("a")) { setMenuOpen(false); menuButtonRef.current?.focus(); }
+          }}>
+            <details className="home-mobile-nav__group" name="mobile-navigation">
+              <summary>Laser Machines<CaretDown size={18} /></summary>
+              <div className="home-mobile-nav__panel">
+                <a className="home-mobile-nav__all" href={MACHINES_PAGE_URL}>Explore all machines<ArrowUpRight size={16} /></a>
+                {Object.entries(machineMenuSeries).map(([id, series]) => (
+                  <details className="home-mobile-nav__series" name="mobile-machine-series" key={id}>
+                    <summary>{series.label}<CaretDown size={16} /></summary>
+                    <div className="home-mobile-nav__products">
+                      {series.products.map(product => (
+                        <a href={product.href} target="_blank" rel="noreferrer" key={product.name}>
+                          <span><ProductName name={product.name} /></span>
+                          <small>{product.copy}</small>
+                        </a>
+                      ))}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </details>
+            <a className="home-mobile-nav__direct" href="https://www.1laser.com/collections/laser-accessories" target="_blank" rel="noreferrer">Accessories<ArrowUpRight size={16} /></a>
+            <a className="home-mobile-nav__direct" href="https://www.1laser.com/collections/limited-offers" target="_blank" rel="noreferrer">Clearance<ArrowUpRight size={16} /></a>
+            {[["Support", supportMenu], ["Community", communityMenu]].map(([label, menu]) => (
+              <details className="home-mobile-nav__group" name="mobile-navigation" key={label}>
+                <summary>{label}<CaretDown size={18} /></summary>
+                <div className="home-mobile-nav__panel home-mobile-nav__links">
+                  {[...menu.featured.map(item => [item.label, item.href]), ...menu.links].map(([title, href]) => (
+                    <a href={href} target="_blank" rel="noreferrer" key={title}>{title}<ArrowUpRight size={15} /></a>
+                  ))}
+                </div>
+              </details>
+            ))}
+            <a className="home-mobile-nav__direct" href="https://www.1laser.com/pages/contact-us" target="_blank" rel="noreferrer">Contact<ArrowUpRight size={16} /></a>
+            <div className="home-mobile-nav__utilities">
+              <a href="https://www.1laser.com/search" target="_blank" rel="noreferrer"><MagnifyingGlass size={18} />Search</a>
+              <a href="https://www.1laser.com/account/login" target="_blank" rel="noreferrer"><UserCircle size={18} />Log in</a>
+            </div>
+          </nav>
+        )}
         <div className="home-header__actions" aria-label="OneLaser account and shopping">
           <a href="https://www.1laser.com/search" target="_blank" rel="noreferrer" aria-label="Search OneLaser"><MagnifyingGlass size={20} /></a>
           <a href="https://www.1laser.com/cart" target="_blank" rel="noreferrer" aria-label="View cart"><ShoppingBag size={20} /></a>
