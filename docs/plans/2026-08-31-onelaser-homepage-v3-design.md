@@ -23,7 +23,7 @@ V3 uses a restrained product-editorial system rather than a sequence of equal-we
 
 - VertiGo appears only for cylindrical goods.
 - Mixed and non-cylindrical work recommends XRF, Cobra, or Hydra.
-- XRF motion copy uses `1,200 mm/s` and `True 3.5G`.
+- First-generation XRF motion copy uses `1,200 mm/s` and `True 3G` across the homepage, Finder and collection; only the XRF Gen2 detail page uses `True 3.5G`.
 - No invented discounts, reviews, urgency, shipping dates, income promises, or checkout paths.
 - Any project economics remain labeled illustrative inside the existing modal.
 - Product, Support, Community, and policy names link only to official `1laser.com` destinations.
