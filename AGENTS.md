@@ -67,7 +67,7 @@ Do not invent reviews, discounts, urgency, shipping dates, accessory pricing, fi
 
 ## Confirmed claims and content safety
 
-- Customer-facing motion data is exactly `1,200 mm/s` and `True 3.5G`; remove older `1,300 mm/s` or `3G` references.
+- Distinguish generations: XRF (first generation, including homepage cards, Finder recommendations and collection specifications) uses `True 3G`; XRF Gen2 detail uses `True 3.5G`. Never apply Gen2 acceleration to XRF. Current customer-facing speed is `1,200 mm/s`; remove older `1,300 mm/s` references.
 - Supported proof includes closed-loop motion, Hydra-derived all-steel axes, a 20% lighter head, up to 2,000 DPI, ≤0.01 mm positioning, 0.07 mm spot, RF response and up to 30,000 source hours when supported by the workbook.
 - Present 38W and 70W as equal-fit choices. The long-form power proof is display-only and never changes Hero configuration, cart or sticky total.
 - Generated imagery may fill a workbook-led proof gap only. Use supplied real XRF renders whenever the machine appears, tie each generated image to one claim, and ship WebP.

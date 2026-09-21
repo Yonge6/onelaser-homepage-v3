@@ -47,7 +47,7 @@ const recommendedMachines = {
     name: "XRF",
     href: "https://www.1laser.com/products/onelaser-xrf-desktop-laser-machine",
     copy: "The King of RF Desktop Lasers.",
-    specs: ["38W RF Power", "1,200 mm/s", "True 3.5G"],
+    specs: ["38W RF Power", "1,200 mm/s", "True 3G"],
     image: "home-product-xrf.png",
   },
   cobra: {
@@ -120,7 +120,7 @@ const productCards = [
     name: "XRF™",
     label: "Performance Desktop Laser",
     copy: "World’s Best-Performing RF Desktop Laser",
-    features: ["38W RF Power", "1,200 mm/s Speed", "True 3.5G Acceleration", "Conveyor Feeder Available"],
+    features: ["38W RF Power", "1,200 mm/s Speed", "True 3G Acceleration", "Conveyor Feeder Available"],
     image: "home-product-xrf.png",
     scene: "home-product-xrf-scene.webp",
     href: "https://www.1laser.com/products/onelaser-xrf-desktop-laser-machine",

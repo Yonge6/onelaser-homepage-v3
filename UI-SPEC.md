@@ -71,7 +71,7 @@ The page follows one consistent evidence ladder: finished result → product cap
 - Hero gallery is sticky on desktop while the longer purchase panel scrolls; it becomes static when the layout stacks below 1180 px.
 - Sticky purchase bar always reflects the selected power, package, optional-item count, quantity and calculated total.
 - On mobile, hero purchase power choices may stack, while the independent editorial power-proof switch remains a compact two-option segmented control.
-- Published customer-facing performance labels are `1,300 mm/s` and `True 3.5G` everywhere.
+- Published XRF motion labels use `1,200 mm/s`. Acceleration is generation-specific: XRF uses `True 3G`; XRF Gen2 uses `True 3.5G`. Homepage and collection XRF entries are first-generation machines.
 
 ## Motion
 

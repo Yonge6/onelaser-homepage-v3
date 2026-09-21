@@ -1,6 +1,6 @@
 # OneLaser Homepage + XRF Gen2 Current State
 
-Updated: 2026-09-16 (Asia/Shanghai)
+Updated: 2026-09-21 (Asia/Shanghai)
 
 ## Start here
 
@@ -14,6 +14,8 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 - Protected V2: `https://yonge6.github.io/onelaser-homepage/` at baseline `1b6ac43`; do not overwrite or redeploy it from V3 work.
 
 ## Current homepage state
+
+- Generation correction (2026-09-21): XRF uses True 3G in homepage cards, homepage Finder, collection family recommendations and comparison data. XRF Gen2 detail retains True 3.5G.
 
 - Mobile navigation (2026-09-16) uses a full-height, independently scrolling accordion below the header. Laser Machines includes all desktop series and models; Support and Community share the desktop featured and text links. Search and Log in remain available. Menu open locks background scroll; Escape, close, link selection and desktop resize dismiss it. Desktop Mega Menu is retained.
 - Lineup price update (2026-09-09): all four lineup cards show a centered `From $X,XXX USD` line above Explore, using official base prices Cobra $5,999, XRF $4,399, Hydra Gen2 $10,999 and VertiGo $5,599. Prices were verified through the official product JSON endpoints; Cobra uses the Cobra 8 series entry price and now links to the official series collection. Cards gain 40 px to preserve their original image space; scene hover/focus switches price text to white.
