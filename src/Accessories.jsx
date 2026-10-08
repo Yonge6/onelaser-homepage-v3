@@ -111,7 +111,7 @@ export function AccessoriesPage() {
     <main id="accessories-main">
       <section className="accessory-hero" aria-labelledby="accessory-title">
         <div className="accessory-hero__copy"><span className="accessory-eyebrow">ENGRAVING. MARKING. CUTTING.</span><h1 id="accessory-title">Laser accessories.</h1><p className="accessory-hero__headline">Enhance your projects.</p><p>Boost your OneLaser engraving capabilities with laser rotaries, Base Boost systems, chillers, and more, tailored to your specific needs.</p><div className="accessory-hero__actions"><a className="accessory-primary" href="#accessory-machines">Find my accessories <ArrowDown size={18} /></a><a className="accessory-secondary" href={CALL_URL}>Book A Free Call <ArrowUpRight size={18} /></a></div></div>
-        <figure className="accessory-hero__media"><img src={asset("accessories/accessories-workshop-hero.webp")} alt="OneLaser accessories in a sunlit workshop: PiBurn OMNI rotary, air assist control and focal lens on a wooden workbench, with a water chiller below" fetchPriority="high" width="1448" height="1086" /></figure>
+        <figure className="accessory-hero__media"><img src={asset("accessories/accessories-workshop-hero-v2.webp")} alt="PiBurn OMNI rotary on a well-used wooden workshop bench, with a tumbler beside it and a OneLaser water chiller stored below" fetchPriority="high" width="1448" height="1086" /></figure>
       </section>
 
       <section className="accessory-machines" id="accessory-machines" aria-labelledby="accessory-machine-title">
