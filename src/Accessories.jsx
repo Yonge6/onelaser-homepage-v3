@@ -111,7 +111,7 @@ export function AccessoriesPage() {
     <main id="accessories-main">
       <section className="accessory-hero" aria-labelledby="accessory-title">
         <div className="accessory-hero__copy"><span className="accessory-eyebrow">ENGRAVING. MARKING. CUTTING.</span><h1 id="accessory-title">Laser accessories.</h1><p className="accessory-hero__headline">Enhance your projects.</p><p>Boost your OneLaser engraving capabilities with laser rotaries, Base Boost systems, chillers, and more, tailored to your specific needs.</p><div className="accessory-hero__actions"><a className="accessory-primary" href="#accessory-machines">Find my accessories <ArrowDown size={18} /></a><a className="accessory-secondary" href={CALL_URL}>Book A Free Call <ArrowUpRight size={18} /></a></div></div>
-        <figure className="accessory-hero__media"><img src={asset("accessories/accessories-apple-store-hero.webp")} alt="Five OneLaser accessories displayed on pale wood tables and stone plinths in a bright glass technology showroom" fetchPriority="high" width="1448" height="1086" /></figure>
+        <figure className="accessory-hero__media"><img src={asset("accessories/accessories-gray-studio-hero.webp")} alt="Eight OneLaser accessories arranged with visual rhythm on tonal gray studio plinths" fetchPriority="high" width="1448" height="1086" /></figure>
       </section>
 
       <section className="accessory-machines" id="accessory-machines" aria-labelledby="accessory-machine-title">
