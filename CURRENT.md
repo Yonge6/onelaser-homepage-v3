@@ -59,6 +59,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 - Six category shortcuts lead into a complete searchable catalog with category OR filters, combined price limits, price/name sorting, removable filter chips and an empty/reset state. Desktop has a sticky sidebar; mobile uses a native modal bottom sheet.
 - Official product names, concise source-based descriptions and original imagery are retained. The 28 local WebP assets total about 585 KB. Variant-dependent prices use `From` and the minimum variant price; invalid/equal compare-at prices are hidden. Product and consultation actions go to the official site.
 - The hero follows the header directly without a breadcrumb, with a 32 px desktop / 24 px mobile top gap, and features the official PiBurn OMNI image; all six source FAQs follow the consultation panel. Desktop, mobile and footer Accessories links now use this local route.
+- Hero `Book A Free Call` uses the Collections secondary-button style: white pill, gray outline, Certia 800 and the same 52 px height as the adjacent primary CTA.
 - Source mapping and release approach: `docs/plans/2026-10-08-accessories.md`.
 
 ## Validation state
