@@ -30,6 +30,7 @@ import {
 const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}`;
 const XRF_PAGE_URL = `${import.meta.env.BASE_URL}?page=xrf`;
 const MACHINES_PAGE_URL = `${import.meta.env.BASE_URL}collections/`;
+const ACCESSORIES_PAGE_URL = `${import.meta.env.BASE_URL}accessories/`;
 const wholeCurrencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
@@ -510,7 +511,7 @@ export function HomeNavigation() {
           <div className="home-nav__item">
             <a href={MACHINES_PAGE_URL} aria-haspopup="true" aria-controls="home-mega-machines" aria-expanded={activeMegaMenu === "machines"} data-mega-trigger="machines" onMouseEnter={() => setActiveMegaMenu("machines")} onFocus={() => { if (!suppressMegaFocusRef.current) setActiveMegaMenu("machines"); }} onKeyDown={enterMegaMenu("machines")}>Laser Machines <CaretDown size={13} weight="bold" /></a>
           </div>
-          <a href="https://www.1laser.com/collections/laser-accessories" target="_blank" rel="noreferrer" onMouseEnter={() => setActiveMegaMenu(null)} onFocus={() => setActiveMegaMenu(null)}>Accessories</a>
+          <a href={ACCESSORIES_PAGE_URL} onMouseEnter={() => setActiveMegaMenu(null)} onFocus={() => setActiveMegaMenu(null)}>Accessories</a>
           <a href="https://www.1laser.com/collections/limited-offers" target="_blank" rel="noreferrer" onMouseEnter={() => setActiveMegaMenu(null)} onFocus={() => setActiveMegaMenu(null)}>Clearance</a>
           <div className="home-nav__item">
             <a href="https://www.1laser.com/pages/sales-consultation" target="_blank" rel="noreferrer" aria-haspopup="true" aria-controls="home-mega-support" aria-expanded={activeMegaMenu === "support"} data-mega-trigger="support" onMouseEnter={() => setActiveMegaMenu("support")} onFocus={() => { if (!suppressMegaFocusRef.current) setActiveMegaMenu("support"); }} onKeyDown={enterMegaMenu("support")}>Support <CaretDown size={13} weight="bold" /></a>
@@ -543,7 +544,7 @@ export function HomeNavigation() {
                 ))}
               </div>
             </details>
-            <a className="home-mobile-nav__direct" href="https://www.1laser.com/collections/laser-accessories" target="_blank" rel="noreferrer">Accessories<ArrowUpRight size={16} /></a>
+            <a className="home-mobile-nav__direct" href={ACCESSORIES_PAGE_URL}>Accessories<ArrowUpRight size={16} /></a>
             <a className="home-mobile-nav__direct" href="https://www.1laser.com/collections/limited-offers" target="_blank" rel="noreferrer">Clearance<ArrowUpRight size={16} /></a>
             {[["Support", supportMenu], ["Community", communityMenu]].map(([label, menu]) => (
               <details className="home-mobile-nav__group" name="mobile-navigation" key={label}>
@@ -638,7 +639,7 @@ export function HomeFooter() {
       <div className="home-footer__main">
         <div className="home-footer__links">
           <div><strong>Community</strong><a href="https://www.1laser.com/pages/onelaser-rewards">Purchase Rewards</a><a href="https://af.uppromote.com/OneLaser/register">Become an Affiliate</a><a href="https://www.1laser.com/pages/laser-engraving-community">Join the Community</a><a href="https://www.1laser.com/pages/testimonials">Testimonials</a><a href="https://www.1laser.com/pages/demoroom">Demo Room</a></div>
-          <div><strong>Machines</strong><a href={MACHINES_PAGE_URL}>OneLaser Machines</a><a href="https://www.1laser.com/collections/x-series">X Series</a><a href="https://www.1laser.com/collections/cobra-series">Cobra Series</a><a href="https://www.1laser.com/collections/hydra-gen-2-rf-laser-engravers-cutters">Hydra Gen2 Series</a><a href="https://www.1laser.com/collections/hydra-series">Hydra Series</a><a href="https://www.1laser.com/products/vertigo-vertical-laser-engraver">VertiGo</a><a href="https://www.1laser.com/collections/laser-accessories">Laser Accessories</a></div>
+          <div><strong>Machines</strong><a href={MACHINES_PAGE_URL}>OneLaser Machines</a><a href="https://www.1laser.com/collections/x-series">X Series</a><a href="https://www.1laser.com/collections/cobra-series">Cobra Series</a><a href="https://www.1laser.com/collections/hydra-gen-2-rf-laser-engravers-cutters">Hydra Gen2 Series</a><a href="https://www.1laser.com/collections/hydra-series">Hydra Series</a><a href="https://www.1laser.com/products/vertigo-vertical-laser-engraver">VertiGo</a><a href={ACCESSORIES_PAGE_URL}>Laser Accessories</a></div>
           <div><strong>Support</strong><a href="https://www.1laser.com/pages/about-us">About Us</a><a href="https://www.1laser.com/pages/contact-us">Contact Us</a><a href="https://www.1laser.com/pages/financing">Financing</a><a href="https://www.1laser.com/blogs/topic">Blog Center</a><a href="https://www.1laser.com/pages/payment-methods">Payment Methods</a><a href="https://www.1laser.com/pages/faq">FAQs</a><a href="https://www.1laser.com/pages/laser-cutter-engraving-settings-for-different-materials">Laser Engraving &amp; Cutting Chart</a><a href="https://www.1laser.com/pages/find-demo-host">Schedule a Demo</a><a href="https://www.1laser.com/pages/demoroom">Become a Demo Host</a></div>
           <div><strong>Policy</strong><a href="https://www.1laser.com/pages/shipping-policy">Shipping Policy</a><a href="https://www.1laser.com/pages/privacy-policy">Privacy Policy</a><a href="https://www.1laser.com/pages/refund-policy">Refund Policy</a><a href="https://www.1laser.com/pages/terms-of-service">Terms of Service</a><a href="https://www.1laser.com/pages/warranty-policy">Warranty Policy</a><a href="https://www.1laser.com/pages/pre-order-backorder-policy">Preorder &amp; Backorder Policy</a><a href="https://www.1laser.com/pages/onelaser-giveaway-general-terms-conditions">Giveaway General Terms &amp; Conditions</a></div>
         </div>

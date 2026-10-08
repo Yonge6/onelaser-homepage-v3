@@ -36,6 +36,7 @@ import {
 import { CommercialCapabilities } from "./components/CommercialCapabilities.jsx";
 import { HomeFooter, HomeNavigation, HomePage } from "./Home.jsx";
 import { MachineCollectionPage } from "./MachineCollection.jsx";
+import { AccessoriesPage } from "./Accessories.jsx";
 import { initializeAnalytics, trackEvent } from "./analytics.js";
 import { useAutoplayCarousel } from "./hooks/useAutoplayCarousel.js";
 
@@ -2275,6 +2276,8 @@ export function XrfPage() {
 
 export function App() {
   const page = new URLSearchParams(window.location.search).get("page");
+  const isAccessoriesPath = window.location.pathname.replace(/\/+$/, "").endsWith("/accessories");
+  if (page === "accessories" || isAccessoriesPath) return <AccessoriesPage />;
   const isCollectionsPath = window.location.pathname.replace(/\/+$/, "").endsWith("/collections");
   const isXrfListingRoot = window.location.pathname.replace(/^\/+|\/+$/g, "") === "xrf-gen2-listing";
   if (page === "xrf" || (isXrfListingRoot && !page)) return <XrfPage />;

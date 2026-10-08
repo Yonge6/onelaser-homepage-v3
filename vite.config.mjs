@@ -14,6 +14,7 @@ export default defineConfig({
       input: {
         main: resolve(process.cwd(), "index.html"),
         collections: resolve(process.cwd(), "collections/index.html"),
+        accessories: resolve(process.cwd(), "accessories/index.html"),
       },
     },
   },

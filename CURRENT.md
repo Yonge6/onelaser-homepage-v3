@@ -1,6 +1,6 @@
 # OneLaser Homepage + XRF Gen2 Current State
 
-Updated: 2026-09-21 (Asia/Shanghai)
+Updated: 2026-10-08 (Asia/Shanghai)
 
 ## Start here
 
@@ -10,6 +10,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 
 - V3 repository: `Yonge6/onelaser-homepage-v3`, branch `main`.
 - OneLaser Homepage V3: `https://yonge6.github.io/onelaser-homepage-v3/`.
+- Accessories: `https://yonge6.github.io/onelaser-homepage-v3/accessories/`.
 - Retained XRF Gen2 detail: `https://yonge6.github.io/onelaser-homepage-v3/?page=xrf`.
 - Protected V2: `https://yonge6.github.io/onelaser-homepage/` at baseline `1b6ac43`; do not overwrite or redeploy it from V3 work.
 
@@ -52,7 +53,17 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 - Ownership Support now follows the Buying Guide and its expert CTA, so the collection narrative moves from selection guidance to risk reassurance before customer-story proof.
 - The 13-video customer-story rail is full-bleed and matches the XRF listing card height: an intrinsic 16:9 cover plus a fixed 174 px copy area. Long titles clamp to two lines so no card stretches the row; all covers remain 1280 × 720 with no crop or CSS blank space.
 
+## Current accessories state
+
+- `/accessories/` reuses the V3 navigation/footer and collection design system. Source: the official laser-accessories collection and its 28-product JSON response, verified 2026-10-08.
+- Six category shortcuts lead into a complete searchable catalog with category OR filters, combined price limits, price/name sorting, removable filter chips and an empty/reset state. Desktop has a sticky sidebar; mobile uses a native modal bottom sheet.
+- Official product names, concise source-based descriptions and original imagery are retained. The 28 local WebP assets total about 585 KB. Variant-dependent prices use `From` and the minimum variant price; invalid/equal compare-at prices are hidden. Product and consultation actions go to the official site.
+- The hero features the official PiBurn OMNI image; all six source FAQs follow the consultation panel. Desktop, mobile and footer Accessories links now use this local route.
+- Source mapping and release approach: `docs/plans/2026-10-08-accessories.md`.
+
 ## Validation state
+
+- Accessories: `npm run verify` passes; desktop 1440 px and mobile 390 px have zero overflow, 31/31 loaded images, 28 product cards and a 12 px text floor. Category + price + sorting, search (8 FiltraBox results), empty/reset states, mobile native dialog and FAQ are interaction-checked. No page-origin browser errors.
 
 - `npm run verify` passes.
 - Desktop and 390 × 844 have zero document overflow, a 12 px minimum visible text floor and 64/64 loaded homepage images with real natural dimensions.

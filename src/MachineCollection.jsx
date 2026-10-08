@@ -581,7 +581,7 @@ function rankFamilies(selections) {
     .map(([id], index) => ({ ...familyProfiles.find((family) => family.id === id), rank: index + 1 }));
 }
 
-function useImageReadiness() {
+export function useImageReadiness() {
   useEffect(() => {
     const palettes = [
       ["#e7ded5", "#d8c9bc", "#f3ece5"],
