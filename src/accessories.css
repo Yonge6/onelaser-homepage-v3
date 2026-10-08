@@ -15,11 +15,8 @@
 .accessory-primary { min-height: 50px; display: inline-flex; justify-content: center; align-items: center; gap: 12px; padding: 12px 23px; border: 0; border-radius: 999px; background: var(--accessory-red); color: #fff !important; font-size: 14px; font-weight: 800; transition: background 180ms, transform 180ms; }
 .accessory-hero__actions .accessory-primary { min-height: 52px; }
 .accessory-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 24px; border: 1px solid var(--accessory-line); border-radius: 999px; background: #fff; color: #1d1d1f; font-size: 14px; font-weight: 800; transition: border-color 180ms, box-shadow 180ms; }
-.accessory-hero__media { min-width: 0; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #ececef; border-left: 0; border-radius: 0 32px 32px 0; padding: 28px 28px 22px; }
-.accessory-hero__media > img { width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: contain; }
-.accessory-hero__media > span { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 16px 10px 0; font-size: 18px; font-weight: 800; }
-.accessory-hero__media small { display: block; margin-top: 5px; font-size: 13px; color: var(--accessory-muted); font-weight: 400; }
-.accessory-round-arrow { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--accessory-line); border-radius: 50%; flex-shrink: 0; }
+.accessory-hero__media { min-width: 0; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #ececef; border-left: 0; border-radius: 0 32px 32px 0; margin: 0; overflow: hidden; }
+.accessory-hero__media > img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
 .accessory-categories { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; padding-block: 32px 48px; }
 .accessory-categories button { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 20px 6px; background: #fff; border: 1px solid #ececef; border-radius: 20px; transition: border-color 180ms, background 180ms; }
 .accessory-categories button > svg { margin-bottom: 6px; }
@@ -119,7 +116,6 @@
 @media (max-width: 1100px) {
   .accessory-hero__copy { padding: 32px; }
   .accessory-hero__headline { font-size: 40px; }
-  .accessory-hero__media { padding-inline: 16px; }
   .accessory-catalog__layout { grid-template-columns: 230px minmax(0, 1fr); gap: 20px; }
   .accessory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .accessory-toolbar { flex-wrap: wrap; }
@@ -146,9 +142,7 @@
   .accessory-hero__actions { margin-top: 22px; gap: 8px; }
   .accessory-hero__actions .accessory-primary { width: 100%; }
   .accessory-hero__actions .accessory-secondary { justify-content: center; width: 100%; }
-  .accessory-hero__media { padding: 14px 18px 18px; border: 1px solid #ececef; border-top: 0; border-radius: 0 0 24px 24px; }
-  .accessory-hero__media > span { padding: 12px 2px 0; font-size: 16px; }
-  .accessory-hero__media small { font-size: 12px; }
+  .accessory-hero__media { border: 1px solid #ececef; border-top: 0; border-radius: 0 0 24px 24px; }
   .accessory-categories { padding-block: 24px 32px; gap: 8px; }
   .accessory-categories button { padding: 16px 6px; border-radius: 16px; gap: 6px; }
   .accessory-categories button > svg { width: 25px; height: 25px; margin-bottom: 3px; }
