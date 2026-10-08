@@ -2,9 +2,9 @@
 
 ## Scope and design
 
-Add `/accessories/` to the independent OneLaser V3 GitHub Pages site. Reuse the existing navigation, footer, Certia typography, white and #F5F5F7 surfaces, rounded panels and collection catalog anatomy. Keep all 28 official accessories, grouped into six navigation categories. Desktop uses a sticky filter sidebar and three-column catalog; mobile uses a native modal filter sheet and single-column product cards.
+Add `/accessories/` to the independent OneLaser V3 GitHub Pages site. Reuse the existing navigation, footer, Certia typography, white and #F5F5F7 surfaces, rounded panels and collection catalog anatomy. Keep all 28 official accessories, organized first by six machine families and then by six accessory types. Desktop uses a sticky filter sidebar and three-column catalog; mobile uses a native modal filter sheet and single-column product cards.
 
-The page sequence is introduction with a static accessories group image, category shortcuts, the complete searchable/sortable/filterable catalog, official consultation CTA and the six FAQs from the source collection. No machine-selection quiz or machine reviews are repurposed as accessory evidence.
+The page sequence is introduction with a static accessories group image, machine selection, the complete searchable/sortable/filterable catalog, official consultation CTA and the six FAQs from the source collection. No machine-selection quiz or machine reviews are repurposed as accessory evidence.
 
 ## Source and price handling
 
@@ -31,3 +31,11 @@ User requested an accessories collection image generated using ChatGPT in ego-br
 Downloaded through ChatGPT’s image download action. Original PNG is retained under ignored `references/incoming/accessories/chatgpt-accessories-collection.png`; published WebP is `public/assets/accessories/accessories-collection-hero.webp`, 1448 × 1086 (4:3), exported without cropping. Product appearance and the presence of all six accessories were visually checked. The scene is a generated composition, not a photograph of a sold bundle. No bundle or additional compatibility is claimed.
 
 The hero media is a non-interactive figure with one image, no product title, subtitle, link, or arrow. Breadcrumb removal and the white outlined consultation button remain in place.
+
+## Machine-first compatibility revision, 2026-10-08
+
+Hydra Gen2 is the first machine tile, followed by Cobra, XRF, XT, VertiGo and Hydra Gen1. The chosen machine is reflected in the catalog heading, first filter, removable chip, product tags and shareable URL. Type, price and search narrow that machine; changing machines clears those secondary constraints. Empty-result recovery keeps the chosen machine.
+
+Each product stores explicit `machines`, a visible `compatibilityNote`, and an auditable `compatibilityEvidence` / `compatibilitySource`. The official collection JSON was refreshed; product pages and variants were checked for generation and configuration restrictions. A generic Hydra Series label is not expanded into Gen1/Gen2 claims. PiBurn V X Series compatibility is supported by the official rotary setup article; PiBurn OMNI follows its explicit XRF and Hydra/Cobra variants. FiltraBox Expand X-3 explicitly supports any OneLaser machine, subject to connection/airflow checks. Replacement filters are matched to the extractor, not the laser.
+
+The five explicitly supported Hydra Gen2 entries are CW-5200 (glass-tube systems), FiltraBox Expand X-3, CO₂ glass tubes (Hydra 9/13/16 glass-tube configurations), 3X laser beam expander, and 25 mm beam combiner. Hydra Gen1 focal-lens barrel and generation-ambiguous rotaries are excluded. XRF has 14 matched entries, XT 11, Cobra 5, Hydra Gen1 4 and VertiGo 1; unconfirmed products remain in the full 28-item catalog.

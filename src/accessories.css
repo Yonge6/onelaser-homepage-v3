@@ -4,7 +4,7 @@
 .accessories-shell button { cursor: pointer; }
 .accessories-shell :is(a, button, input, select, summary):focus-visible { outline: 2px solid var(--accessory-red); outline-offset: 4px; }
 .accessories-shell [id] { scroll-margin-top: 94px; }
-.accessory-hero, .accessory-categories, .accessory-help, .accessory-faq { width: calc(100% - 2 * var(--home-content-gutter)); max-width: 1280px; margin-inline: auto; }
+.accessory-hero, .accessory-machines, .accessory-help, .accessory-faq { width: calc(100% - 2 * var(--home-content-gutter)); max-width: 1280px; margin-inline: auto; }
 .accessory-hero { margin-top: 32px; display: grid; grid-template-columns: 1fr 1.12fr; align-items: stretch; border-radius: 32px; overflow: hidden; background: #f5f5f7; }
 .accessory-hero__copy { align-self: center; padding: 48px 36px 48px 44px; }
 .accessory-eyebrow { display: block; color: var(--accessory-red); font-size: 12px; font-weight: 800; letter-spacing: .12em; line-height: 1.4; }
@@ -17,11 +17,6 @@
 .accessory-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 24px; border: 1px solid var(--accessory-line); border-radius: 999px; background: #fff; color: #1d1d1f; font-size: 14px; font-weight: 800; transition: border-color 180ms, box-shadow 180ms; }
 .accessory-hero__media { min-width: 0; display: flex; flex-direction: column; justify-content: center; background: #fff; border: 1px solid #ececef; border-left: 0; border-radius: 0 32px 32px 0; margin: 0; overflow: hidden; }
 .accessory-hero__media > img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
-.accessory-categories { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; padding-block: 32px 48px; }
-.accessory-categories button { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 20px 6px; background: #fff; border: 1px solid #ececef; border-radius: 20px; transition: border-color 180ms, background 180ms; }
-.accessory-categories button > svg { margin-bottom: 6px; }
-.accessory-categories button > span { font-size: 14px; font-weight: 800; }
-.accessory-categories small { color: var(--accessory-muted); font-size: 12px; }
 .accessory-catalog { padding: 48px var(--home-content-gutter); background: #f5f5f7; }
 .accessory-section-heading { max-width: 1280px; margin-inline: auto; }
 .accessory-section-heading h2, .accessory-help h2 { margin: 8px 0 0; font-size: 48px; line-height: 1.04; letter-spacing: -.045em; font-weight: 800; }
@@ -78,7 +73,6 @@
 .accessory-product__category { color: var(--accessory-muted); font-size: 12px; }
 .accessory-product h3 { margin: 8px 0 0; font-size: 18px; font-weight: 800; line-height: 1.25; letter-spacing: -.025em; }
 .accessory-product__body > p { margin: 12px 0; font-size: 13px; line-height: 1.5; color: var(--accessory-muted); }
-.accessory-product__fit { width: fit-content; margin-top: auto; border: 1px solid #e5e5ea; padding: 6px 9px; border-radius: 6px; color: #55555a; font-size: 12px; line-height: 1.35; }
 .accessory-product__purchase { margin-top: 20px; }
 .accessory-product__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; min-height: 30px; color: var(--accessory-red); }
 .accessory-product__price strong { font-size: 24px; letter-spacing: -.04em; font-weight: 800; }
@@ -108,7 +102,6 @@
 @media (hover: hover) {
   .accessory-secondary:hover { border-color: #aaa; box-shadow: 0 10px 24px rgba(0,0,0,.07); }
   .accessory-primary:hover { background: #bf260b; transform: translateY(-2px); }
-  .accessory-categories button:hover { border-color: #d92d0d; background: #f5f5f7; }
   .accessory-product:hover { border-color: var(--accessory-line); transform: translateY(-2px); }
   .accessory-product__media:hover img { transform: scale(1.03); }
   .accessory-product__action:hover { background: #f5f5f7; border-color: #000; }
@@ -120,7 +113,6 @@
   .accessory-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .accessory-toolbar { flex-wrap: wrap; }
   .accessory-search { order: 3; max-width: none; width: 100%; }
-  .accessory-categories { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 820px) {
   .accessory-hero { grid-template-columns: 1fr 1fr; }
@@ -143,10 +135,6 @@
   .accessory-hero__actions .accessory-primary { width: 100%; }
   .accessory-hero__actions .accessory-secondary { justify-content: center; width: 100%; }
   .accessory-hero__media { border: 1px solid #ececef; border-top: 0; border-radius: 0 0 24px 24px; }
-  .accessory-categories { padding-block: 24px 32px; gap: 8px; }
-  .accessory-categories button { padding: 16px 6px; border-radius: 16px; gap: 6px; }
-  .accessory-categories button > svg { width: 25px; height: 25px; margin-bottom: 3px; }
-  .accessory-categories button > span { font-size: 12px; line-height: 1.3; max-width: 94px; min-height: 32px; display: grid; align-items: center; }
   .accessory-catalog { padding-block: 32px; }
   .accessory-section-heading h2, .accessory-help h2 { font-size: 32px; }
   .accessory-section-heading > p { font-size: 14px; }
@@ -174,4 +162,37 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .accessories-shell *, .accessories-shell *::before, .accessories-shell *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
+
+/* Machine fit is the primary accessory discovery path. */
+.accessory-machines { padding-block: 48px; }
+.accessory-machines > header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+.accessory-machines h2 { margin: 8px 0 0; font-size: 48px; line-height: 1.04; letter-spacing: -.045em; font-weight: 800; }
+.accessory-machines header p { margin: 12px 0 0; color: var(--accessory-muted); font-size: 16px; line-height: 1.5; }
+.accessory-all-machines { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; border: 0; padding: 0; background: none; font-size: 14px; font-weight: 800; }
+.accessory-machine-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+.accessory-machine-grid button { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; padding: 20px; border: 1px solid var(--accessory-line); border-radius: 20px; background: #fff; text-align: left; transition: border-color 180ms, background 180ms; }
+.accessory-machine-grid button > span { font-size: 18px; font-weight: 800; }
+.accessory-machine-grid button > small { font-size: 12px; line-height: 1.5; color: var(--accessory-muted); font-weight: 400; }
+.accessory-machine-grid button > svg { align-self: flex-end; margin-top: 6px; }
+.accessory-machine-grid button.is-active { border-color: var(--accessory-red); background: #fff7f4; box-shadow: inset 0 0 0 1px var(--accessory-red); }
+.accessory-machine-grid button.is-active > span, .accessory-machine-grid button.is-active > svg { color: var(--accessory-red); }
+.accessory-machine-field select { width: 100%; min-height: 44px; padding: 8px; border: 1px solid var(--accessory-line); border-radius: 8px; background: #fff; font-size: 14px; }
+.accessory-machine-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.accessory-machine-tags > span { display: inline-block; border-radius: 6px; padding: 5px 8px; background: #f5f5f7; color: #000; font-size: 12px; line-height: 1.4; font-weight: 700; }
+.accessory-machine-tags > span.is-current { color: var(--accessory-red); background: #fff3ef; }
+.accessory-product__body > p.accessory-product__compatibility { margin-top: auto; padding-top: 12px; font-size: 12px; line-height: 1.5; color: var(--accessory-muted); border-top: 1px solid #ececef; }
+.accessory-active-filters .accessory-machine-chip { border-color: var(--accessory-red); background: #fff7f4; color: var(--accessory-red); }
+@media (hover: hover) { .accessory-machine-grid button:hover { border-color: var(--accessory-red); } }
+@media (max-width: 1100px) { .accessory-machine-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+  .accessory-machines { padding-block: 32px; }
+  .accessory-machines > header { align-items: flex-start; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+  .accessory-machines h2 { font-size: 32px; }
+  .accessory-machines header p { font-size: 14px; }
+  .accessory-machine-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .accessory-machine-grid button { padding: 16px; border-radius: 16px; gap: 6px; }
+  .accessory-machine-grid button > span { font-size: 16px; }
+  .accessory-machine-grid button > svg { margin-top: 2px; }
+  .accessory-machine-field select { font-size: 16px; }
 }

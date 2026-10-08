@@ -14,7 +14,13 @@
       "available": true,
       "image": "accessories/onelaser-industrial-chiller-for-hydra-laser-engraver.webp",
       "url": "https://www.1laser.com/products/onelaser-industrial-chiller-for-hydra-laser-engraver",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/CW5200_Industrial_Chiller.png?v=1730122683"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/CW5200_Industrial_Chiller.png?v=1730122683",
+      "machines": [
+        "cobra"
+      ],
+      "compatibilityNote": "Hydra series: confirm generation. For glass-tube systems.",
+      "compatibilityEvidence": "Hydra & Cobra glass-tube systems; Hydra generation not specified.",
+      "compatibilitySource": "https://www.1laser.com/products/onelaser-industrial-chiller-for-hydra-laser-engraver"
     },
     {
       "id": "cw-5200-industrial-water-chiller",
@@ -28,7 +34,15 @@
       "available": true,
       "image": "accessories/cw-5200-industrial-water-chiller.webp",
       "url": "https://www.1laser.com/products/cw-5200-industrial-water-chiller",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/cw5200waterchiller_1.png?v=1779183771"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/cw5200waterchiller_1.png?v=1779183771",
+      "machines": [
+        "hydra-gen2",
+        "cobra",
+        "hydra-gen1"
+      ],
+      "compatibilityNote": "For glass-tube configurations only.",
+      "compatibilityEvidence": "Compatible Models: Cobra Series; Hydra Gen1 Glass Tube; Hydra Gen2 Glass Tube.",
+      "compatibilitySource": "https://www.1laser.com/products/cw-5200-industrial-water-chiller"
     },
     {
       "id": "air-assist-for-laser-engraver-cutter",
@@ -42,7 +56,14 @@
       "available": true,
       "image": "accessories/air-assist-for-laser-engraver-cutter.webp",
       "url": "https://www.1laser.com/products/air-assist-for-laser-engraver-cutter",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/lQDPJxo8d4MrtenND4zNE4iwYCxEbs-yL6sITkLfo74fAA_5000_3980.jpg?v=1787801424"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/lQDPJxo8d4MrtenND4zNE4iwYCxEbs-yL6sITkLfo74fAA_5000_3980.jpg?v=1787801424",
+      "machines": [
+        "xrf",
+        "xt"
+      ],
+      "compatibilityNote": "Hydra series: confirm generation and DB9 connection.",
+      "compatibilityEvidence": "Compatible Models: OneLaser X Series; OneLaser Hydra Series.",
+      "compatibilitySource": "https://www.1laser.com/products/air-assist-for-laser-engraver-cutter"
     },
     {
       "id": "onelaser-x-series-riser-base",
@@ -56,7 +77,14 @@
       "available": true,
       "image": "accessories/onelaser-x-series-riser-base.webp",
       "url": "https://www.1laser.com/products/onelaser-x-series-riser-base",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/839d9e84510a0900681b9fc541852466.png?v=1741326960"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/839d9e84510a0900681b9fc541852466.png?v=1741326960",
+      "machines": [
+        "xrf",
+        "xt"
+      ],
+      "compatibilityNote": "For X Series machines.",
+      "compatibilityEvidence": "Product title: OneLaser X Series Base Booster / Riser Base.",
+      "compatibilitySource": "https://www.1laser.com/products/onelaser-x-series-riser-base"
     },
     {
       "id": "multi-function-rotary-axis-57-motor",
@@ -70,7 +98,13 @@
       "available": true,
       "image": "accessories/multi-function-rotary-axis-57-motor.webp",
       "url": "https://www.1laser.com/products/multi-function-rotary-axis-57-motor",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/2_61c4972b-e444-404f-ba9b-59938c16ffcf.png?v=1789027757"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/2_61c4972b-e444-404f-ba9b-59938c16ffcf.png?v=1789027757",
+      "machines": [
+        "cobra"
+      ],
+      "compatibilityNote": "Hydra series: confirm generation and motor connection.",
+      "compatibilityEvidence": "Product title: Compatible with OneLaser Hydra & Cobra Series; 57 motor.",
+      "compatibilitySource": "https://www.1laser.com/products/multi-function-rotary-axis-57-motor"
     },
     {
       "id": "piburn-galvo-grip-rotary",
@@ -84,7 +118,11 @@
       "available": true,
       "image": "accessories/piburn-galvo-grip-rotary.webp",
       "url": "https://www.1laser.com/products/piburn-galvo-grip-rotary",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/grip-2-Galvo.1.webp?v=1734495820"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/grip-2-Galvo.1.webp?v=1734495820",
+      "machines": [],
+      "compatibilityNote": "For fiber and UV galvo lasers. Confirm your machine and connector.",
+      "compatibilityEvidence": "Product title: A Chuck Rotary for Fiber and UV Lasers.",
+      "compatibilitySource": "https://www.1laser.com/products/piburn-galvo-grip-rotary"
     },
     {
       "id": "piburn-v-for-onelaser",
@@ -98,7 +136,14 @@
       "available": true,
       "image": "accessories/piburn-v-for-onelaser.webp",
       "url": "https://www.1laser.com/products/piburn-v-for-onelaser",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/piburn-v-laser-rotary-attachment-onelaser.png?v=1789025810"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/piburn-v-laser-rotary-attachment-onelaser.png?v=1789025810",
+      "machines": [
+        "xrf",
+        "xt"
+      ],
+      "compatibilityNote": "Confirm the connector and motor option for your machine.",
+      "compatibilityEvidence": "Official PiBurn V setup guide names the OneLaser X Series and Hydra Series; Hydra generation not specified.",
+      "compatibilitySource": "https://www.1laser.com/blogs/topic/how-to-use-piburn-rotary"
     },
     {
       "id": "piburn-omni-for-onelaser",
@@ -112,7 +157,14 @@
       "available": true,
       "image": "accessories/piburn-omni-for-onelaser.webp",
       "url": "https://www.1laser.com/products/piburn-omni-for-onelaser",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/piburn-omni-2-advanced-laser-rotary-engraving.png?v=1789026509"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/piburn-omni-2-advanced-laser-rotary-engraving.png?v=1789026509",
+      "machines": [
+        "xrf",
+        "cobra"
+      ],
+      "compatibilityNote": "Select the matching machine option. Hydra owners: confirm generation.",
+      "compatibilityEvidence": "Machine variants: X Series (XRF); Hydra/Cobra Series.",
+      "compatibilitySource": "https://www.1laser.com/products/piburn-omni-for-onelaser"
     },
     {
       "id": "piburn-grip-for-onelaser",
@@ -126,7 +178,11 @@
       "available": true,
       "image": "accessories/piburn-grip-for-onelaser.webp",
       "url": "https://www.1laser.com/products/piburn-grip-for-onelaser",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/grip-2.0.1.jpg?v=1789027101"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/grip-2.0.1.jpg?v=1789027101",
+      "machines": [],
+      "compatibilityNote": "Confirm your machine, motor and connector before ordering.",
+      "compatibilityEvidence": "Product names OneLaser but does not identify a machine or generation.",
+      "compatibilitySource": "https://www.1laser.com/products/piburn-grip-for-onelaser"
     },
     {
       "id": "piburn-lite-for-onelaser",
@@ -140,7 +196,11 @@
       "available": true,
       "image": "accessories/piburn-lite-for-onelaser.webp",
       "url": "https://www.1laser.com/products/piburn-lite-for-onelaser",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/PBL_main.0.png?v=1789024834"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/PBL_main.0.png?v=1789024834",
+      "machines": [],
+      "compatibilityNote": "Confirm your machine, motor and connector before ordering.",
+      "compatibilityEvidence": "Product names OneLaser but does not identify a machine or generation.",
+      "compatibilitySource": "https://www.1laser.com/products/piburn-lite-for-onelaser"
     },
     {
       "id": "onelaser-automatic-conveyor-feeder",
@@ -154,7 +214,13 @@
       "available": true,
       "image": "accessories/onelaser-automatic-conveyor-feeder.webp",
       "url": "https://www.1laser.com/products/onelaser-automatic-conveyor-feeder",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/9beab4683ad286661f4bb3a0568b2f8a.png?v=1776222785"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/9beab4683ad286661f4bb3a0568b2f8a.png?v=1776222785",
+      "machines": [
+        "xrf"
+      ],
+      "compatibilityNote": "Base Boost riser base required.",
+      "compatibilityEvidence": "Designed specifically for OneLaser XRF. Base Boost riser base required.",
+      "compatibilitySource": "https://www.1laser.com/products/onelaser-automatic-conveyor-feeder"
     },
     {
       "id": "filtrabox-micro",
@@ -168,7 +234,11 @@
       "available": true,
       "image": "accessories/filtrabox-micro.webp",
       "url": "https://www.1laser.com/products/filtrabox-micro",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/4_9de31b3c-4d90-447f-9ff5-d5901da89c46.png?v=1787650257"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/4_9de31b3c-4d90-447f-9ff5-d5901da89c46.png?v=1787650257",
+      "machines": [],
+      "compatibilityNote": "Confirm extractor sizing and your machine’s exhaust connection.",
+      "compatibilityEvidence": "No specific compatible machine is listed in the product description.",
+      "compatibilitySource": "https://www.1laser.com/products/filtrabox-micro"
     },
     {
       "id": "filtrabox-compact-x",
@@ -182,7 +252,14 @@
       "available": true,
       "image": "accessories/filtrabox-compact-x.webp",
       "url": "https://www.1laser.com/products/filtrabox-compact-x",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/1_0d1b9cb9-3291-48e2-b8b6-5b6552ef6bd5.png?v=1776322289"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/1_0d1b9cb9-3291-48e2-b8b6-5b6552ef6bd5.png?v=1776322289",
+      "machines": [
+        "xrf",
+        "xt"
+      ],
+      "compatibilityNote": "Hydra 7/9: confirm generation and exhaust setup.",
+      "compatibilityEvidence": "Desktop machines XRF and XT; Hydra 7/9 normal-duty use. Hydra generation not specified.",
+      "compatibilitySource": "https://www.1laser.com/products/filtrabox-compact-x"
     },
     {
       "id": "filtrabox-expand-x-2",
@@ -196,7 +273,11 @@
       "available": true,
       "image": "accessories/filtrabox-expand-x-2.webp",
       "url": "https://www.1laser.com/products/filtrabox-expand-x-2",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/2_7001965b-7559-46e5-affb-a09385b256c8.png?v=1785121825"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/2_7001965b-7559-46e5-affb-a09385b256c8.png?v=1785121825",
+      "machines": [],
+      "compatibilityNote": "Hydra 7/9: heavy-duty use. Hydra 13/16: normal-duty use. Confirm generation.",
+      "compatibilityEvidence": "Hydra 7/9 heavy-duty; Hydra 13/16 normal-duty. Generation not specified.",
+      "compatibilitySource": "https://www.1laser.com/products/filtrabox-expand-x-2"
     },
     {
       "id": "filtrabox-expand-x-3",
@@ -210,7 +291,18 @@
       "available": true,
       "image": "accessories/filtrabox-expand-x-3.webp",
       "url": "https://www.1laser.com/products/filtrabox-expand-x-3",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/3_2baf9add-e176-443c-9592-30dee3966db6.png?v=1785121422"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/3_2baf9add-e176-443c-9592-30dee3966db6.png?v=1785121422",
+      "machines": [
+        "hydra-gen2",
+        "cobra",
+        "xrf",
+        "xt",
+        "vertigo",
+        "hydra-gen1"
+      ],
+      "compatibilityNote": "Check the exhaust connection and airflow requirements.",
+      "compatibilityEvidence": "Compatible with any OneLaser machine; desktop XRF/XT and Hydra 7/9/13/16 listed.",
+      "compatibilitySource": "https://www.1laser.com/products/filtrabox-expand-x-3"
     },
     {
       "id": "micro-filtrabox-replacement-filters",
@@ -224,7 +316,11 @@
       "available": true,
       "image": "accessories/micro-filtrabox-replacement-filters.webp",
       "url": "https://www.1laser.com/products/micro-filtrabox-replacement-filters",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/MICRO_FILTRABOX.png?v=1783585454"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/MICRO_FILTRABOX.png?v=1783585454",
+      "machines": [],
+      "compatibilityNote": "For FiltraBox Micro; select the correct filter stage.",
+      "compatibilityEvidence": "Micro FiltraBox replacement filters; not a direct laser-machine accessory.",
+      "compatibilitySource": "https://www.1laser.com/products/micro-filtrabox-replacement-filters"
     },
     {
       "id": "compact-x-filtrabox-replacement-filters",
@@ -238,7 +334,11 @@
       "available": true,
       "image": "accessories/compact-x-filtrabox-replacement-filters.webp",
       "url": "https://www.1laser.com/products/compact-x-filtrabox-replacement-filters",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/COMPACT_X_FILTRABOX.png?v=1783585184"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/COMPACT_X_FILTRABOX.png?v=1783585184",
+      "machines": [],
+      "compatibilityNote": "For current FiltraBox Compact X units only.",
+      "compatibilityEvidence": "Compatible with current Compact X FiltraBox fume extractor units only.",
+      "compatibilitySource": "https://www.1laser.com/products/compact-x-filtrabox-replacement-filters"
     },
     {
       "id": "expand-x-2-filtrabox-replacement-filters",
@@ -252,7 +352,11 @@
       "available": true,
       "image": "accessories/expand-x-2-filtrabox-replacement-filters.webp",
       "url": "https://www.1laser.com/products/expand-x-2-filtrabox-replacement-filters",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/X-2FILTRABOX_5874a856-38d2-4baa-826e-9da6ad12e26e.png?v=1782917292"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/X-2FILTRABOX_5874a856-38d2-4baa-826e-9da6ad12e26e.png?v=1782917292",
+      "machines": [],
+      "compatibilityNote": "For current FiltraBox Expand X-2 units only.",
+      "compatibilityEvidence": "Compatible with current Expand X-2 FiltraBox fume extractor units only.",
+      "compatibilitySource": "https://www.1laser.com/products/expand-x-2-filtrabox-replacement-filters"
     },
     {
       "id": "expand-x-3-filtrabox-replacement-filters",
@@ -266,7 +370,11 @@
       "available": true,
       "image": "accessories/expand-x-3-filtrabox-replacement-filters.webp",
       "url": "https://www.1laser.com/products/expand-x-3-filtrabox-replacement-filters",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/X-3FILTRABOX.png?v=1782916928"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/X-3FILTRABOX.png?v=1782916928",
+      "machines": [],
+      "compatibilityNote": "For current FiltraBox Expand X-3 units only.",
+      "compatibilityEvidence": "Compatible with current Expand X-3 FiltraBox fume extractor units only.",
+      "compatibilitySource": "https://www.1laser.com/products/expand-x-3-filtrabox-replacement-filters"
     },
     {
       "id": "co2-glass-laser-tube",
@@ -280,7 +388,14 @@
       "available": true,
       "image": "accessories/co2-glass-laser-tube.webp",
       "url": "https://www.1laser.com/products/co2-glass-laser-tube",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/C100-2.png?v=1776221629"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/C100-2.png?v=1776221629",
+      "machines": [
+        "hydra-gen2",
+        "hydra-gen1"
+      ],
+      "compatibilityNote": "Hydra 9/13/16 glass-tube configurations only. Match the 100W, 130W or 150W variant.",
+      "compatibilityEvidence": "C100: Hydra 9 Gen1/2; C130: Hydra 13 Gen1/2; C150: Hydra 16 Gen1/2 Dual Laser System.",
+      "compatibilitySource": "https://www.1laser.com/products/co2-glass-laser-tube"
     },
     {
       "id": "co2-rf-metal-laser-tube",
@@ -294,7 +409,13 @@
       "available": true,
       "image": "accessories/co2-rf-metal-laser-tube.webp",
       "url": "https://www.1laser.com/products/co2-rf-metal-laser-tube",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/3_05a2c550-2f09-4459-987f-af1c40a81f7e.png?v=1776177836"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/3_05a2c550-2f09-4459-987f-af1c40a81f7e.png?v=1776177836",
+      "machines": [
+        "xrf"
+      ],
+      "compatibilityNote": "For OneLaser XRF.",
+      "compatibilityEvidence": "Compatible Models: OneLaser XRF.",
+      "compatibilitySource": "https://www.1laser.com/products/co2-rf-metal-laser-tube"
     },
     {
       "id": "hydra-focal-lens-barrel",
@@ -308,7 +429,13 @@
       "available": true,
       "image": "accessories/hydra-focal-lens-barrel.webp",
       "url": "https://www.1laser.com/products/hydra-focal-lens-barrel",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/08.01.037_Hydra1.5FocalLensKit1.jpg?v=1776933780"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/08.01.037_Hydra1.5FocalLensKit1.jpg?v=1776933780",
+      "machines": [
+        "hydra-gen1"
+      ],
+      "compatibilityNote": "Hydra Gen1 only; choose the correct focal length.",
+      "compatibilityEvidence": "Product title explicitly specifies Hydra Gen1 Series.",
+      "compatibilitySource": "https://www.1laser.com/products/hydra-focal-lens-barrel"
     },
     {
       "id": "3x-laser-beam-expander",
@@ -322,7 +449,15 @@
       "available": true,
       "image": "accessories/3x-laser-beam-expander.webp",
       "url": "https://www.1laser.com/products/3x-laser-beam-expander",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/1_2515f725-6cd9-4e77-bb68-58eeeeb9320c.png?v=1776175924"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/1_2515f725-6cd9-4e77-bb68-58eeeeb9320c.png?v=1776175924",
+      "machines": [
+        "hydra-gen2",
+        "xrf",
+        "xt"
+      ],
+      "compatibilityNote": "For 10.6 μm CO₂ laser systems.",
+      "compatibilityEvidence": "Compatible Models: OneLaser Hydra Series; OneLaser Hydra Gen2; OneLaser X Series.",
+      "compatibilitySource": "https://www.1laser.com/products/3x-laser-beam-expander"
     },
     {
       "id": "25mm-co2-laser-beam-combiner-lens",
@@ -336,7 +471,15 @@
       "available": true,
       "image": "accessories/25mm-co2-laser-beam-combiner-lens.webp",
       "url": "https://www.1laser.com/products/25mm-co2-laser-beam-combiner-lens",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/4_3d631b97-0a26-49c3-935b-664cade3af5a.png?v=1776177053"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/4_3d631b97-0a26-49c3-935b-664cade3af5a.png?v=1776177053",
+      "machines": [
+        "hydra-gen2",
+        "xrf",
+        "xt"
+      ],
+      "compatibilityNote": "For 10.6 μm CO₂ laser systems.",
+      "compatibilityEvidence": "Compatible Models: OneLaser Hydra Series; OneLaser Hydra Gen2; OneLaser X Series.",
+      "compatibilitySource": "https://www.1laser.com/products/25mm-co2-laser-beam-combiner-lens"
     },
     {
       "id": "2-inch-focal-lens-laser-engraver",
@@ -350,7 +493,14 @@
       "available": true,
       "image": "accessories/2-inch-focal-lens-laser-engraver.webp",
       "url": "https://www.1laser.com/products/2-inch-focal-lens-laser-engraver",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/04.11.002_Focal_Lens_2.0.jpg?v=1751420197"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/04.11.002_Focal_Lens_2.0.jpg?v=1751420197",
+      "machines": [
+        "xrf",
+        "xt"
+      ],
+      "compatibilityNote": "Hydra series: confirm generation and focal length.",
+      "compatibilityEvidence": "Compatible with X Series and HYDRA Series. Generation not specified.",
+      "compatibilitySource": "https://www.1laser.com/products/2-inch-focal-lens-laser-engraver"
     },
     {
       "id": "mirror-mounting-bracket-replacement-kit",
@@ -364,7 +514,14 @@
       "available": true,
       "image": "accessories/mirror-mounting-bracket-replacement-kit.webp",
       "url": "https://www.1laser.com/products/mirror-mounting-bracket-replacement-kit",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/MolybdenumReflectiveMirrorand2_FocalLens1.jpg?v=1748933512"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/MolybdenumReflectiveMirrorand2_FocalLens1.jpg?v=1748933512",
+      "machines": [
+        "xrf",
+        "xt"
+      ],
+      "compatibilityNote": "Hydra series: confirm generation. Focal lens not included.",
+      "compatibilityEvidence": "Compatibility: X-Series/Hydra Series laser head mirror assemblies.",
+      "compatibilitySource": "https://www.1laser.com/products/mirror-mounting-bracket-replacement-kit"
     },
     {
       "id": "magswitch-lens-holder-replacement-kit",
@@ -378,7 +535,14 @@
       "available": true,
       "image": "accessories/magswitch-lens-holder-replacement-kit.webp",
       "url": "https://www.1laser.com/products/magswitch-lens-holder-replacement-kit",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/02.21.047LensMount1.jpg?v=1784211200"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/02.21.047LensMount1.jpg?v=1784211200",
+      "machines": [
+        "xrf",
+        "xt"
+      ],
+      "compatibilityNote": "For X Series laser heads. Focal lens not included.",
+      "compatibilityEvidence": "Series Compatibility: X Series laser heads.",
+      "compatibilitySource": "https://www.1laser.com/products/magswitch-lens-holder-replacement-kit"
     },
     {
       "id": "5mp-camera-for-laser-engraver-cutter",
@@ -392,7 +556,16 @@
       "available": true,
       "image": "accessories/5mp-camera-for-laser-engraver-cutter.webp",
       "url": "https://www.1laser.com/products/5mp-camera-for-laser-engraver-cutter",
-      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/2_4fec5371-b0ee-40a7-a8a3-4d939baa3ecb.png?v=1776174527"
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0747/8748/7778/files/2_4fec5371-b0ee-40a7-a8a3-4d939baa3ecb.png?v=1776174527",
+      "machines": [
+        "xrf",
+        "xt"
+      ],
+      "compatibilityNote": "For OneLaser X Series.",
+      "compatibilityEvidence": "Compatible Models: OneLaser X Series.",
+      "compatibilitySource": "https://www.1laser.com/products/5mp-camera-for-laser-engraver-cutter"
     }
-  ]
+  ],
+  "compatibilityVerifiedAt": "2026-10-08",
+  "compatibilityPolicy": "Only explicit machine/generation matches, explicit X Series membership, or the stated any-OneLaser compatibility are included. Hydra without a generation is not expanded into Gen1 or Gen2. FiltraBox replacement filters match their extractor, not a laser machine."
 }

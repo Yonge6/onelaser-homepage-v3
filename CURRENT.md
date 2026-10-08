@@ -56,7 +56,8 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 ## Current accessories state
 
 - `/accessories/` reuses the V3 navigation/footer and collection design system. Source: the official laser-accessories collection and its 28-product JSON response, verified 2026-10-08.
-- Six category shortcuts lead into a complete searchable catalog with category OR filters, combined price limits, price/name sorting, removable filter chips and an empty/reset state. Desktop has a sticky sidebar; mobile uses a native modal bottom sheet.
+- Machine-first discovery puts Hydra Gen2 first in a six-machine selector above the catalog. Machine fit is the first sidebar/mobile filter and a visible product-card tag; accessory type and price narrow the chosen machine. Selection persists in `?machine=hydra-gen2` share links. Category OR groups combine with machine/price/search using AND. Desktop has a sticky sidebar; mobile uses a native modal bottom sheet.
+- Compatibility was rechecked against official product descriptions/variants on 2026-10-08. Only explicit model/generation matches enter machine results; generic Hydra claims do not imply Gen2 fit. Configuration restrictions remain visible, and extractor filters stay tied to their FiltraBox models. All 28 products remain available through View all accessories.
 - Official product names, concise source-based descriptions and original imagery are retained. The 28 local WebP assets total about 585 KB. Variant-dependent prices use `From` and the minimum variant price; invalid/equal compare-at prices are hidden. Product and consultation actions go to the official site.
 - The hero follows the header directly without a breadcrumb, with a 32 px desktop / 24 px mobile top gap, and features a static 4:3 accessories group image generated in ChatGPT through ego-browser from six official product images. The hero image has no link, caption or arrow; all six source FAQs follow the consultation panel. Desktop, mobile and footer Accessories links now use this local route.
 - Hero `Book A Free Call` uses the Collections secondary-button style: white pill, gray outline, Certia 800 and the same 52 px height as the adjacent primary CTA.
@@ -64,7 +65,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 
 ## Validation state
 
-- Accessories: `npm run verify` passes; desktop 1440 px and mobile 390 px have zero overflow, 31/31 loaded images, 28 product cards and a 12 px text floor. Category + price + sorting, search (8 FiltraBox results), empty/reset states, mobile native dialog and FAQ are interaction-checked. No page-origin browser errors.
+- Accessories: machine compatibility/filter tests (3/3) and `npm run verify` pass. Hydra Gen2 → type → price/search combinations, empty recovery retaining the machine, XRF URL reload persistence and mobile machine-first drawer are verified; desktop 1440 px and mobile 390 px have zero overflow, 31/31 loaded images, 28 product cards and a 12 px text floor. Category + price + sorting, search (8 FiltraBox results), empty/reset states, mobile native dialog and FAQ are interaction-checked. No page-origin browser errors.
 
 - `npm run verify` passes.
 - Desktop and 390 × 844 have zero document overflow, a 12 px minimum visible text floor and 64/64 loaded homepage images with real natural dimensions.
