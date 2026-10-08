@@ -58,7 +58,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 - `/accessories/` reuses the V3 navigation/footer and collection design system. Source: the official laser-accessories collection and its 28-product JSON response, verified 2026-10-08.
 - Six category shortcuts lead into a complete searchable catalog with category OR filters, combined price limits, price/name sorting, removable filter chips and an empty/reset state. Desktop has a sticky sidebar; mobile uses a native modal bottom sheet.
 - Official product names, concise source-based descriptions and original imagery are retained. The 28 local WebP assets total about 585 KB. Variant-dependent prices use `From` and the minimum variant price; invalid/equal compare-at prices are hidden. Product and consultation actions go to the official site.
-- The hero features the official PiBurn OMNI image; all six source FAQs follow the consultation panel. Desktop, mobile and footer Accessories links now use this local route.
+- The hero follows the header directly without a breadcrumb, with a 32 px desktop / 24 px mobile top gap, and features the official PiBurn OMNI image; all six source FAQs follow the consultation panel. Desktop, mobile and footer Accessories links now use this local route.
 - Source mapping and release approach: `docs/plans/2026-10-08-accessories.md`.
 
 ## Validation state

@@ -99,7 +99,6 @@ export function AccessoriesPage() {
     <a className="home-skip" href="#accessories-main">Skip to content</a>
     <HomeNavigation />
     <main id="accessories-main">
-      <div className="accessory-breadcrumb"><a href={import.meta.env.BASE_URL}>Home</a><span>/</span><span>Accessories</span></div>
       <section className="accessory-hero" aria-labelledby="accessory-title">
         <div className="accessory-hero__copy"><span className="accessory-eyebrow">ENGRAVING. MARKING. CUTTING.</span><h1 id="accessory-title">Laser accessories.</h1><p className="accessory-hero__headline">Enhance your projects.</p><p>Boost your OneLaser engraving capabilities with laser rotaries, Base Boost systems, chillers, and more, tailored to your specific needs.</p><div className="accessory-hero__actions"><a className="accessory-primary" href="#accessory-catalog">Shop accessories <ArrowDown size={18} /></a><a className="accessory-text-link" href={CALL_URL}>Book A Free Call <ArrowUpRight size={18} /></a></div></div>
         <a className="accessory-hero__media" href={catalog.products.find((p) => p.id === "piburn-omni-for-onelaser").url}><img src={asset("accessories/piburn-omni-for-onelaser.webp")} alt="PiBurn OMNI rotary with roller and chuck drive systems" fetchPriority="high" width="1400" height="875" /><span><span>PiBurn OMNI<small>Roller and chuck. One rotary.</small></span><span className="accessory-round-arrow"><ArrowUpRight size={23} /></span></span></a>
