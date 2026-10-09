@@ -177,7 +177,9 @@
 .accessory-machine-grid button > svg { align-self: flex-end; margin-top: 6px; }
 .accessory-machine-grid button.is-active { border-color: var(--accessory-red); background: #fff7f4; box-shadow: inset 0 0 0 1px var(--accessory-red); }
 .accessory-machine-grid button.is-active > span, .accessory-machine-grid button.is-active > svg { color: var(--accessory-red); }
-.accessory-machine-field select { width: 100%; min-height: 44px; padding: 8px; border: 1px solid var(--accessory-line); border-radius: 8px; background: #fff; font-size: 14px; }
+.accessory-machine-field > div { position: relative; }
+.accessory-machine-field > div::after { content: ''; position: absolute; top: 50%; right: 14px; width: 7px; height: 7px; border-right: 1.5px solid #000; border-bottom: 1.5px solid #000; transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+.accessory-machine-field select { width: 100%; min-height: 44px; padding: 8px 36px 8px 12px; appearance: none; -webkit-appearance: none; border: 1px solid var(--accessory-line); border-radius: 8px; background: #fff; font-size: 14px; }
 .accessory-machine-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .accessory-machine-tags > span { display: inline-block; border-radius: 6px; padding: 5px 8px; background: #f5f5f7; color: #000; font-size: 12px; line-height: 1.4; font-weight: 700; }
 .accessory-machine-tags > span.is-current { color: var(--accessory-red); background: #fff3ef; }
