@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowDown, ArrowUpRight, ArrowsClockwise, Camera, CaretDown, Check, CircleNotch, FunnelSimple, MagnifyingGlass, Plus, Snowflake, Stack, Wind, X } from "@phosphor-icons/react";
+import { ArrowDown, ArrowUpRight, ArrowsClockwise, Camera, CaretDown, CaretUp, Check, CircleNotch, FunnelSimple, MagnifyingGlass, Plus, Snowflake, Stack, Wind, X } from "@phosphor-icons/react";
 import { HomeFooter, HomeNavigation } from "./Home.jsx";
 import { useImageReadiness } from "./MachineCollection.jsx";
 import { initializeAnalytics, trackEvent } from "./analytics.js";
@@ -58,8 +58,10 @@ export function AccessoriesPage() {
   const [maxPrice, setMaxPrice] = useState(9500);
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("featured");
+  const [topButtonState, setTopButtonState] = useState("hidden");
   const dialogRef = useRef(null);
   const catalogRef = useRef(null);
+  const lastScrollYRef = useRef(0);
   const machineName = accessoryMachines.find((item) => item.id === machine)?.name;
   const machineProducts = useMemo(() => catalog.products.filter((product) => machine === "all" || product.machines.includes(machine)), [machine]);
   useImageReadiness();
@@ -79,6 +81,24 @@ export function AccessoriesPage() {
     dialog.addEventListener("close", unlock);
     window.addEventListener("resize", resize);
     return () => { dialog.removeEventListener("close", unlock); window.removeEventListener("resize", resize); unlock(); };
+  }, []);
+  useEffect(() => {
+    let frame = 0;
+    const updateTopButton = () => {
+      frame = 0;
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < 480) setTopButtonState("hidden");
+      else if (currentScrollY < lastScrollYRef.current - 4) setTopButtonState("visible");
+      else if (currentScrollY > lastScrollYRef.current + 4) setTopButtonState("muted");
+      lastScrollYRef.current = currentScrollY;
+    };
+    const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(updateTopButton); };
+    updateTopButton();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
   const filtered = useMemo(() => filterAccessories(catalog.products, { machine, categories: selected, minPrice, maxPrice, query, sort }), [machine, selected, minPrice, maxPrice, query, sort]);
   const activeCount = Number(machine !== "all") + selected.length + Number(minPrice > 0 || maxPrice < 9500) + Number(Boolean(query));
@@ -131,6 +151,18 @@ export function AccessoriesPage() {
       <section className="accessory-help" aria-labelledby="accessory-help-title"><div><span className="accessory-eyebrow">TALK TO A REP</span><h2 id="accessory-help-title">Have questions<br />or need help?</h2></div><a className="accessory-primary" href={CALL_URL} onClick={() => trackEvent("lead_action", { action: "accessory_consultation" })}>Book A Free Call <ArrowUpRight size={19} /></a></section>
       <section className="accessory-faq" aria-labelledby="accessory-faq-title"><header className="accessory-section-heading"><span className="accessory-eyebrow">ACCESSORY ESSENTIALS</span><h2 id="accessory-faq-title">Frequently asked questions.</h2></header><div>{faqs.map(([question, answer]) => <details key={question}><summary>{question}<Plus size={22} aria-hidden="true" /></summary><p>{answer}</p></details>)}</div></section>
     </main><HomeFooter />
+    <button
+      type="button"
+      className={`home-back-to-top home-back-to-top--${topButtonState}`}
+      aria-label="Back to top"
+      onClick={() => window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      })}
+    >
+      <CaretUp size={17} weight="bold" aria-hidden="true" />
+      <span>TOP</span>
+    </button>
     <dialog ref={dialogRef} className="accessory-filter-dialog" aria-label="Filter accessories" onClick={(event) => { if (event.target === event.currentTarget) dialogRef.current.close(); }}>{filters(true)}</dialog>
   </div>;
 }
