@@ -4,6 +4,7 @@ import {
   CaretDown,
   CaretLeft,
   CaretRight,
+  CaretUp,
   Check,
   FunnelSimple,
   Play,
@@ -717,9 +718,11 @@ export function MachineCollectionPage() {
   const [finderSelections, setFinderSelections] = useState(defaultFinder);
   const [finderMatches, setFinderMatches] = useState(null);
   const [youtubeVideo, setYoutubeVideo] = useState(null);
+  const [topButtonState, setTopButtonState] = useState("hidden");
   const catalogRef = useRef(null);
   const compareRef = useRef(null);
   const storyRailRef = useRef(null);
+  const lastScrollYRef = useRef(0);
   useImageReadiness();
 
   useEffect(() => {
@@ -746,6 +749,27 @@ export function MachineCollectionPage() {
       window.removeEventListener("keydown", closeOnEscape);
     };
   }, [filtersOpen, youtubeVideo]);
+
+  useEffect(() => {
+    let frame = 0;
+    const updateTopButton = () => {
+      frame = 0;
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < 480) setTopButtonState("hidden");
+      else if (currentScrollY < lastScrollYRef.current - 4) setTopButtonState("visible");
+      else if (currentScrollY > lastScrollYRef.current + 4) setTopButtonState("muted");
+      lastScrollYRef.current = currentScrollY;
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateTopButton);
+    };
+    updateTopButton();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
 
   const currentProducts = useMemo(() => {
     const filtered = products.filter((product) => {
@@ -1166,6 +1190,19 @@ export function MachineCollectionPage() {
       )}
 
       <HomeFooter />
+
+      <button
+        type="button"
+        className={`home-back-to-top home-back-to-top--${topButtonState}${comparedProducts.length > 0 ? " home-back-to-top--with-tray" : ""}`}
+        aria-label="Back to top"
+        onClick={() => window.scrollTo({
+          top: 0,
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        })}
+      >
+        <CaretUp size={17} weight="bold" aria-hidden="true" />
+        <span>TOP</span>
+      </button>
 
       {youtubeVideo && (
         <div className="youtube-modal" role="dialog" aria-modal="true" aria-label={`${youtubeVideo.title} YouTube video`} onClick={() => setYoutubeVideo(null)}>
