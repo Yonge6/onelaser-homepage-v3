@@ -84,6 +84,47 @@ final result: passed
 
 ---
 
+# XRF Accessories Mega Menu Design QA
+
+## Comparison target
+
+- Source visual truth: `/var/folders/vd/kws8fm5509l6b9hnywhd8yfr0000gn/T/codex-clipboard-d783d1e6-339d-413c-b600-66d3c64aabac.png`
+- Desktop implementation: `references/incoming/xrf-accessories-menu-desktop.png`
+- Mobile implementation: `references/incoming/xrf-accessories-menu-mobile.png`
+- Side-by-side comparison: `references/incoming/xrf-accessories-menu-comparison.png`
+- Desktop viewport: 1440 × 1000 CSS px, device scale factor 1
+- Mobile viewport: 390 × 844 CSS px, device scale factor 1
+- Interaction state: XRF detail route with Accessories opened by click
+
+## Findings
+
+- No actionable P0, P1, or P2 differences remain.
+- The XRF page reuses the same two approved 280 × 242 desktop cards, imagery, labels, arrows, white panel, active red underline, and upward caret as the Accessories-page reference.
+- Hovering the XRF Accessories trigger leaves `aria-expanded="false"` and does not mount the menu; clicking opens it and sets `aria-expanded="true"`.
+- The homepage keeps its existing hover activation because click-only behavior is scoped to the XRF page call site.
+- The local Laser Accessories destination and official Materials destination are intact.
+- Both card images completed at their native 1448 × 1086 dimensions.
+- Desktop and 390 px mobile each have zero horizontal document overflow and no captured console errors.
+- Mobile keeps the shared navigation treatment and exposes both destinations inside the Accessories accordion.
+
+## Open questions
+
+- None.
+
+## Implementation checklist
+
+- [x] Shared Accessories Mega Menu reused on XRF
+- [x] Click-only desktop activation on XRF
+- [x] Homepage hover behavior preserved
+- [x] Accessible expanded state and Escape behavior retained
+- [x] Desktop and 390 px responsive verification
+- [x] Target image dimensions and destinations verified
+- [x] Console errors checked
+
+final result: passed
+
+---
+
 # OneLaser V3 Lineup and Density Polish QA
 
 ## Scope

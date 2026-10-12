@@ -412,7 +412,7 @@ function ProductName({ name }) {
   return <>{beforeTrademark}<sup>™</sup>{afterTrademark}</>;
 }
 
-export function HomeNavigation() {
+export function HomeNavigation({ megaMenuActivation = "hover" }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [announcementVisible, setAnnouncementVisible] = useState(true);
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
@@ -420,6 +420,7 @@ export function HomeNavigation() {
   const suppressMegaFocusRef = useRef(false);
   const headerRef = useRef(null);
   const menuButtonRef = useRef(null);
+  const clickActivatedMegaMenus = megaMenuActivation === "click";
   const activeResourceMenu = activeMegaMenu === "support" ? supportMenu : communityMenu;
 
   useEffect(() => {
@@ -484,6 +485,16 @@ export function HomeNavigation() {
     });
   };
 
+  const openMegaMenuOnHover = (menu) => clickActivatedMegaMenus ? undefined : () => setActiveMegaMenu(menu);
+  const openMegaMenuOnFocus = (menu) => clickActivatedMegaMenus ? undefined : () => {
+    if (!suppressMegaFocusRef.current) setActiveMegaMenu(menu);
+  };
+  const toggleMegaMenuOnClick = (menu) => clickActivatedMegaMenus ? (event) => {
+    event.preventDefault();
+    setActiveMegaMenu((current) => current === menu ? null : menu);
+  } : undefined;
+  const closeMegaMenuOnHover = clickActivatedMegaMenus ? undefined : () => setActiveMegaMenu(null);
+
   return (
     <>
       {announcementVisible && (
@@ -505,7 +516,7 @@ export function HomeNavigation() {
       <header
         ref={headerRef}
         className="home-header"
-        onMouseLeave={() => setActiveMegaMenu(null)}
+        onMouseLeave={closeMegaMenuOnHover}
         onBlur={(event) => {
           if (!event.currentTarget.contains(event.relatedTarget)) setActiveMegaMenu(null);
         }}
@@ -526,19 +537,19 @@ export function HomeNavigation() {
         </button>
         <nav id="home-navigation" className={menuOpen ? "home-nav is-open" : "home-nav"} aria-label="Main navigation">
           <div className="home-nav__item">
-            <a href={MACHINES_PAGE_URL} aria-haspopup="true" aria-controls="home-mega-machines" aria-expanded={activeMegaMenu === "machines"} data-mega-trigger="machines" onMouseEnter={() => setActiveMegaMenu("machines")} onFocus={() => { if (!suppressMegaFocusRef.current) setActiveMegaMenu("machines"); }} onKeyDown={enterMegaMenu("machines")}>Laser Machines <CaretDown size={13} weight="bold" /></a>
+            <a href={MACHINES_PAGE_URL} aria-haspopup="true" aria-controls="home-mega-machines" aria-expanded={activeMegaMenu === "machines"} data-mega-trigger="machines" onMouseEnter={openMegaMenuOnHover("machines")} onFocus={openMegaMenuOnFocus("machines")} onClick={toggleMegaMenuOnClick("machines")} onKeyDown={enterMegaMenu("machines")}>Laser Machines <CaretDown size={13} weight="bold" /></a>
           </div>
           <div className="home-nav__item">
-            <a href={ACCESSORIES_PAGE_URL} aria-haspopup="true" aria-controls="home-mega-accessories" aria-expanded={activeMegaMenu === "accessories"} data-mega-trigger="accessories" onMouseEnter={() => setActiveMegaMenu("accessories")} onFocus={() => { if (!suppressMegaFocusRef.current) setActiveMegaMenu("accessories"); }} onKeyDown={enterMegaMenu("accessories")}>Accessories <CaretDown size={13} weight="bold" /></a>
+            <a href={ACCESSORIES_PAGE_URL} aria-haspopup="true" aria-controls="home-mega-accessories" aria-expanded={activeMegaMenu === "accessories"} data-mega-trigger="accessories" onMouseEnter={openMegaMenuOnHover("accessories")} onFocus={openMegaMenuOnFocus("accessories")} onClick={toggleMegaMenuOnClick("accessories")} onKeyDown={enterMegaMenu("accessories")}>Accessories <CaretDown size={13} weight="bold" /></a>
           </div>
-          <a href="https://www.1laser.com/collections/limited-offers" target="_blank" rel="noreferrer" onMouseEnter={() => setActiveMegaMenu(null)} onFocus={() => setActiveMegaMenu(null)}>Clearance</a>
+          <a href="https://www.1laser.com/collections/limited-offers" target="_blank" rel="noreferrer" onMouseEnter={closeMegaMenuOnHover} onFocus={closeMegaMenuOnHover}>Clearance</a>
           <div className="home-nav__item">
-            <a href="https://www.1laser.com/pages/sales-consultation" target="_blank" rel="noreferrer" aria-haspopup="true" aria-controls="home-mega-support" aria-expanded={activeMegaMenu === "support"} data-mega-trigger="support" onMouseEnter={() => setActiveMegaMenu("support")} onFocus={() => { if (!suppressMegaFocusRef.current) setActiveMegaMenu("support"); }} onKeyDown={enterMegaMenu("support")}>Support <CaretDown size={13} weight="bold" /></a>
+            <a href="https://www.1laser.com/pages/sales-consultation" target="_blank" rel="noreferrer" aria-haspopup="true" aria-controls="home-mega-support" aria-expanded={activeMegaMenu === "support"} data-mega-trigger="support" onMouseEnter={openMegaMenuOnHover("support")} onFocus={openMegaMenuOnFocus("support")} onClick={toggleMegaMenuOnClick("support")} onKeyDown={enterMegaMenu("support")}>Support <CaretDown size={13} weight="bold" /></a>
           </div>
           <div className="home-nav__item">
-            <a href="https://www.1laser.com/pages/laser-engraving-community" target="_blank" rel="noreferrer" aria-haspopup="true" aria-controls="home-mega-community" aria-expanded={activeMegaMenu === "community"} data-mega-trigger="community" onMouseEnter={() => setActiveMegaMenu("community")} onFocus={() => { if (!suppressMegaFocusRef.current) setActiveMegaMenu("community"); }} onKeyDown={enterMegaMenu("community")}>Community <CaretDown size={13} weight="bold" /></a>
+            <a href="https://www.1laser.com/pages/laser-engraving-community" target="_blank" rel="noreferrer" aria-haspopup="true" aria-controls="home-mega-community" aria-expanded={activeMegaMenu === "community"} data-mega-trigger="community" onMouseEnter={openMegaMenuOnHover("community")} onFocus={openMegaMenuOnFocus("community")} onClick={toggleMegaMenuOnClick("community")} onKeyDown={enterMegaMenu("community")}>Community <CaretDown size={13} weight="bold" /></a>
           </div>
-          <a href="https://www.1laser.com/pages/contact-us" target="_blank" rel="noreferrer" onMouseEnter={() => setActiveMegaMenu(null)} onFocus={() => setActiveMegaMenu(null)}>Contact</a>
+          <a href="https://www.1laser.com/pages/contact-us" target="_blank" rel="noreferrer" onMouseEnter={closeMegaMenuOnHover} onFocus={closeMegaMenuOnHover}>Contact</a>
         </nav>
         {menuOpen && (
           <nav id="home-mobile-navigation" className="home-mobile-nav" aria-label="Mobile main navigation" onClick={(event) => {
