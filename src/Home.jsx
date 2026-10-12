@@ -31,6 +31,7 @@ const asset = (name) => `${import.meta.env.BASE_URL}assets/${name}`;
 const XRF_PAGE_URL = `${import.meta.env.BASE_URL}?page=xrf`;
 const MACHINES_PAGE_URL = `${import.meta.env.BASE_URL}collections/`;
 const ACCESSORIES_PAGE_URL = `${import.meta.env.BASE_URL}accessories/`;
+const MATERIALS_PAGE_URL = "https://www.1laser.com/collections/materials-for-laser-engraving-cutting";
 const wholeCurrencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
@@ -211,6 +212,22 @@ const supportMenu = {
     ["Policy", "https://www.1laser.com/policies/shipping-policy"],
     ["Blogs", "https://www.1laser.com/blogs/topic"],
     ["Product Knowledge Base", "https://wiki.1laser.com/"],
+  ],
+};
+
+const accessoriesMenu = {
+  featured: [
+    {
+      label: "Laser Accessories",
+      href: ACCESSORIES_PAGE_URL,
+      image: "navigation/accessories-menu.jpg",
+    },
+    {
+      label: "Materials",
+      href: MATERIALS_PAGE_URL,
+      image: "navigation/materials-menu.jpg",
+      external: true,
+    },
   ],
 };
 
@@ -511,7 +528,9 @@ export function HomeNavigation() {
           <div className="home-nav__item">
             <a href={MACHINES_PAGE_URL} aria-haspopup="true" aria-controls="home-mega-machines" aria-expanded={activeMegaMenu === "machines"} data-mega-trigger="machines" onMouseEnter={() => setActiveMegaMenu("machines")} onFocus={() => { if (!suppressMegaFocusRef.current) setActiveMegaMenu("machines"); }} onKeyDown={enterMegaMenu("machines")}>Laser Machines <CaretDown size={13} weight="bold" /></a>
           </div>
-          <a href={ACCESSORIES_PAGE_URL} onMouseEnter={() => setActiveMegaMenu(null)} onFocus={() => setActiveMegaMenu(null)}>Accessories</a>
+          <div className="home-nav__item">
+            <a href={ACCESSORIES_PAGE_URL} aria-haspopup="true" aria-controls="home-mega-accessories" aria-expanded={activeMegaMenu === "accessories"} data-mega-trigger="accessories" onMouseEnter={() => setActiveMegaMenu("accessories")} onFocus={() => { if (!suppressMegaFocusRef.current) setActiveMegaMenu("accessories"); }} onKeyDown={enterMegaMenu("accessories")}>Accessories <CaretDown size={13} weight="bold" /></a>
+          </div>
           <a href="https://www.1laser.com/collections/limited-offers" target="_blank" rel="noreferrer" onMouseEnter={() => setActiveMegaMenu(null)} onFocus={() => setActiveMegaMenu(null)}>Clearance</a>
           <div className="home-nav__item">
             <a href="https://www.1laser.com/pages/sales-consultation" target="_blank" rel="noreferrer" aria-haspopup="true" aria-controls="home-mega-support" aria-expanded={activeMegaMenu === "support"} data-mega-trigger="support" onMouseEnter={() => setActiveMegaMenu("support")} onFocus={() => { if (!suppressMegaFocusRef.current) setActiveMegaMenu("support"); }} onKeyDown={enterMegaMenu("support")}>Support <CaretDown size={13} weight="bold" /></a>
@@ -544,7 +563,14 @@ export function HomeNavigation() {
                 ))}
               </div>
             </details>
-            <a className="home-mobile-nav__direct" href={ACCESSORIES_PAGE_URL}>Accessories<ArrowUpRight size={16} /></a>
+            <details className="home-mobile-nav__group" name="mobile-navigation">
+              <summary>Accessories<CaretDown size={18} /></summary>
+              <div className="home-mobile-nav__panel home-mobile-nav__links">
+                {accessoriesMenu.featured.map((item) => (
+                  <a href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined} key={item.label}>{item.label}<ArrowUpRight size={15} /></a>
+                ))}
+              </div>
+            </details>
             <a className="home-mobile-nav__direct" href="https://www.1laser.com/collections/limited-offers" target="_blank" rel="noreferrer">Clearance<ArrowUpRight size={16} /></a>
             {[["Support", supportMenu], ["Community", communityMenu]].map(([label, menu]) => (
               <details className="home-mobile-nav__group" name="mobile-navigation" key={label}>
@@ -587,6 +613,19 @@ export function HomeNavigation() {
                   </a>
                 ))}
               </div>
+            </div>
+          </div>
+        )}
+
+        {activeMegaMenu === "accessories" && (
+          <div id="home-mega-accessories" className="home-mega home-mega--accessories" aria-label="Accessories menu">
+            <div className="home-mega__inner home-mega__inner--accessories">
+              {accessoriesMenu.featured.map((item) => (
+                <a className="home-mega-resource-card" href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noreferrer" : undefined} key={item.label}>
+                  <img src={asset(item.image)} alt="" />
+                  <span>{item.label}<CaretRight size={20} weight="bold" /></span>
+                </a>
+              ))}
             </div>
           </div>
         )}

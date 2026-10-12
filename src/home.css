@@ -114,6 +114,8 @@
 .home-mega-product h3 { margin: 0; font-size: 20px; font-weight: 800; line-height: 1.08; letter-spacing: -.025em; }
 .home-mega-product p { margin: 10px 0 0; color: #6b6b70; font-size: 13px; line-height: 1.45; }
 .home-mega__inner--resources { height: 330px; min-height: 0; grid-template-columns: repeat(2,minmax(240px,280px)) minmax(260px,1fr); align-items: stretch; justify-content: start; gap: 30px; padding-block: 40px; }
+.home-mega__inner--accessories { height: 330px; min-height: 0; grid-template-columns: repeat(2,minmax(240px,280px)); align-items: stretch; justify-content: center; gap: 30px; padding-block: 40px; }
+.home-mega--accessories .home-mega-resource-card { height: 242px; }
 .home-mega-resource-card { position: relative; min-width: 0; height: 242px; overflow: hidden; border-radius: 22px; background: #141414; color: #fff !important; }
 .home-mega-resource-card::after { content: ""; position: absolute; inset: 38% 0 0; background: linear-gradient(180deg,transparent,rgba(0,0,0,.78)); }
 .home-mega-resource-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 360ms ease; }
@@ -402,6 +404,7 @@
   .home-mega__inner { padding-inline: 24px; }
   .home-mega-product { grid-template-columns: 148px minmax(0,1fr); }
   .home-mega__inner--resources { grid-template-columns: repeat(2,minmax(210px,250px)) minmax(220px,1fr); gap: 18px; }
+  .home-mega__inner--accessories { grid-template-columns: repeat(2,minmax(210px,250px)); gap: 18px; }
   .home-mega-resource-card { height: 242px; }
   .home-product-card__media { padding-inline: 34px; }
   .home-why__story { grid-template-columns: .92fr 1.08fr; }

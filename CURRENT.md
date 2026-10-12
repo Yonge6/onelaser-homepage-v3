@@ -1,6 +1,6 @@
 # OneLaser Homepage + XRF Gen2 Current State
 
-Updated: 2026-10-08 (Asia/Shanghai)
+Updated: 2026-10-12 (Asia/Shanghai)
 
 ## Start here
 
@@ -18,7 +18,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 
 - Generation correction (2026-09-21): XRF uses True 3G in homepage cards, homepage Finder, collection family recommendations and comparison data. XRF Gen2 detail retains True 3.5G.
 
-- Mobile navigation (2026-09-16) uses a full-height, independently scrolling accordion below the header. Laser Machines includes all desktop series and models; Support and Community share the desktop featured and text links. Search and Log in remain available. Menu open locks background scroll; Escape, close, link selection and desktop resize dismiss it. Desktop Mega Menu is retained.
+- Shared navigation adds an Accessories Mega Menu with two large matched image cards: local `Laser Accessories` and official `Materials`. Both card images were generated as a coordinated gray-studio pair through Ego ChatGPT from official OneLaser accessory/material references; labels and arrows remain accessible HTML overlays. Mobile navigation exposes the same two destinations in its Accessories accordion. Laser Machines includes all desktop series and models; Support and Community share the desktop featured and text links. Search and Log in remain available. Menu open locks background scroll; Escape, close, link selection and desktop resize dismiss it.
 - Lineup price update (2026-09-09): all four lineup cards show a centered `From $X,XXX USD` line above Explore, using official base prices Cobra $5,999, XRF $4,399, Hydra Gen2 $10,999 and VertiGo $5,599. Prices were verified through the official product JSON endpoints; Cobra uses the Cobra 8 series entry price and now links to the official series collection. Cards gain 40 px to preserve their original image space; scene hover/focus switches price text to white.
 - Narrative order is Hero Campaigns → machine lineup → Made with OneLaser → performance → audience fit → real-world proof → OneLaser Standard → Explore / Community → footer.
 - The four-machine lineup explains project fit before specifications and preserves the Cobra, XRF, Hydra Gen2 and VertiGo capability boundaries.
@@ -56,6 +56,7 @@ This is the sole routine continuation handoff. Work directly in `/Users/yongyuan
 
 ## Current accessories state
 
+- The shared desktop header opens a two-card Accessories Mega Menu using `navigation/accessories-menu.jpg` and `navigation/materials-menu.jpg`; the former routes to the local accessories catalog and the latter to OneLaser's official materials collection.
 - `/accessories/` reuses the V3 navigation/footer and collection design system. Source: the official laser-accessories collection and its 28-product JSON response, verified 2026-10-08.
 - Machine-first discovery puts Hydra Gen2 first in a six-machine selector above the catalog. Machine fit is the first sidebar/mobile filter and a visible product-card tag; accessory type and price narrow the chosen machine. Selection persists in `?machine=hydra-gen2` share links. Category OR groups combine with machine/price/search using AND. Desktop has a sticky sidebar; mobile uses a native modal bottom sheet.
 - Compatibility was rechecked against official product descriptions/variants on 2026-10-08. Only explicit model/generation matches enter machine results; generic Hydra claims do not imply Gen2 fit. Configuration restrictions remain visible, and extractor filters stay tied to their FiltraBox models. All 28 products remain available through View all accessories.
